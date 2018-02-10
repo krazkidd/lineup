@@ -1,0 +1,26 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.lineupTable {
+  border: 1px solid black;
+  border-collapse: collapse;
+  /*content*/
+  min-width: 400px;
+}
+
+.lineupTable tr:first-child {
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lineupTable td:first-child {
+  font-weight: bold;
+  text-align: center;
+}
+
+.lineupTable td {
+  border: 1px solid black;
+}

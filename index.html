@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lineup Editor</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/lineup.css"/>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/lineup.js"></script>
+  </head>
+  <body>
+    <h1>Lineup Editor</h1>
+
+    <div id="lineupDiv">
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(initLineupTable(document.getElementById('lineupDiv'), 12));
+    </script>
+
+  </body>
+</html>
