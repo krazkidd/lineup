@@ -40,16 +40,28 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
+        var lineupData = null;
 
         var inputStarterCount = document.getElementById('starterCount');
         var inputSubCount = document.getElementById('subCount');
 
         // initial lineup population
-        populatestarterDiv.call(inputStarterCount);
+        populateStarterDiv.call(inputStarterCount);
         populateSubDiv.call(inputSubCount);
 
+        asyncGetLineup('fakelineup', function (json) {
+          lineupData = json || null;
+
+          if (lineupData) {
+            populateStarterDiv.call(inputStarterCount);
+            populateSubDiv.call(inputSubCount);
+          } else {
+            //TODO show error
+          }
+        });
+
         // handler for starter number input
-        inputStarterCount.addEventListener('input', populatestarterDiv);
+        inputStarterCount.addEventListener('input', populateStarterDiv);
         // handler for sub number input
         inputSubCount.addEventListener('input', populateSubDiv);
 
@@ -59,27 +71,23 @@
          *
          * Must be called from a context such that this.value exists.
          */
-        function populatestarterDiv() {
-          var val = Number(this.value);
+        function populateStarterDiv() {
+          var val = Number.parseInt(this.value, 10);
 
-          if (Number.isInteger(val)) {
-            if (val < 9) {
-              val = 9;
-            } else if (val > 12) {
-              val = 12;
-            }
-
-            //TODO copy players to new table; move extras to sub list
-
-            removeNodes(document.getElementsByClassName('lineupTable'));
-            document.getElementById('starterDiv').appendChild(getStarterTable(val));
-          } else {
-            val = 9;
+          val = Math.max(val, 9);
+          if (lineupData) {
+            //TODO move players to sub list if user wants to make lineup smaller
+            // don't allow number to be smaller than actual number of starters
+            val = Math.max(val, lineupData.batPositions.length);
           }
+          val = Math.min(val, 12);
 
           if (val != this.value) {
             this.value = val;
           }
+
+          removeNodes(document.getElementsByClassName('lineupTable'));
+          document.getElementById('starterDiv').appendChild(getStarterTable(lineupData, val));
         }
 
         /**
@@ -89,26 +97,21 @@
          * Must be called from a context such that this.value exists.
          */
         function populateSubDiv() {
-          var val = Number(this.value);
+          var val = Number.parseInt(this.value, 10);
 
-          if (Number.isInteger(val)) {
-            if (val < 1) {
-              val = 1;
-            } else if (val > 5) {
-              val = 5;
-            }
-
-            //TODO copy players to new table
-
-            removeNodes(document.getElementsByClassName('subTable'));
-            document.getElementById('subDiv').appendChild(getSubTable(val));
-          } else {
-            val = 3;
+          val = Math.max(val, 1);
+          if (lineupData) {
+            // don't allow number to be smaller than actual number of subs
+            val = Math.max(val, lineupData.subs.length);
           }
+          val = Math.min(val, 5);
 
           if (val != this.value) {
             this.value = val;
           }
+
+          removeNodes(document.getElementsByClassName('subTable'));
+          document.getElementById('subDiv').appendChild(getSubTable(lineupData, val));
         }
 
       });

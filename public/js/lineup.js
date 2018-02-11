@@ -21,25 +21,49 @@ along with Lineup.  If not, see <http://www.gnu.org/licenses/>.
 
 "use strict"
 
-function getStarterTable(numPlayerRows) {
+function getStarterTable(lineupData, numPlayerRows) {
   var table = document.createElement('table');
   table.className = 'lineupTable';
   table.appendChild(getStarterTableHeaderRow());
 
-  for(var i = 0; i < numPlayerRows; i++) {
-    table.appendChild(getStarterTablePlayerRow(i + 1, null));
+  if (lineupData) {
+    for(var i = 0; i < Math.max(lineupData.batPositions.length, numPlayerRows); i++) {
+      var player = null;
+
+      if (i < lineupData.batPositions.length) {
+          player = lineupData.players[lineupData.batPositions[i]];
+      }
+
+      table.appendChild(getStarterTablePlayerRow(i + 1, player));
+    }
+  } else {
+    for(var i = 0; i < numPlayerRows; i++) {
+      table.appendChild(getStarterTablePlayerRow(i + 1, null));
+    }
   }
 
   return table;
 }
 
-function getSubTable(numPlayerRows) {
+function getSubTable(lineupData, numPlayerRows) {
   var table = document.createElement('table');
   table.className = 'subTable';
   table.appendChild(getSubTableHeaderRow());
 
-  for(var i = 0; i < numPlayerRows; i++) {
-    table.appendChild(getSubTablePlayerRow(null));
+  if (lineupData) {
+    for(var i = 0; i < Math.max(lineupData.subs.length, numPlayerRows); i++) {
+      var player = null;
+
+      if (i < lineupData.subs.length) {
+          player = lineupData.players[lineupData.subs[i]];
+      }
+
+      table.appendChild(getSubTablePlayerRow(player));
+    }
+  } else {
+    for(var i = 0; i < numPlayerRows; i++) {
+      table.appendChild(getSubTablePlayerRow(null));
+    }
   }
 
   return table;
@@ -74,7 +98,7 @@ function getStarterTablePlayerRow(battingPosition, player) {
   tdBattingPosition.textContent = battingPosition.toString();
   tdPlayerNumber.textContent = player ? player.number : ' ';
   tdPlayerName.textContent = player ? player.name : ' ';
-  tdFieldPosition.textContent = player ? player.position : ' ';
+  // tdFieldPosition.textContent = player ? player.position : ' ';
 
   var trPlayer = document.createElement('tr');
   trPlayer.appendChild(tdBattingPosition);
@@ -111,6 +135,12 @@ function getSubTablePlayerRow(player) {
   trPlayer.appendChild(tdPlayerName);
 
   return trPlayer;
+}
+
+function asyncGetLineup(id, callback) {
+  $.get('/json/lineup/' + id, function (data) {
+    callback(data);
+  });
 }
 
 /**

@@ -20,10 +20,23 @@ along with Lineup.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************/
 
 const express = require('express');
+const sleep = require('sleep');
+
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + "/_test"));
+app.use(express.static(__dirname + "/public"));
 
+// GET lineup
+app.get('/json/lineup/:id', function (req, res) {
+  sleep.sleep(1);
+  res.sendFile('/_test/json/' + req.params.id + '.json', {
+    root: __dirname,
+    dotfile: 'deny'
+  });
+});
+
+// GET root
 app.get('/', (reg, res) => res.sendFile('/index.html', {
   root: __dirname,
   dotfile: 'deny'
