@@ -13,6 +13,7 @@
     "mongodb": "^3.0.2"
   },
   "devDependencies": {
+    "bootstrap": "^4.0.0",
     "jquery": "^3.3.1"
   }
 }
