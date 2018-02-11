@@ -19,56 +19,96 @@ along with Lineup.  If not, see <http://www.gnu.org/licenses/>.
 
 **************************************************************************/
 
-function initLineupTable(parent, numPlayerRows) {
+"use strict"
+
+function getStarterTable(numPlayerRows) {
   var table = document.createElement('table');
   table.className = 'lineupTable';
-  table.appendChild(getLineupTableHeaderRow());
+  table.appendChild(getStarterTableHeaderRow());
 
   for(var i = 0; i < numPlayerRows; i++) {
-    table.appendChild(getLineupTablePlayerRow(i + 1, null));
+    table.appendChild(getStarterTablePlayerRow(i + 1, null));
   }
 
-  parent.appendChild(table);
+  return table;
 }
 
-function getLineupTableHeaderRow() {
-  var tdBattingOrder = document.createElement('td');
+function getSubTable(numPlayerRows) {
+  var table = document.createElement('table');
+  table.className = 'subTable';
+  table.appendChild(getSubTableHeaderRow());
+
+  for(var i = 0; i < numPlayerRows; i++) {
+    table.appendChild(getSubTablePlayerRow(null));
+  }
+
+  return table;
+}
+
+function getStarterTableHeaderRow() {
+  var tdBattingPosition = document.createElement('td');
   var tdPlayerNumber = document.createElement('td');
   var tdPlayerName = document.createElement('td');
-  var tdPlayerPosition = document.createElement('td');
+  var tdFieldPosition = document.createElement('td');
 
-  tdBattingOrder.textContent = ' ';
+  tdBattingPosition.textContent = ' ';
   tdPlayerNumber.textContent = 'No.';
   tdPlayerName.textContent = 'Player';
-  tdPlayerPosition.textContent = 'Pos.';
+  tdFieldPosition.textContent = 'Pos.';
 
   var trHeader = document.createElement('tr');
-  trHeader.appendChild(tdBattingOrder);
+  trHeader.appendChild(tdBattingPosition);
   trHeader.appendChild(tdPlayerNumber);
   trHeader.appendChild(tdPlayerName);
-  trHeader.appendChild(tdPlayerPosition);
+  trHeader.appendChild(tdFieldPosition);
 
   return trHeader;
 }
 
-function getLineupTablePlayerRow(battingOrder, player) {
-  var tdBattingOrder = document.createElement('td');
+function getStarterTablePlayerRow(battingPosition, player) {
+  var tdBattingPosition = document.createElement('td');
   var tdPlayerNumber = document.createElement('td');
   var tdPlayerName = document.createElement('td');
-  var tdPlayerPosition = document.createElement('td');
+  var tdFieldPosition = document.createElement('td');
 
-  tdBattingOrder.textContent = battingOrder.toString();
-  if (player) {
-    tdPlayerNumber.textContent = player.number;
-    tdPlayerName.textContent = player.name;
-    tdPlayerPosition.textContent = player.position;
-  }
+  tdBattingPosition.textContent = battingPosition.toString();
+  tdPlayerNumber.textContent = player ? player.number : ' ';
+  tdPlayerName.textContent = player ? player.name : ' ';
+  tdFieldPosition.textContent = player ? player.position : ' ';
 
   var trPlayer = document.createElement('tr');
-  trPlayer.appendChild(tdBattingOrder);
+  trPlayer.appendChild(tdBattingPosition);
   trPlayer.appendChild(tdPlayerNumber);
   trPlayer.appendChild(tdPlayerName);
-  trPlayer.appendChild(tdPlayerPosition);
+  trPlayer.appendChild(tdFieldPosition);
+
+  return trPlayer;
+}
+
+function getSubTableHeaderRow() {
+  var tdPlayerNumber = document.createElement('td');
+  var tdPlayerName = document.createElement('td');
+
+  tdPlayerNumber.textContent = 'No.';
+  tdPlayerName.textContent = 'Player';
+
+  var trHeader = document.createElement('tr');
+  trHeader.appendChild(tdPlayerNumber);
+  trHeader.appendChild(tdPlayerName);
+
+  return trHeader;
+}
+
+function getSubTablePlayerRow(player) {
+  var tdPlayerNumber = document.createElement('td');
+  var tdPlayerName = document.createElement('td');
+
+  tdPlayerNumber.textContent = player ? player.number : ' ';
+  tdPlayerName.textContent = player ? player.name : ' ';
+
+  var trPlayer = document.createElement('tr');
+  trPlayer.appendChild(tdPlayerNumber);
+  trPlayer.appendChild(tdPlayerName);
 
   return trPlayer;
 }
