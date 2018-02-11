@@ -28,6 +28,7 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
+        
         var inputStarterCount = document.getElementById('starterCount');
         var inputSubCount = document.getElementById('subCount');
 
@@ -99,17 +100,6 @@
           }
         }
 
-        /**
-         * Remove given nodes from the DOM.
-         * @param  {HTMLCollection} htmlCollection [description]
-         */
-        function removeNodes(htmlCollection) {
-          if (htmlCollection) {
-            for (var i = 0; i < htmlCollection.length; i++) {
-              htmlCollection.item(i).remove();
-            }
-          }
-        }
       });
     </script>
 

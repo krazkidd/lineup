@@ -112,3 +112,15 @@ function getSubTablePlayerRow(player) {
 
   return trPlayer;
 }
+
+/**
+ * Remove given nodes from the DOM.
+ * @param  {HTMLCollection} htmlCollection [description]
+ */
+function removeNodes(htmlCollection) {
+  if (htmlCollection) {
+    for (var i = 0; i < htmlCollection.length; i++) {
+      htmlCollection.item(i).remove();
+    }
+  }
+}
