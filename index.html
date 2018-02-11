@@ -45,10 +45,8 @@
          * to the element with the id #starterDiv.
          *
          * Must be called from a context such that this.value exists.
-         * @param  {[type]} event [description]
-         * @return {[type]}       [description]
          */
-        function populatestarterDiv(event) {
+        function populatestarterDiv() {
           var val = Number(this.value);
 
           if (Number.isInteger(val)) {
@@ -76,10 +74,8 @@
          * to the element with the id #subDiv.
          *
          * Must be called from a context such that this.value exists.
-         * @param  {[type]} event [description]
-         * @return {[type]}       [description]
          */
-        function populateSubDiv(event) {
+        function populateSubDiv() {
           var val = Number(this.value);
 
           if (Number.isInteger(val)) {
