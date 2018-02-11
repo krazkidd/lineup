@@ -1,29 +1,6 @@
-html, body {
-  padding: 0;
-  margin: 0;
-}
-
-#lineupConfig {
-  width: 300px;
-  float: right;
-}
-
-#lineupConfig input {
-  display: block;
-  /*margin: 0 0 10px auto;
-  display: inline-block;*/
-}
-
-#lineupDiv, #subDiv {
-  margin: 0 auto;
-  padding: 5px;
-  /*display: inline-block;  */
-}
-
 .lineupTable, .subTable {
   border: 1px solid black;
   border-collapse: collapse;
-
   min-width: 400px;
 }
 

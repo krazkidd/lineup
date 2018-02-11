@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Lineup Editor</title>
 
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
@@ -11,25 +13,34 @@
     <script type="text/javascript" src="/js/lineup.js"></script>
   </head>
   <body>
-    <h1>Lineup Editor</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Lineup Editor</h1>
+        </div>
+      </div>
 
-    <div id="lineupConfig">
-      Starters <input id="starterCount" type="number" value="12"/>
-      <br>
-      Subs <input id="subCount" type="number" value="3"/>
-    </div>
+      <div class="row">
+        <div class="col-9">
+          <div id="starterDiv">
+            <p>Starting Lineup</p>
+          </div>
 
-    <div id="starterDiv">
-      <p>Starting Lineup</p>
-    </div>
+          <div id="subDiv">
+            <p>Non-Starters</p>
+          </div>
+        </div>
 
-    <div id="subDiv">
-      <p>Non-Starters</p>
-    </div>
+        <div id="lineupConfig" class="col-3">
+          Starters <input id="starterCount" type="number" value="12"/>
+          <br>
+          Subs <input id="subCount" type="number" value="3"/>
+        </div>
+      </div>
 
     <script type="text/javascript">
       $(document).ready(function () {
-        
+
         var inputStarterCount = document.getElementById('starterCount');
         var inputSubCount = document.getElementById('subCount');
 
