@@ -96,9 +96,15 @@ function getStarterTablePlayerRow(battingPosition, player) {
   var tdFieldPosition = document.createElement('td');
 
   tdBattingPosition.textContent = battingPosition.toString();
-  tdPlayerNumber.textContent = player ? player.number : ' ';
-  tdPlayerName.textContent = player ? player.name : ' ';
-  // tdFieldPosition.textContent = player ? player.position : ' ';
+  if (player) {
+    tdPlayerNumber.textContent = player.number;
+    tdPlayerName.textContent = player.name;
+    // tdFieldPosition.textContent = player ? player.position : ' ';
+  } else {
+    tdPlayerNumber.innerHTML = '\u00A0';  //&nbsp;
+    tdPlayerName.innerHTML = '\u00A0';    //&nbsp;
+    tdFieldPosition.innerHTML = '\u00A0'; //&nbsp;
+  }
 
   var trPlayer = document.createElement('tr');
   trPlayer.appendChild(tdBattingPosition);
@@ -127,8 +133,13 @@ function getSubTablePlayerRow(player) {
   var tdPlayerNumber = document.createElement('td');
   var tdPlayerName = document.createElement('td');
 
-  tdPlayerNumber.textContent = player ? player.number : ' ';
-  tdPlayerName.textContent = player ? player.name : ' ';
+  if (player) {
+    tdPlayerNumber.textContent = player.number;
+    tdPlayerName.textContent = player.name;
+  } else {
+    tdPlayerNumber.innerHTML = '\u00A0'; //&nbsp;
+    tdPlayerName.innerHTML = '\u00A0';   //&nbsp;
+  }
 
   var trPlayer = document.createElement('tr');
   trPlayer.appendChild(tdPlayerNumber);
