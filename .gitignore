@@ -1,4 +1,16 @@
-_test
+# third-party
 node_modules
+
 public/css/bootstrap*.css
 public/js/jquery*.js
+
+# seed data
+_test
+
+# developer's notes
+LOCAL
+
+# vim and backup files
+*.swp
+*.bak
+*.BAK
