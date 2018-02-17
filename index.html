@@ -39,9 +39,58 @@
       </div>
 
     <script type="text/javascript">
-      $(document).ready(function () {
-        var lineupData = null;
+      var lineupData = null;
 
+      /**
+       * Populates a table of starter players and attaches it
+       * to the element with the id #starterDiv.
+       *
+       * Must be called from a context such that this.value exists.
+       */
+      function populateStarterDiv() {
+        var val = Number.parseInt(this.value, 10);
+
+        val = Math.max(val, 9);
+        if (lineupData) {
+          //TODO move players to sub list if user wants to make lineup smaller
+          // don't allow number to be smaller than actual number of starters
+          val = Math.max(val, lineupData.batPositions.length);
+        }
+        val = Math.min(val, 12);
+
+        if (val != this.value) {
+          this.value = val;
+        }
+
+        removeNodes(document.getElementsByClassName('lineupTable'));
+        document.getElementById('starterDiv').appendChild(getStarterTable(lineupData, val));
+      }
+
+      /**
+       * Populates a table of substitute players and attaches it
+       * to the element with the id #subDiv.
+       *
+       * Must be called from a context such that this.value exists.
+       */
+      function populateSubDiv() {
+        var val = Number.parseInt(this.value, 10);
+
+        val = Math.max(val, 1);
+        if (lineupData) {
+          // don't allow number to be smaller than actual number of subs
+          val = Math.max(val, lineupData.subs.length);
+        }
+        val = Math.min(val, 5);
+
+        if (val != this.value) {
+          this.value = val;
+        }
+
+        removeNodes(document.getElementsByClassName('subTable'));
+        document.getElementById('subDiv').appendChild(getSubTable(lineupData, val));
+      }
+
+      $(function () { // $(document).ready() deprecated
         var inputStarterCount = document.getElementById('starterCount');
         var inputSubCount = document.getElementById('subCount');
 
@@ -64,56 +113,6 @@
         inputStarterCount.addEventListener('input', populateStarterDiv);
         // handler for sub number input
         inputSubCount.addEventListener('input', populateSubDiv);
-
-        /**
-         * Populates a table of starter players and attaches it
-         * to the element with the id #starterDiv.
-         *
-         * Must be called from a context such that this.value exists.
-         */
-        function populateStarterDiv() {
-          var val = Number.parseInt(this.value, 10);
-
-          val = Math.max(val, 9);
-          if (lineupData) {
-            //TODO move players to sub list if user wants to make lineup smaller
-            // don't allow number to be smaller than actual number of starters
-            val = Math.max(val, lineupData.batPositions.length);
-          }
-          val = Math.min(val, 12);
-
-          if (val != this.value) {
-            this.value = val;
-          }
-
-          removeNodes(document.getElementsByClassName('lineupTable'));
-          document.getElementById('starterDiv').appendChild(getStarterTable(lineupData, val));
-        }
-
-        /**
-         * Populates a table of substitute players and attaches it
-         * to the element with the id #subDiv.
-         *
-         * Must be called from a context such that this.value exists.
-         */
-        function populateSubDiv() {
-          var val = Number.parseInt(this.value, 10);
-
-          val = Math.max(val, 1);
-          if (lineupData) {
-            // don't allow number to be smaller than actual number of subs
-            val = Math.max(val, lineupData.subs.length);
-          }
-          val = Math.min(val, 5);
-
-          if (val != this.value) {
-            this.value = val;
-          }
-
-          removeNodes(document.getElementsByClassName('subTable'));
-          document.getElementById('subDiv').appendChild(getSubTable(lineupData, val));
-        }
-
       });
     </script>
 
