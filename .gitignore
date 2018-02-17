@@ -1,16 +1,20 @@
-# third-party
+## third-party
 node_modules
 
 public/css/bootstrap*.css
 public/js/jquery*.js
 
-# seed data
+## seed data
 _test
 
-# developer's notes
+## developer's notes
 LOCAL
 
-# vim and backup files
+## atom config files
+# atom-ternjs package
+.tern-project
+
+## vim and backup files
 *.swp
 *.bak
 *.BAK
