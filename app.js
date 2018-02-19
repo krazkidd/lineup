@@ -20,26 +20,22 @@ along with Lineup.  If not, see <http://www.gnu.org/licenses/>.
 **************************************************************************/
 
 const express = require('express');
-const sleep = require('sleep');
+const bodyParser = require('body-parser');
 
+// app config
 const app = express();
-
-app.use(express.static(__dirname + "/_test"));
+app.set('port', process.env.PORT || 3000);
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({extended: true}));
 
-// GET lineup
-app.get('/json/lineup/:id', function (req, res) {
-  sleep.sleep(1);
-  res.sendFile('/_test/json/' + req.params.id + '.json', {
-    root: __dirname,
-    dotfile: 'deny'
-  });
-});
+// DB init
+const db = require('./app/db.js');
+require('./app/db-seed.js')(db);
 
-// GET root
-app.get('/', (reg, res) => res.sendFile('/index.html', {
-  root: __dirname,
-  dotfile: 'deny'
-}));
+// routes init
+require('./app/routes.js')(app, db);
 
-app.listen(3000, () => console.log('Lineup app listening on port 3000.'));
+// server start
+app.listen(app.get('port'), process.env.IP, () =>
+   console.log('Lineup app listening on port ' + app.get('port') + '.'));

@@ -1,3 +1,18 @@
+#sidebar p {
+  text-align: center;
+}
+
+#navBar ul {
+  padding: 0;
+  margin: 0;
+}
+
+#navBar li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .lineupTable, .subTable {
   border: 1px solid black;
   border-collapse: collapse;
@@ -21,4 +36,24 @@
 
 .lineupTable td, .subTable td {
   border: 1px solid black;
+}
+
+#body-players h1 {
+  text-transform: uppercase;
+}
+
+.player, .lineup {
+  margin: 5px 0;
+  background-color: #eeeeee;
+}
+
+.player span {
+  font-weight: bold;
+  font-size: 1.1em;
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid black;
+  min-width: 2em;
+  text-align: center;
+  background-color: #7fb4b4;
 }

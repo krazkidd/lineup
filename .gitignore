@@ -1,14 +1,11 @@
 ## third-party
 node_modules
 
-public/css/bootstrap*.css
-public/js/jquery*.js
-
-## seed data
-_test
+public/css/bootstrap*
+public/js/jquery*
 
 ## developer's notes
-LOCAL
+_local
 
 ## atom config files
 # atom-ternjs package

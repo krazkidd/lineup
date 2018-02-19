@@ -149,7 +149,7 @@ function getSubTablePlayerRow(player) {
 }
 
 function asyncGetLineup(id, callback) {
-  $.get('/json/lineup/' + id, function (data) {
+  $.get('/json/lineups/' + id, function (data) {
     callback(data);
   });
 }

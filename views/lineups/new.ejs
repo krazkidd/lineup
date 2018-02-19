@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12">
+          <h1>New Lineup</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <form action="/lineups" method="POST">
+            <label for="lineup[teamName]">Team Name</label><input type="text" id="lineup[teamName]" name="lineup[teamName]" placeholder="team">
+            <br>
+            TODO batting order, field positions, and subs
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="navBar" class="col-3">
+      <% include ../partials/navbar.ejs %>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/header %>

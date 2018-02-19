@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12">
+          <h1>Players</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <p>
+            <a href="/players/new">New Player</a>
+          </p>
+
+          <% players.forEach((player) => { %>
+            <div class="player">
+              <span><%= player.number %></span> <a href="/players/<%= player._id %>"><%= player.name %></a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <div id="navBar" class="col-3">
+      <% include ../partials/navbar.ejs %>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>

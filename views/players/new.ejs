@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12">
+          <h1>New Player</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <form action="/players" method="POST">
+            <label for="player[name]">Name</label><input type="text" id="player[name]" name="player[name]" placeholder="first last">
+            <br>
+            <label for="player[number]">Number</label><input type="text" id="player[number]" name="player[number]" placeholder="#">
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="navBar" class="col-3">
+      <% include ../partials/navbar.ejs %>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/header %>
