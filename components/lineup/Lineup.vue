@@ -20,7 +20,7 @@ useSortable(sortableContainer, lineup.value.spots, {
 </script>
 
 <template>
-    <div class="lineup bg-gray-200 p-5 rounded min-w-[250px]">
+    <div class="lineup p-5 rounded max-w-[50vw]">
         <header class="font-bold mb-4">
             <input
                 type="text"
@@ -31,7 +31,13 @@ useSortable(sortableContainer, lineup.value.spots, {
         </header>
 
         <div ref="sortableContainer">
-            <LineupSpot v-for="spot in lineup.spots" :key="spot.player.id" :spot="spot" @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)" />
+            <LineupSpot
+                v-for="spot in lineup.spots"
+                :key="spot.player.id"
+                :spot="spot"
+                @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
+                class="bg-blue-200"
+            />
         </div>
 
         <footer>
