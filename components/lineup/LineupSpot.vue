@@ -32,7 +32,7 @@ onKeyStroke("Backspace", (e) => {
     </div>
 </template>
 
-<style scoped lang="PostCSS">
+<style scoped>
 /* .sortable-chosen .spot {
 
 } */
