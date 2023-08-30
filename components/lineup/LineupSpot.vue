@@ -20,7 +20,7 @@ onKeyStroke("Backspace", (e) => {
 <template>
     <div
         :title="`${props.spot.player.number} ${props.spot.player.name}`"
-        class="spot p-2 mb-2 rounded shadow-sm max-w-[250px] flex"
+        class="flex rounded p-2 mb-2 shadow-sm"
         @focus="focused = true"
         @blur="focused = false"
         tabindex="0"
@@ -33,26 +33,25 @@ onKeyStroke("Backspace", (e) => {
 </template>
 
 <style scoped>
-/* .sortable-chosen .spot {
+/* .sortable-chosen {
 
 } */
 
-.sortable-drag .spot {
-    transform: rotate(5deg);
+/* .sortable-drag {
+
+} */
+
+.sortable-ghost {
+    @apply blur-sm bg-slate-300;
 }
 
-.sortable-ghost .spot {
-    position: relative;
-}
-
-.sortable-ghost .spot::after {
-    @apply absolute top-0 bottom-0 left-0 right-0 bg-slate-300 rounded;
-    content: "";
-}
-
-.spot:focus,
-.spot:focus-visible {
-    @apply outline-gray-400 !important;
+:focus,
+:focus-visible {
+    /* HACK: It appears we have to set the outline style
+     *       to show focused div on *mouse click*,
+     *       though Firefox ignores the color.
+     */
+    /* @apply outline-gray-400 !important; */
     outline: gray auto 1px;
 }
 </style>

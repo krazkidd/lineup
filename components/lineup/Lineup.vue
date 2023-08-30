@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useSortable } from '@vueuse/integrations/useSortable'
+
 import { nanoid } from 'nanoid';
-import draggable from 'vuedraggable';
 
 import type { Spot, Lineup } from '~~/types';
 
@@ -8,6 +9,13 @@ const lineup = useLocalStorage<Lineup>('lineup', {
     id: nanoid(),
     teamName: '',
     spots: []
+});
+
+const sortableContainer = ref<HTMLElement | null>(null);
+useSortable(sortableContainer, lineup.value.spots, {
+  group: 'spots',
+  handle: '.drag-handle',
+  animation: 150
 });
 </script>
 
@@ -22,19 +30,9 @@ const lineup = useLocalStorage<Lineup>('lineup', {
             />
         </header>
 
-        <draggable
-            v-model="lineup.spots"
-            item-key="player.id"
-            handle=".drag-handle"
-            :group="{ name: 'spots' }"
-            :animation="150"
-        >
-            <template #item="{ element: spot }: { element: Spot }">
-                <div>
-                    <LineupSpot :spot="spot" @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)" />
-                </div>
-            </template>
-        </draggable>
+        <div ref="sortableContainer">
+            <LineupSpot v-for="spot in lineup.spots" :key="spot.player.id" :spot="spot" @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)" />
+        </div>
 
         <footer>
             <LineupNewSpot @add="lineup.spots.push($event)" />
