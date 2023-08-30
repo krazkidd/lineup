@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Player, ID } from '~~/types';
+import type { ID, Spot } from '~~/types';
 
 const props = defineProps<{
-    player: Player
+    spot: Spot
 }>();
 
 const emit = defineEmits<{
@@ -12,14 +12,14 @@ const emit = defineEmits<{
 const focused = ref(false);
 onKeyStroke("Backspace", (e) => {
     if (focused.value) {
-        emit('delete', props.player.id);
+        emit('delete', props.spot.player.id);
     }
 });
 </script>
 
 <template>
     <div
-        :title="`${player.number} ${player.name}`"
+        :title="`${props.spot.player.number} ${props.spot.player.name}`"
         class="spot p-2 mb-2 rounded shadow-sm max-w-[250px] flex"
         @focus="focused = true"
         @blur="focused = false"
@@ -27,7 +27,7 @@ onKeyStroke("Backspace", (e) => {
     >
         <LineupDragHandle class="pr-2" />
         <span>
-            {{ player.number }} {{ player.name }}
+            {{ props.spot.player.number }} {{ props.spot.player.name }}
         </span>
     </div>
 </template>

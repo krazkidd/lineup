@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
 
-import type { Player } from "~~/types";
+import { Position, type Spot } from "~~/types";
 
 const emit = defineEmits<{
-  (e: "add", payload: Player): void;
+  (e: "add", payload: Spot): void;
 }>();
 
 const focused = ref(false);
@@ -18,9 +18,13 @@ function createSpot(e: Event) {
 
     emit("add", {
       id: nanoid(),
-      name: playerName.value.trim(),
-      number: playerNumber.value.trim(),
-    } as Player);
+      player: {
+        id: nanoid(),
+        name: playerName.value.trim(),
+        number: playerNumber.value.trim(),
+      },
+      position: Position.DH
+    } as Spot);
   }
 
   playerName.value = '';

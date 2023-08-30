@@ -2,7 +2,7 @@
 import { nanoid } from 'nanoid';
 import draggable from 'vuedraggable';
 
-import type { Lineup, Player, ID } from '~~/types';
+import type { Spot, Lineup } from '~~/types';
 
 const lineup = useLocalStorage<Lineup>('lineup', {
     id: nanoid(),
@@ -24,14 +24,14 @@ const lineup = useLocalStorage<Lineup>('lineup', {
 
         <draggable
             v-model="lineup.spots"
-            item-key="id"
+            item-key="player.id"
             handle=".drag-handle"
             :group="{ name: 'spots' }"
             :animation="150"
         >
-            <template #item="{ element: player }: { element: Player }">
+            <template #item="{ element: spot }: { element: Spot }">
                 <div>
-                    <LineupSpot :player="player" @delete="lineup.spots = lineup.spots.filter(p => p.id !== $event)" />
+                    <LineupSpot :spot="spot" @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)" />
                 </div>
             </template>
         </draggable>
