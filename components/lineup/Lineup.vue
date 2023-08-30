@@ -9,20 +9,6 @@ const lineup = useLocalStorage<Lineup>('lineup', {
     teamName: '',
     spots: []
 });
-
-function createSpot() {
-    const player: Player = {
-        id: nanoid(),
-        name: '',
-        number: ''
-    };
-
-    lineup.spots.push(player);
-
-    nextTick(() => {
-        (document.querySelector(".spot:last-of-type .team-name-input") as HTMLInputElement).focus();
-    });
-}
 </script>
 
 <template>
