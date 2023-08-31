@@ -25,10 +25,17 @@ onKeyStroke("Backspace", (e) => {
         @blur="focused = false"
         tabindex="0"
     >
-        <LineupDragHandle class="pr-2" />
-        <span>
-            {{ props.spot.player.number }} {{ props.spot.player.name }}
-        </span>
+        <div>
+            <LineupDragHandle class="inline-block leading-[3rem] text-[1.3em] align-middle px-2" />
+        </div>
+
+        <PlayerJersey :player="props.spot.player" />
+
+        <div>
+            <span class="inline-block leading-[3rem] align-middle pl-2">
+                {{ props.spot.player.name }}
+            </span>
+        </div>
     </div>
 </template>
 

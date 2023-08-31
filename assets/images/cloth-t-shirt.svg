@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   id="svg82562"
+   sodipodi:docname="cloth-t-shirt.svg"
+   viewBox="0 0 1052.4 744.09"
+   version="1.1"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs188" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="0"
+     pagecolor="#ffffff"
+     inkscape:window-height="1056"
+     inkscape:window-maximized="1"
+     inkscape:zoom="0.7"
+     inkscape:window-x="1920"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="shirt-back"
+     inkscape:cx="715.71429"
+     inkscape:cy="455.71429"
+     units="mm"
+     inkscape:window-width="1920"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="mm"
+     inkscape:showpageshadow="false"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="shirt-front"
+     inkscape:label="Shirt Front"
+     inkscape:groupmode="layer"
+     transform="translate(0 -308.27)">
+    <path
+       id="path82603"
+       sodipodi:nodetypes="ccccccccccc"
+       style="stroke:#000000;stroke-width:1.835px;fill:none"
+       inkscape:connector-curvature="0"
+       d="m8.4716 378.45 187.44-46.53c37.633 19.839 77.716 16.809 119.28 0l190.06 47.842c-1.3669 36.539-11.178 70.733-23.593 104.2l-89.129-1.3107 1.3107 260.83c-91.532 8.5202-183.06 9.3486-274.6-0.65536l-2.63-258.2-87.167-2.63c-8.716-33.71-21.864-56.26-20.971-103.54z" />
+    <path
+       id="path82605"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:1.835px;fill:none"
+       inkscape:connector-curvature="0"
+       d="m195.41 331.92c35.068 69.552 101.18 46.245 119.44 0.16387" />
+    <path
+       id="path82607"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0"
+       d="m181 335.68c27.861 82.744 138.53 64.029 150.08 0.49152" />
+    <path
+       id="path82609"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0"
+       d="m122.5 350.27c13.448 42.648 20.226 86.185-5.2429 134.02" />
+    <path
+       id="path82611"
+       d="m386.14 350.27c-13.448 42.648-20.226 86.185 5.2429 134.02"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="shirt-back"
+     inkscape:label="Shirt Back"
+     inkscape:groupmode="layer"
+     transform="translate(0 -308.27)">
+    <path
+       id="path200"
+       d="m544.3 378.45 187.43-46.531c37.633 19.839 77.716 16.809 119.28 0l190.06 47.842c-1.3669 36.539-11.178 70.733-23.593 104.2l-89.129-1.3107 1.3107 260.83c-91.532 8.5202-183.06 9.3486-274.6-0.65536l-2.6214-258.21-87.163-2.6214c-8.7159-33.712-21.865-56.267-20.972-103.55z"
+       sodipodi:nodetypes="ccccccccccc"
+       style="stroke:#000000;stroke-width:1.835px"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path202"
+       d="m658.33 350.27c13.448 42.648 20.226 86.185-5.2429 134.02"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path204"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0"
+       d="m921.97 350.27c-13.448 42.648-20.226 86.185 5.2429 134.02" />
+    <path
+       id="path206"
+       sodipodi:nodetypes="cc"
+       style="stroke:#000000;stroke-width:.55051;fill:none"
+       inkscape:connector-curvature="0"
+       d="m717.25 335.52c9.7283 36.654 135.03 38.062 144.18-1.3107" />
+  </g>
+  <metadata
+     id="metadata185">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
