@@ -19,7 +19,7 @@ onKeyStroke("Backspace", (e) => {
 
 <template>
     <div
-        :title="`${props.spot.player.number} ${props.spot.player.name}`"
+        :title="`${props.spot.player.number ? '#' + props.spot.player.number + ' ' : null}${props.spot.player.name}`"
         class="flex rounded p-2 mb-2 shadow-sm"
         @focus="focused = true"
         @blur="focused = false"
