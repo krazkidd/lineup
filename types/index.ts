@@ -1,17 +1,17 @@
 export type ID = string;
 
 export enum Position {
-    DH = 0,
-    P,
-    C,
-    F,
-    S,
-    T,
-    SS,
-    LF,
-    LC,
-    RF,
-    RC
+    DH = "DH",
+    P = "P",
+    C = "C",
+    F = "F",
+    S = "S",
+    T = "T",
+    SS = "SS",
+    LF = "LF",
+    LC = "LC",
+    RF = "RF",
+    RC = "RC"
 };
 
 export interface Player {

@@ -26,14 +26,20 @@ onKeyStroke("Backspace", (e) => {
         tabindex="0"
     >
         <div>
-            <LineupDragHandle class="inline-block leading-[3rem] text-[1.3em] align-middle px-2" />
+            <LineupDragHandle class="leading-[3rem] text-[1.3em] align-middle px-2" />
         </div>
 
         <PlayerJersey :player="props.spot.player" />
 
-        <div>
-            <span class="inline-block leading-[3rem] align-middle pl-2">
+        <div class="grow">
+            <span class="leading-[3rem] px-2">
                 {{ props.spot.player.name }}
+            </span>
+        </div>
+
+        <div>
+            <span class="leading-[3rem] bg-white rounded-full p-1">
+                {{ props.spot.position }}
             </span>
         </div>
     </div>
