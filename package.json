@@ -15,7 +15,7 @@
     "@vueuse/nuxt": "^10.4.1",
     "nuxt": "^3.7.0",
     "primeicons": "^6.0.1",
-    "primevue": "^3.32.2"
+    "primevue": "^3.33.0"
   },
   "dependencies": {
     "nanoid": "^4.0.2",
