@@ -26,7 +26,8 @@ useSortable(sortableContainer, lineup.value.spots, {
                 type="text"
                 v-model="lineup.teamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
-                class="team-name-input bg-transparent focus:bg-white rounded px-1 w-4/5"
+                class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight cursor-pointer w-full mb-3 px-1 py-2"
+                placeholder="Team Name"
             />
         </header>
 

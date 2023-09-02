@@ -38,7 +38,7 @@ function createSpot(e: Event) {
       v-model="playerName"
       @keydown.tab="createSpot"
       @keyup.enter="createSpot"
-      class="focus:bg-white focus:shadow resize-none rounded w-full border-none bg-transparent p-2 cursor-pointer"
+      class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight resize-none cursor-pointer w-full px-1 py-2"
       :class="{
         'h-7': !focused,
         'h-20': focused,
