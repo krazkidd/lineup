@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
+    "@nuxtjs/color-mode",
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt"
   ],
@@ -12,6 +13,10 @@ export default defineNuxtConfig({
   ],
   build: {
     transpile: ['primevue']
+  },
+  colorMode: {
+    // make compatible with @nuxtjs/tailwindcss module
+    classSuffix: '',
   },
   //ssr: false
 })
