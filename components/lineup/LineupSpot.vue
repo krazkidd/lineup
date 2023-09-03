@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ID, Spot } from '~~/types';
+import { PositionOptions } from '~~/types';
 
 const props = defineProps<{
     spot: Spot
@@ -15,6 +16,8 @@ onKeyStroke("Backspace", (e) => {
         emit('delete', props.spot.player.id);
     }
 });
+
+const visible = ref(false);
 </script>
 
 <template>
@@ -37,11 +40,26 @@ onKeyStroke("Backspace", (e) => {
             </span>
         </div>
 
-        <div>
-            <span class="leading-[3rem] bg-white rounded-full p-1">
-                {{ props.spot.position }}
-            </span>
+        <div @click="visible = true" class="cursor-pointer" >
+            <LineupPosition :position="props.spot.position" class="leading-[3rem] bg-white rounded-full p-1" />
         </div>
+
+        <Dialog v-model:visible="visible" modal :header="`${props.spot.player.name}'s Position`" class="!max-w-full !max-h-full">
+            <Listbox
+                v-model="props.spot.position"
+                :options="PositionOptions"
+                option-group-label="groupName"
+                option-group-children="children"
+                option-value="value"
+                @change="visible = false"
+                class="!w-full"
+            >
+                <template #option="{ option }">
+                    <LineupPosition :position="option.value" class="bg-white rounded-full p-1" />
+                    {{ option.longName }}
+                </template>
+            </Listbox>
+        </Dialog>
     </div>
 </template>
 
