@@ -13,15 +13,15 @@ const playerName = ref("");
 const playerNumber = ref("");
 
 function createSpot(e: Event) {
-  if (playerName.value.trim()) {
+  if (playerName.value) {
     e.preventDefault();
 
     emit("add", {
       id: nanoid(),
       player: {
         id: nanoid(),
-        name: playerName.value.trim(),
-        number: playerNumber.value.trim(),
+        name: playerName.value,
+        number: playerNumber.value,
       },
       position: Position.DH
     } as Spot);
@@ -35,7 +35,7 @@ function createSpot(e: Event) {
 <template>
   <div>
     <textarea
-      v-model="playerName"
+      v-model.trim="playerName"
       @keydown.tab="createSpot"
       @keyup.enter="createSpot"
       class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight resize-none cursor-pointer w-full px-1 py-2"

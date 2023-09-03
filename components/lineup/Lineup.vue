@@ -3,7 +3,7 @@ import { useSortable } from '@vueuse/integrations/useSortable'
 
 import { nanoid } from 'nanoid';
 
-import type { Spot, Lineup } from '~~/types';
+import type { Lineup } from '~~/types';
 
 const lineup = useLocalStorage<Lineup>('lineup', {
     id: nanoid(),
@@ -20,13 +20,13 @@ useSortable(sortableContainer, lineup.value.spots, {
 </script>
 
 <template>
-    <div class="lineup p-5 rounded max-w-[50vw]">
+    <div class="p-5 rounded max-w-[50vw]">
         <header class="font-bold mb-4">
             <input
                 type="text"
-                v-model="lineup.teamName"
+                v-model.trim="lineup.teamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
-                class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight cursor-pointer w-full mb-3 px-1 py-2"
+                class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-500 dark:text-gray-500 dark:placeholder-gray-300 leading-tight cursor-pointer w-full mb-3 px-1 py-2"
                 placeholder="Team Name"
             />
         </header>
