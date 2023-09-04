@@ -32,13 +32,15 @@ useSortable(sortableContainer, lineup.value.spots, {
         </header>
 
         <div ref="sortableContainer">
-            <LineupSpot
-                v-for="spot in lineup.spots"
-                :key="spot.player.id"
-                :spot="spot"
-                @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
-                class="bg-blue-200"
-            />
+            <ClientOnly>
+                <LineupSpot
+                    v-for="spot in lineup.spots"
+                    :key="spot.player.id"
+                    :spot="spot"
+                    @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
+                    class="bg-blue-200"
+                />
+            </ClientOnly>
         </div>
 
         <footer>
