@@ -18,5 +18,4 @@ export default defineNuxtConfig({
     // make compatible with @nuxtjs/tailwindcss module
     classSuffix: '',
   },
-  //ssr: false
 })
