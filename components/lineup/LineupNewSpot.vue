@@ -21,7 +21,8 @@ function createSpot(e: Event) {
       player: {
         id: nanoid(),
         name: playerName.value,
-        number: playerNumber.value,
+        //TODO revert random number
+        number: Math.floor(Math.random() * 99).toString(),
       },
       position: Position.DH
     } as Spot);
