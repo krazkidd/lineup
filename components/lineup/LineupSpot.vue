@@ -36,7 +36,7 @@ const visible = ref(false);
             {{ props.spot.player.name }}
         </div>
 
-        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full p-1" />
+        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full text-center w-[3em] p-1" />
 
         <Dialog v-model:visible="visible" modal :header="`${props.spot.player.name}'s Position`" class="!max-w-full !max-h-full">
             <Listbox
@@ -49,7 +49,7 @@ const visible = ref(false);
                 class="!w-full"
             >
                 <template #option="{ option }">
-                    <LineupPosition :position="option.value" class="bg-white rounded-full p-1" />
+                    <LineupPosition :position="option.value" class="shrink-0 inline-block cursor-pointer bg-white rounded-full text-center w-[3em] p-1" />
                     {{ option.longName }}
                 </template>
             </Listbox>
