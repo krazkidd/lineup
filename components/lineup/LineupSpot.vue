@@ -32,9 +32,12 @@ const visible = ref(false);
 
         <PlayerJersey :player="props.spot.player" class="shrink-0" />
 
-        <div class="grow overflow-x-hidden text-ellipsis">
-            {{ props.spot.player.name }}
-        </div>
+        <input
+            type="text"
+            v-model.trim="props.spot.player.name"
+            @keyup.enter="($event.target as HTMLInputElement).blur()"
+            class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
+        />
 
         <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full text-center w-[3em] p-1" />
 
