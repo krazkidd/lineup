@@ -1,4 +1,4 @@
-import { groupBy, keys } from 'lodash';
+import { groupBy, keys } from 'lodash-es';
 
 export type ID = string;
 
