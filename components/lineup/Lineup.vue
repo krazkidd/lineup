@@ -20,7 +20,7 @@ useSortable(sortableContainer, lineup.value.spots, {
 </script>
 
 <template>
-    <div class="p-5 rounded w-full md:w-1/2 xl:w-1/3">
+    <div class="p-5 rounded w-full md:w-3/4 xl:w-1/2">
         <header class="font-bold mb-4">
             <input
                 type="text"
