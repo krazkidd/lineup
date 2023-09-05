@@ -39,9 +39,16 @@ const visible = ref(false);
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
         />
 
-        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full text-center w-[3em] p-1" />
+        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
 
-        <Dialog v-model:visible="visible" modal :header="`${props.spot.player.name}'s Position`" class="!max-w-full !max-h-full">
+        <Dialog
+            v-model:visible="visible"
+            modal
+            :header="`${props.spot.player.name}'s Position`"
+            :pt="{
+                root: { class: '!max-h-full w-full md:w-3/4 xl:w-1/2' }
+            }"
+        >
             <Listbox
                 v-model="props.spot.position"
                 :options="PositionOptions"
@@ -49,10 +56,12 @@ const visible = ref(false);
                 option-group-children="children"
                 option-value="value"
                 @change="visible = false"
-                class="!w-full"
+                :pt="{
+                    item: { class: 'leading-8' }
+                }"
             >
                 <template #option="{ option }">
-                    <LineupPosition :position="option.value" class="shrink-0 inline-block cursor-pointer bg-white rounded-full text-center w-[3em] p-1" />
+                    <LineupPosition :position="option.value" class="shrink-0 inline-block cursor-pointer bg-white text-black rounded-full text-center w-8" />
                     {{ option.longName }}
                 </template>
             </Listbox>

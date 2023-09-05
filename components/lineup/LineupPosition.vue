@@ -13,9 +13,7 @@ const positionLongName = computed(() => getPositionLongName(props.position));
 
 <template>
   <span :title="positionLongName">
-      <span>
-        {{ positionShortName }}
-      </span>
+    {{ positionShortName }}
   </span>
 </template>
 
