@@ -1,12 +1,17 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "nuxt build",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "nuxt node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
