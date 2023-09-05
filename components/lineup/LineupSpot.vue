@@ -23,26 +23,20 @@ const visible = ref(false);
 <template>
     <div
         :title="`${props.spot.player.number ? '#' + props.spot.player.number + ' ' : null}${props.spot.player.name}`"
-        class="flex rounded p-2 mb-2 shadow-sm"
+        class="flex leading-[3rem] space-x-2 rounded shadow-sm p-2 mb-2"
         @focus="focused = true"
         @blur="focused = false"
         tabindex="0"
     >
-        <div>
-            <LineupDragHandle class="leading-[3rem] text-[1.3em] align-middle px-2" />
+        <LineupDragHandle class="inline-block shrink-0 text-[1.3em] px-2" />
+
+        <PlayerJersey :player="props.spot.player" class="shrink-0" />
+
+        <div class="grow overflow-x-hidden text-ellipsis">
+            {{ props.spot.player.name }}
         </div>
 
-        <PlayerJersey :player="props.spot.player" />
-
-        <div class="grow">
-            <span class="leading-[3rem] px-2">
-                {{ props.spot.player.name }}
-            </span>
-        </div>
-
-        <div @click="visible = true" class="cursor-pointer" >
-            <LineupPosition :position="props.spot.position" class="leading-[3rem] bg-white rounded-full p-1" />
-        </div>
+        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full p-1" />
 
         <Dialog v-model:visible="visible" modal :header="`${props.spot.player.name}'s Position`" class="!max-w-full !max-h-full">
             <Listbox
