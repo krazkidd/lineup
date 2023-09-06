@@ -7,6 +7,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 
 import Button from 'primevue/button';
+import Checkbox from 'primevue/checkbox';
 import Dialog from 'primevue/dialog';
 import Inplace from 'primevue/inplace';
 import InputText from 'primevue/inputtext';
@@ -25,6 +26,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.use(ToastService);
 
     nuxtApp.vueApp.component('Button', Button);
+    nuxtApp.vueApp.component('Checkbox', Checkbox);
     nuxtApp.vueApp.component('Dialog', Dialog);
     nuxtApp.vueApp.component('Inplace', Inplace);
     nuxtApp.vueApp.component('InputText', InputText);
