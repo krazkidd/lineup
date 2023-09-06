@@ -46,7 +46,7 @@ const visible = ref(false);
             modal
             :header="`${props.spot.player.name}'s Position`"
             :pt="{
-                root: { class: '!max-h-full w-full md:w-3/4 xl:w-1/2' }
+                root: { class: 'h-full md:h-4/5 w-full md:w-3/4 xl:w-1/2' }
             }"
         >
             <Listbox
@@ -57,6 +57,7 @@ const visible = ref(false);
                 option-value="value"
                 @change="visible = false"
                 :pt="{
+                    root: { class: '!w-full' },
                     item: { class: 'leading-8' }
                 }"
             >
