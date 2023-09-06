@@ -20,14 +20,15 @@ const isSettingsDialogVisible = ref(false);
         modal
         header="App Settings"
         :pt="{
+            root: { class: 'w-full md:w-3/4 xl:w-1/2' },
             content: { class: 'pt-1' }
         }"
       >
-      <div class="grid grid-cols-2 gap-2">
-        <div class="text-left">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div class="text-right text-xs py-2">
           Color Mode
         </div>
-        <div>
+        <div class="md:col-span-3">
           <Button
               @click="mode.preference = mode.preference === 'system' ? 'dark' : mode.preference === 'dark' ? 'light' : 'system'"
               size="small"
@@ -51,14 +52,14 @@ const isSettingsDialogVisible = ref(false);
           </Button>
         </div>
 
-        <div class="text-left">
+        <div class="text-right text-xs py-2">
           Jersey Color
         </div>
         <div>
           <ColorPicker v-model="props.appSettings.jerseyColor" format="hex" />
         </div>
 
-        <div class="text-left">
+        <div class="text-right text-xs py-2">
           Jersey Text Color
         </div>
         <div>
