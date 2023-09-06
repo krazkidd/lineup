@@ -17,7 +17,7 @@ onKeyStroke("Backspace", (e) => {
     }
 });
 
-const visible = ref(false);
+const isPositionDialogVisible = ref(false);
 </script>
 
 <template>
@@ -39,10 +39,10 @@ const visible = ref(false);
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
         />
 
-        <LineupPosition :position="props.spot.position" @click="visible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
+        <LineupPosition :position="props.spot.position" @click="isPositionDialogVisible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
 
         <Dialog
-            v-model:visible="visible"
+            v-model:visible="isPositionDialogVisible"
             modal
             :header="`${props.spot.player.name}'s Position`"
             :pt="{
@@ -55,7 +55,7 @@ const visible = ref(false);
                 option-group-label="groupName"
                 option-group-children="children"
                 option-value="value"
-                @change="visible = false"
+                @change="isPositionDialogVisible = false"
                 :pt="{
                     root: { class: '!w-full' },
                     item: { class: 'leading-8' }
