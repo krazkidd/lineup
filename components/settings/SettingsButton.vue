@@ -20,7 +20,6 @@ const isSettingsDialogVisible = ref(false);
         modal
         header="App Settings"
         :pt="{
-            root: { class: 'h-full md:h-4/5 w-full md:w-3/4 xl:w-1/2' },
             content: { class: 'pt-1' }
         }"
       >
