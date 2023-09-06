@@ -4,6 +4,7 @@ import { PositionOptions } from '~~/types';
 
 const props = defineProps<{
     spot: Spot,
+    isLineupLocked: boolean,
     jerseyColor: string,
     jerseyTextColor: string
 }>();
@@ -30,7 +31,7 @@ const isPositionDialogVisible = ref(false);
         @blur="focused = false"
         tabindex="0"
     >
-        <LineupDragHandle class="inline-block shrink-0 text-[1.3em] px-2" />
+        <LineupDragHandle :class="`${ props.isLineupLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
 
         <PlayerJersey :player="props.spot.player" :jersey-color="props.jerseyColor" :jersey-text-color="props.jerseyTextColor" class="shrink-0" />
 

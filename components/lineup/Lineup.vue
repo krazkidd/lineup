@@ -3,24 +3,36 @@ import { useSortable } from '@vueuse/integrations/useSortable'
 
 import { nanoid } from 'nanoid';
 
-import type { Lineup, AppSettings } from '~~/types';
+import type { Spot, Lineup, AppSettings } from '~~/types';
 
 const lineup = useLocalStorage<Lineup>('lineup', {
     id: nanoid(),
     teamName: '',
     spots: []
+}, {
+    mergeDefaults: true
 });
 const appSettings = useLocalStorage<AppSettings>('app-settings', {
+    isLineupLocked: false,
     jerseyColor: 'f47373',
     jerseyTextColor: '000000'
+}, {
+    mergeDefaults: true
 });
 
 const sortableContainer = ref<HTMLElement | null>(null);
 useSortable(sortableContainer, lineup.value.spots, {
   group: 'spots',
   handle: '.drag-handle',
-  animation: 150
+  animation: 150,
+  onMove: () => !appSettings.value.isLineupLocked
 });
+
+function addSpot(spot: Spot) {
+    if (!appSettings.value.isLineupLocked) {
+        lineup.value.spots.push(spot);
+    }
+}
 </script>
 
 <template>
@@ -34,6 +46,8 @@ useSortable(sortableContainer, lineup.value.spots, {
                 placeholder="Team Name"
             />
 
+            <SettingsLockButton :is-locked="appSettings.isLineupLocked" @lock="appSettings.isLineupLocked = true" @unlock="appSettings.isLineupLocked = false" />
+
             <SettingsButton :app-settings="appSettings" />
         </header>
 
@@ -43,6 +57,7 @@ useSortable(sortableContainer, lineup.value.spots, {
                     v-for="spot in lineup.spots"
                     :key="spot.player.id"
                     :spot="spot"
+                    :is-lineup-locked="appSettings.isLineupLocked"
                     :jersey-color="appSettings.jerseyColor"
                     :jersey-text-color="appSettings.jerseyTextColor"
                     @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
@@ -52,7 +67,7 @@ useSortable(sortableContainer, lineup.value.spots, {
         </div>
 
         <footer>
-            <LineupNewSpot @add="lineup.spots.push($event)" />
+            <LineupNewSpot @add="addSpot($event)" :class="`${ appSettings.isLineupLocked ? 'collapse' : 'visible' }`" />
         </footer>
     </div>
 </template>

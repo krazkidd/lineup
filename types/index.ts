@@ -34,6 +34,7 @@ export interface Lineup {
 };
 
 export interface AppSettings {
+    isLineupLocked: boolean,
     jerseyColor: string,
     jerseyTextColor: string,
 };
