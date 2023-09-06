@@ -19,6 +19,6 @@ const mode = useColorMode();
 <style>
 .dark body {
   background-color: #091a28;
-  color: #ebf4f1;
+  /* color: #ebf4f1; */
 }
 </style>
