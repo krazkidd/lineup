@@ -33,6 +33,11 @@ export interface Lineup {
     spots: Spot[];
 };
 
+export interface AppSettings {
+    jerseyColor: string,
+    jerseyTextColor: string,
+};
+
 //TODO this can probably be refactored into something more readable
 const groupedPositions = groupBy(Object.values(Position).filter(p => typeof p === 'string'), p => getPositionGroupName(p));
 export const PositionOptions = keys(groupedPositions).map(groupName => ({

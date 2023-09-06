@@ -3,12 +3,16 @@ import { useSortable } from '@vueuse/integrations/useSortable'
 
 import { nanoid } from 'nanoid';
 
-import type { Lineup } from '~~/types';
+import type { Lineup, AppSettings } from '~~/types';
 
 const lineup = useLocalStorage<Lineup>('lineup', {
     id: nanoid(),
     teamName: '',
     spots: []
+});
+const appSettings = useLocalStorage<AppSettings>('app-settings', {
+    jerseyColor: 'f47373',
+    jerseyTextColor: '000000'
 });
 
 const sortableContainer = ref<HTMLElement | null>(null);
@@ -30,7 +34,7 @@ useSortable(sortableContainer, lineup.value.spots, {
                 placeholder="Team Name"
             />
 
-            <SettingsButton />
+            <SettingsButton :app-settings="appSettings" />
         </header>
 
         <div ref="sortableContainer">
@@ -39,6 +43,8 @@ useSortable(sortableContainer, lineup.value.spots, {
                     v-for="spot in lineup.spots"
                     :key="spot.player.id"
                     :spot="spot"
+                    :jersey-color="appSettings.jerseyColor"
+                    :jersey-text-color="appSettings.jerseyTextColor"
                     @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
                     class="bg-blue-200"
                 />

@@ -8,6 +8,7 @@ import ToastService from 'primevue/toastservice';
 
 import Button from 'primevue/button';
 import Checkbox from 'primevue/checkbox';
+import ColorPicker from 'primevue/colorpicker';
 import Dialog from 'primevue/dialog';
 import Inplace from 'primevue/inplace';
 import InputText from 'primevue/inputtext';
@@ -27,6 +28,7 @@ export default defineNuxtPlugin(nuxtApp => {
 
     nuxtApp.vueApp.component('Button', Button);
     nuxtApp.vueApp.component('Checkbox', Checkbox);
+    nuxtApp.vueApp.component('ColorPicker', ColorPicker);
     nuxtApp.vueApp.component('Dialog', Dialog);
     nuxtApp.vueApp.component('Inplace', Inplace);
     nuxtApp.vueApp.component('InputText', InputText);

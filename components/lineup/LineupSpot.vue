@@ -3,7 +3,9 @@ import type { ID, Spot } from '~~/types';
 import { PositionOptions } from '~~/types';
 
 const props = defineProps<{
-    spot: Spot
+    spot: Spot,
+    jerseyColor: string,
+    jerseyTextColor: string
 }>();
 
 const emit = defineEmits<{
@@ -30,7 +32,7 @@ const isPositionDialogVisible = ref(false);
     >
         <LineupDragHandle class="inline-block shrink-0 text-[1.3em] px-2" />
 
-        <PlayerJersey :player="props.spot.player" class="shrink-0" />
+        <PlayerJersey :player="props.spot.player" :jersey-color="props.jerseyColor" :jersey-text-color="props.jerseyTextColor" class="shrink-0" />
 
         <input
             type="text"
