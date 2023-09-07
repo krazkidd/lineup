@@ -41,6 +41,7 @@ const isPositionDialogVisible = ref(false);
             v-model.trim="props.spot.player.name"
             @keyup.enter="($event.target as HTMLInputElement).blur()"
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
+            :disabled="appSettingsStore.isLocked"
         />
 
         <LineupPosition :position="props.spot.position" @click="isPositionDialogVisible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />

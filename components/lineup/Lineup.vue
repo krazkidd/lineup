@@ -23,6 +23,7 @@ useSortable(sortableContainer, appSettingsStore.spots, {
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-500 dark:text-gray-300 leading-[3em] cursor-pointer px-1"
                 placeholder="Team Name"
+                :disabled="appSettingsStore.isLocked"
             />
 
             <SettingsLockButton />
