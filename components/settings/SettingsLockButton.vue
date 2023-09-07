@@ -6,12 +6,12 @@ const appSettingsStore = useAppSettingsStore();
 
 <template>
   <Button
-      @click="appSettingsStore.setIsLocked(!appSettingsStore.getIsLocked)"
-      :icon="`pi pi-${ appSettingsStore.getIsLocked ? 'lock' : 'lock-open' }`"
-      :severity="`${ appSettingsStore.getIsLocked ? 'secondary' : 'warning' }`"
+      @click="appSettingsStore.isLocked = !appSettingsStore.isLocked"
+      :icon="`pi pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
+      :severity="`${ appSettingsStore.isLocked ? 'secondary' : 'warning' }`"
       text
       rounded
-      :aria-label="`${ appSettingsStore.getIsLocked ? 'Unlock lineup' : 'Lock lineup' }`"
-      :title="`${ appSettingsStore.getIsLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+      :aria-label="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+      :title="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
   />
 </template>

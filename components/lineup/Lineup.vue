@@ -6,11 +6,11 @@ import { useAppSettingsStore } from '~~/stores/AppSettings'
 const appSettingsStore = useAppSettingsStore();
 
 const sortableContainer = ref<HTMLElement | null>(null);
-useSortable(sortableContainer, appSettingsStore.getSpots, {
+useSortable(sortableContainer, appSettingsStore.spots, {
   group: 'spots',
   handle: '.drag-handle',
   animation: 150,
-  onMove: () => !appSettingsStore.getIsLocked
+  onMove: () => !appSettingsStore.isLocked
 });
 </script>
 
@@ -19,7 +19,7 @@ useSortable(sortableContainer, appSettingsStore.getSpots, {
         <header class="flex font-bold mb-4">
             <input
                 type="text"
-                @change.trim="appSettingsStore.getTeamName"
+                v-model.trim="appSettingsStore.teamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-500 dark:text-gray-300 leading-[3em] cursor-pointer px-1"
                 placeholder="Team Name"
@@ -33,7 +33,7 @@ useSortable(sortableContainer, appSettingsStore.getSpots, {
         <div ref="sortableContainer">
             <ClientOnly>
                 <LineupSpot
-                    v-for="spot in appSettingsStore.getSpots"
+                    v-for="spot in appSettingsStore.spots"
                     :key="spot.player.id"
                     :spot="spot"
                     @delete="appSettingsStore.removeSpot($event)"
@@ -43,7 +43,7 @@ useSortable(sortableContainer, appSettingsStore.getSpots, {
         </div>
 
         <footer>
-            <LineupNewSpot @add="appSettingsStore.addSpot($event)" :class="`${ appSettingsStore.getIsLocked ? 'collapse' : 'visible' }`" />
+            <LineupNewSpot @add="appSettingsStore.addSpot($event)" :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`" />
         </footer>
     </div>
 </template>

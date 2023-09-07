@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vueuse/nuxt"
   ],
+  // HACK: We have to disable SSR until Pinia has better
+  //       support for our usage. See stores/AppSettings.ts.
+  ssr: false,
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.css',
