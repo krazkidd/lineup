@@ -11,7 +11,7 @@ import type { Spot, Lineup } from '~~/types';
 //            https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
 //            https://github.com/nuxt/nuxt/issues/20889
 
-export const useAppSettingsStore = defineStore('AppSettingsStoreClientOnly', {
+export const useAppSettingsStore = defineStore('AppSettingsStore', {
   state: () => {
     const _colorMode = useColorMode();
 
@@ -26,7 +26,7 @@ export const useAppSettingsStore = defineStore('AppSettingsStoreClientOnly', {
       spots: [],
     };
 
-    const _lineup = useLocalStorage<Lineup>('AppSettingsStoreClientOnly:lineup', defaults, { mergeDefaults: true });
+    const _lineup = useLocalStorage<Lineup>('AppSettingsStore:lineup', defaults, { mergeDefaults: true });
 
     // NOTE: We provide setters so we can persist to storage.
     //       Source: https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
