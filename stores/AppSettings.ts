@@ -3,11 +3,12 @@ import { nanoid } from "nanoid";
 
 import type { Spot, Lineup } from '~~/types';
 
-// NOTE: This requires `ssr: false` in `nuxt.config.*` because the server will try to
-//       serialize our computed state properties to JSON, and they will fail because
-//       functions can't be serialized.
+// NOTE: This Pinia store requires `ssr: false` in `nuxt.config.*` because the server
+//       will try to serialize our computed state properties to JSON, and that will fail
+//       because functions can't be serialized.
 //
 //       See: [The Pinia guide](https://pinia.vuejs.org/core-concepts/)
+//            https://github.com/vuejs/pinia/issues/829 (look for "Advanced SSR")
 //            https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
 //            https://github.com/nuxt/nuxt/issues/20889
 
