@@ -26,22 +26,22 @@ const isSettingsDialogVisible = ref(false);
         </div>
         <div class="md:col-span-3">
           <Button
-              @click="appSettingsStore.setColorMode(appSettingsStore.getColorMode === 'system' ? 'dark' : appSettingsStore.getColorMode === 'dark' ? 'light' : 'system')"
+              @click="appSettingsStore.colorMode = appSettingsStore.colorMode === 'system' ? 'dark' : appSettingsStore.colorMode === 'dark' ? 'light' : 'system'"
               size="small"
               severity="primary"
               rounded
               aria-label="Color mode"
               title="Color mode"
             >
-            <template v-if="appSettingsStore.getColorMode === 'system'">
+            <template v-if="appSettingsStore.colorMode === 'system'">
               <i class="pi pi-desktop pr-2"></i>
               System
             </template>
-            <template v-if="appSettingsStore.getColorMode === 'dark'">
+            <template v-if="appSettingsStore.colorMode === 'dark'">
               <i class="pi pi-moon pr-2"></i>
               Dark
             </template>
-            <template v-if="appSettingsStore.getColorMode === 'light'">
+            <template v-if="appSettingsStore.colorMode === 'light'">
               <i class="pi pi-sun pr-2"></i>
               Light
             </template>
@@ -52,14 +52,14 @@ const isSettingsDialogVisible = ref(false);
           Jersey Color
         </div>
         <div>
-          <ColorPicker :modelValue="appSettingsStore.getJerseyColor" @update:modelValue="appSettingsStore.setJerseyColor($event as unknown as string)" format="hex" />
+          <ColorPicker v-model="appSettingsStore.jerseyColor" format="hex" />
         </div>
 
         <div class="text-right text-xs py-2">
           Jersey Text Color
         </div>
         <div>
-          <ColorPicker :modelValue="appSettingsStore.getJerseyTextColor" @update:modelValue="appSettingsStore.setJerseyTextColor($event as unknown as string)" format="hex" />
+          <ColorPicker v-model="appSettingsStore.jerseyTextColor" format="hex" />
         </div>
       </div>
     </Dialog>

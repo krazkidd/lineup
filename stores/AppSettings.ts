@@ -1,82 +1,96 @@
-import { defineStore, acceptHMRUpdate } from "pinia";
+import { defineStore, skipHydrate, acceptHMRUpdate } from "pinia";
+import { nanoid } from "nanoid";
 
-import type { Spot } from '~~/types';
+import type { Spot, Lineup } from '~~/types';
 
-// HACK: Unfortunately, we were not able to expose any state properties
-//       because we could not enforce writes to be replicated to the
-//       persistent local storage. Specifically, we were not able to
-//       do so under Nuxt's server-side rendering scheme. (With SSR turned
-//       off or with the experimental `renderJsonPayloads: false` flag,
-//       it may work.)
-//
-//       For performance reasons, we store all the values we want separately
-//       instead of as a larger JSON object.
+// NOTE: This requires `ssr: false` in `nuxt.config.*` because the server will try to
+//       serialize our computed state properties to JSON, and they will fail because
+//       functions can't be serialized.
 //
 //       See: [The Pinia guide](https://pinia.vuejs.org/core-concepts/)
 //            https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
 //            https://github.com/nuxt/nuxt/issues/20889
 
-export const useAppSettingsStore = defineStore('AppSettingsStore', {
-  // state: () => {
-  //   function $reset() {
-  //     //TODO
-  //   }
+export const useAppSettingsStore = defineStore('AppSettingsStoreClientOnly', {
+  state: () => {
+    const _colorMode = useColorMode();
 
-  //   return {
-  //     $reset,
-  //   };
-  // },
+    const defaults = {
+      id: nanoid(),
+
+      teamName: '',
+      jerseyColor: 'f47373',
+      jerseyTextColor: '000000',
+
+      isLocked: false,
+      spots: [],
+    };
+
+    const _lineup = useLocalStorage<Lineup>('AppSettingsStoreClientOnly:lineup', defaults, { mergeDefaults: true });
+
+    // NOTE: We provide setters so we can persist to storage.
+    //       Source: https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
+
+    const colorMode = computed<string>({
+      get: () => _colorMode.preference,
+      set: (v) => _colorMode.preference = v
+    });
+
+    const teamName = computed<string>({
+      get: () => _lineup.value.teamName,
+      set: (v) => _lineup.value.teamName = v
+    });
+
+    const jerseyColor = computed<string>({
+      get: () => _lineup.value.jerseyColor,
+      set: (v) => _lineup.value.jerseyColor = v
+    });
+
+    const jerseyTextColor = computed<string>({
+      get: () => _lineup.value.jerseyTextColor,
+      set: (v) => _lineup.value.jerseyTextColor = v
+    });
+
+    const isLocked = computed<boolean>({
+      get: () => _lineup.value.isLocked,
+      set: (v) => _lineup.value.isLocked = v
+    });
+
+    const spots = computed<Spot[]>({
+      get: () => _lineup.value.spots,
+      set: (v) => _lineup.value.spots = v
+    });
+
+    // function $reset() {
+    //   //TODO
+    // }
+
+    return {
+      colorMode: skipHydrate(colorMode),
+
+      teamName: skipHydrate(teamName),
+      jerseyColor: skipHydrate(jerseyColor),
+      jerseyTextColor: skipHydrate(jerseyTextColor),
+
+      isLocked: skipHydrate(isLocked),
+      spots: skipHydrate(spots),
+
+      //$reset,
+    };
+  },
   actions: {
-    setColorMode(v: string) {
-      const mode = useColorMode();
-
-      mode.preference = v;
-    },
-
-    setTeamName(v: string) {
-      const store = useLocalStorage('AppSettingsStore:teamName', '');
-
-      store.value = v;
-    },
-    setJerseyColor(v: string) {
-      const store = useLocalStorage('AppSettingsStore:jerseyColor', '');
-
-      store.value = v;
-    },
-    setJerseyTextColor(v: string) {
-      const store = useLocalStorage('AppSettingsStore:jerseyTextColor', '');
-
-      store.value = v;
-    },
-
-    setIsLocked(v: boolean) {
-      const store = useLocalStorage('AppSettingsStore:isLocked', false);
-
-      store.value = v;
-    },
     addSpot(spot: Spot) {
-      const store = useLocalStorage('AppSettingsStore:spots', [] as Array<Spot>);
-
-      if (!this.getIsLocked) {
-        store.value.push({ ...spot });
+      if (!this.isLocked) {
+        this.spots.push({ ...spot });
       }
     },
     removeSpot(playerId: string) {
-      const store = useLocalStorage('AppSettingsStore:spots', [] as Array<Spot>);
-
-      store.value = store.value.filter(s => s.player.id !== playerId);
+      this.spots = this.spots.filter(s => s.player.id !== playerId)
     },
   },
-  getters: {
-    getColorMode: state => useColorMode().preference,
+  // getters: {
 
-    getTeamName: state => useLocalStorage('AppSettingsStore:teamName', '').value,
-    getJerseyColor: state => useLocalStorage('AppSettingsStore:jerseyColor', 'f47373').value,
-    getJerseyTextColor: state => useLocalStorage('AppSettingsStore:jerseyTextColor', '000000').value,
-
-    getIsLocked: state => useLocalStorage('AppSettingsStore:isLocked', false).value,
-    getSpots: state => useLocalStorage('AppSettingsStore:spots', [] as Array<Spot>).value,
-  }
+  // }
 });
 
 if (import.meta.hot) {
