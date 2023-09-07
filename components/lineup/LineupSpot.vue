@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { useAppSettingsStore } from '~~/stores/AppSettings'
+
 import type { ID, Spot } from '~~/types';
 import { PositionOptions } from '~~/types';
 
+const appSettingsStore = useAppSettingsStore();
+
 const props = defineProps<{
     spot: Spot,
-    isLineupLocked: boolean,
-    jerseyColor: string,
-    jerseyTextColor: string
 }>();
 
 const emit = defineEmits<{
@@ -31,9 +32,9 @@ const isPositionDialogVisible = ref(false);
         @blur="focused = false"
         tabindex="0"
     >
-        <LineupDragHandle :class="`${ props.isLineupLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
+        <LineupDragHandle :class="`${ appSettingsStore.getIsLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
 
-        <PlayerJersey :player="props.spot.player" :jersey-color="props.jerseyColor" :jersey-text-color="props.jerseyTextColor" class="shrink-0" />
+        <PlayerJersey :player="props.spot.player" class="shrink-0" />
 
         <input
             type="text"

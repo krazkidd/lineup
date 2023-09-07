@@ -29,14 +29,13 @@ export interface Spot {
 
 export interface Lineup {
     id: ID;
-    teamName: string;
-    spots: Spot[];
-};
 
-export interface AppSettings {
-    isLineupLocked: boolean,
+    teamName: string;
     jerseyColor: string,
     jerseyTextColor: string,
+
+    isLocked: boolean,
+    spots: Spot[];
 };
 
 //TODO this can probably be refactored into something more readable

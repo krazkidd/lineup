@@ -1,38 +1,17 @@
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
 
-import { nanoid } from 'nanoid';
+import { useAppSettingsStore } from '~~/stores/AppSettings'
 
-import type { Spot, Lineup, AppSettings } from '~~/types';
-
-const lineup = useLocalStorage<Lineup>('lineup', {
-    id: nanoid(),
-    teamName: '',
-    spots: []
-}, {
-    mergeDefaults: true
-});
-const appSettings = useLocalStorage<AppSettings>('app-settings', {
-    isLineupLocked: false,
-    jerseyColor: 'f47373',
-    jerseyTextColor: '000000'
-}, {
-    mergeDefaults: true
-});
+const appSettingsStore = useAppSettingsStore();
 
 const sortableContainer = ref<HTMLElement | null>(null);
-useSortable(sortableContainer, lineup.value.spots, {
+useSortable(sortableContainer, appSettingsStore.getSpots, {
   group: 'spots',
   handle: '.drag-handle',
   animation: 150,
-  onMove: () => !appSettings.value.isLineupLocked
+  onMove: () => !appSettingsStore.getIsLocked
 });
-
-function addSpot(spot: Spot) {
-    if (!appSettings.value.isLineupLocked) {
-        lineup.value.spots.push(spot);
-    }
-}
 </script>
 
 <template>
@@ -40,34 +19,31 @@ function addSpot(spot: Spot) {
         <header class="flex font-bold mb-4">
             <input
                 type="text"
-                v-model.trim="lineup.teamName"
+                @change.trim="appSettingsStore.getTeamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-500 dark:text-gray-300 leading-[3em] cursor-pointer px-1"
                 placeholder="Team Name"
             />
 
-            <SettingsLockButton :is-locked="appSettings.isLineupLocked" @lock="appSettings.isLineupLocked = true" @unlock="appSettings.isLineupLocked = false" />
+            <SettingsLockButton />
 
-            <SettingsButton :app-settings="appSettings" />
+            <SettingsButton />
         </header>
 
         <div ref="sortableContainer">
             <ClientOnly>
                 <LineupSpot
-                    v-for="spot in lineup.spots"
+                    v-for="spot in appSettingsStore.getSpots"
                     :key="spot.player.id"
                     :spot="spot"
-                    :is-lineup-locked="appSettings.isLineupLocked"
-                    :jersey-color="appSettings.jerseyColor"
-                    :jersey-text-color="appSettings.jerseyTextColor"
-                    @delete="lineup.spots = lineup.spots.filter(s => s.player.id !== $event)"
+                    @delete="appSettingsStore.removeSpot($event)"
                     class="bg-blue-200"
                 />
             </ClientOnly>
         </div>
 
         <footer>
-            <LineupNewSpot @add="addSpot($event)" :class="`${ appSettings.isLineupLocked ? 'collapse' : 'visible' }`" />
+            <LineupNewSpot @add="appSettingsStore.addSpot($event)" :class="`${ appSettingsStore.getIsLocked ? 'collapse' : 'visible' }`" />
         </footer>
     </div>
 </template>

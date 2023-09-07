@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import type { AppSettings } from '~~/types';
+import { useAppSettingsStore } from '~~/stores/AppSettings';
 
-const props = defineProps<{
-    appSettings: AppSettings
-}>();
-
-const mode = useColorMode();
+const appSettingsStore = useAppSettingsStore();
 
 const isSettingsDialogVisible = ref(false);
 </script>
@@ -30,22 +26,22 @@ const isSettingsDialogVisible = ref(false);
         </div>
         <div class="md:col-span-3">
           <Button
-              @click="mode.preference = mode.preference === 'system' ? 'dark' : mode.preference === 'dark' ? 'light' : 'system'"
+              @click="appSettingsStore.setColorMode(appSettingsStore.getColorMode === 'system' ? 'dark' : appSettingsStore.getColorMode === 'dark' ? 'light' : 'system')"
               size="small"
               severity="primary"
               rounded
               aria-label="Color mode"
               title="Color mode"
             >
-            <template v-if="mode.preference === 'system'">
+            <template v-if="appSettingsStore.getColorMode === 'system'">
               <i class="pi pi-desktop pr-2"></i>
               System
             </template>
-            <template v-if="mode.preference === 'dark'">
+            <template v-if="appSettingsStore.getColorMode === 'dark'">
               <i class="pi pi-moon pr-2"></i>
               Dark
             </template>
-            <template v-if="mode.preference === 'light'">
+            <template v-if="appSettingsStore.getColorMode === 'light'">
               <i class="pi pi-sun pr-2"></i>
               Light
             </template>
@@ -56,14 +52,14 @@ const isSettingsDialogVisible = ref(false);
           Jersey Color
         </div>
         <div>
-          <ColorPicker v-model="props.appSettings.jerseyColor" format="hex" />
+          <ColorPicker :modelValue="appSettingsStore.getJerseyColor" @update:modelValue="appSettingsStore.setJerseyColor($event as unknown as string)" format="hex" />
         </div>
 
         <div class="text-right text-xs py-2">
           Jersey Text Color
         </div>
         <div>
-          <ColorPicker v-model="props.appSettings.jerseyTextColor" format="hex" />
+          <ColorPicker :modelValue="appSettingsStore.getJerseyTextColor" @update:modelValue="appSettingsStore.setJerseyTextColor($event as unknown as string)" format="hex" />
         </div>
       </div>
     </Dialog>
