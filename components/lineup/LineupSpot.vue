@@ -31,7 +31,11 @@ onKeyStroke("Backspace", (e) => {
     >
         <LineupDragHandle :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
 
-        <LineupJerseyButton :spot="props.spot" :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${appSettingsStore.isLocked ? 'none' : 'auto'}`" :disabled="appSettingsStore.isLocked" />
+        <LineupJerseyButton
+            :spot="props.spot"
+            :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${appSettingsStore.isLocked ? 'none' : 'auto'}`"
+            :disabled="appSettingsStore.isLocked"
+        />
 
         <input
             type="text"
@@ -41,7 +45,10 @@ onKeyStroke("Backspace", (e) => {
             :disabled="appSettingsStore.isLocked"
         />
 
-        <LineupPositionButton :spot="props.spot" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
+        <LineupPositionButton
+            :spot="props.spot"
+            class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]"
+        />
     </div>
 </template>
 
