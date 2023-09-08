@@ -15,7 +15,7 @@ const emit = defineEmits<{
 
 const focused = ref(false);
 onKeyStroke("Backspace", (e) => {
-    if (focused.value) {
+    if (focused.value && !appSettingsStore.isLocked) {
         emit('delete', props.spot.player.id);
     }
 });
