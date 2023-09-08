@@ -16,7 +16,10 @@ const isDialogVisible = ref(false);
     <div @click="isDialogVisible = true">
         <svg viewBox="215 45 526.2 372.045" width="3em" height="3em" xmlns="http://www.w3.org/2000/svg">
             <use x="-308.27" href="@/assets/images/cloth-t-shirt.svg#shirt-back" :fill="`#${ appSettingsStore.jerseyColor }`" />
-            <text x="390" y="200" font-size="10em" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+
+            <text v-if="props.spot.player.number.length === 1" x="445" y="200" font-size="10em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+            <text v-else-if="props.spot.player.number.length === 2" x="390" y="200" font-size="10em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+            <text v-else-if="props.spot.player.number.length === 3" x="370" y="200" font-size="8.5em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
         </svg>
 
         <Dialog
@@ -39,7 +42,7 @@ const isDialogVisible = ref(false);
                     }"
                     aria-describedby="player-number-help"
                 />
-                <small id="player-number-help">Enter 1 or 2 characters.</small>
+                <small id="player-number-help">Enter up to 3 characters.</small>
             </div>
         </Dialog>
     </div>
