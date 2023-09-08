@@ -3,16 +3,16 @@ import { useAppSettingsStore } from '~~/stores/AppSettings';
 
 const appSettingsStore = useAppSettingsStore();
 
-const isSettingsDialogVisible = ref(false);
+const isDialogVisible = ref(false);
 </script>
 
 
 <template>
   <div>
-    <Button @click="isSettingsDialogVisible = true" icon="pi pi-cog" severity="secondary" text rounded aria-label="Settings" title="Settings" />
+    <Button @click="isDialogVisible = true" icon="pi pi-cog" severity="secondary" text rounded aria-label="Settings" title="Settings" />
 
     <Dialog
-        v-model:visible="isSettingsDialogVisible"
+        v-model:visible="isDialogVisible"
         modal
         header="App Settings"
         :pt="{
