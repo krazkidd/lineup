@@ -28,7 +28,7 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
             }"
         >
           <Listbox
-                v-model="props.spot.player.number"
+                v-model="props.spot.position"
                 :options="PositionOptions"
                 option-group-label="groupName"
                 option-group-children="children"
