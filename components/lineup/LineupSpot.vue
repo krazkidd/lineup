@@ -2,7 +2,6 @@
 import { useAppSettingsStore } from '~~/stores/AppSettings'
 
 import type { ID, Spot } from '~~/types';
-import { PositionOptions } from '~~/types';
 
 const appSettingsStore = useAppSettingsStore();
 
@@ -20,8 +19,6 @@ onKeyStroke("Backspace", (e) => {
         emit('delete', props.spot.player.id);
     }
 });
-
-const isPositionDialogVisible = ref(false);
 </script>
 
 <template>
@@ -34,7 +31,7 @@ const isPositionDialogVisible = ref(false);
     >
         <LineupDragHandle :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
 
-        <PlayerJersey :player="props.spot.player" class="shrink-0" />
+        <LineupJerseyButton :spot="props.spot" :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${appSettingsStore.isLocked ? 'none' : 'auto'}`" :disabled="appSettingsStore.isLocked" />
 
         <input
             type="text"
@@ -44,34 +41,7 @@ const isPositionDialogVisible = ref(false);
             :disabled="appSettingsStore.isLocked"
         />
 
-        <LineupPosition :position="props.spot.position" @click="isPositionDialogVisible = true" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
-
-        <Dialog
-            v-model:visible="isPositionDialogVisible"
-            modal
-            :header="`${props.spot.player.name}'s Position`"
-            :pt="{
-                root: { class: 'h-full md:h-4/5 w-full md:w-3/4 xl:w-1/2' }
-            }"
-        >
-            <Listbox
-                v-model="props.spot.position"
-                :options="PositionOptions"
-                option-group-label="groupName"
-                option-group-children="children"
-                option-value="value"
-                @change="isPositionDialogVisible = false"
-                :pt="{
-                    root: { class: '!w-full' },
-                    item: { class: 'leading-8' }
-                }"
-            >
-                <template #option="{ option }">
-                    <LineupPosition :position="option.value" class="shrink-0 inline-block cursor-pointer bg-white text-black rounded-full text-center w-8" />
-                    {{ option.longName }}
-                </template>
-            </Listbox>
-        </Dialog>
+        <LineupPositionButton :spot="props.spot" class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]" />
     </div>
 </template>
 
