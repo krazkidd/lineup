@@ -67,14 +67,16 @@ export const useAppSettingsStore = defineStore('AppSettingsStore', {
     // }
 
     return {
-      colorMode: skipHydrate(colorMode),
+      //TODO we may need to skipHydrate() if we ever reenable SSR
 
-      teamName: skipHydrate(teamName),
-      jerseyColor: skipHydrate(jerseyColor),
-      jerseyTextColor: skipHydrate(jerseyTextColor),
+      colorMode: colorMode,
 
-      isLocked: skipHydrate(isLocked),
-      spots: skipHydrate(spots),
+      teamName: teamName,
+      jerseyColor: jerseyColor,
+      jerseyTextColor: jerseyTextColor,
+
+      isLocked: isLocked,
+      spots: spots,
 
       //$reset,
     };
