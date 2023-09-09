@@ -40,7 +40,10 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
                 }"
             >
                 <template #option="{ option }">
-                    <LineupPosition :position="option.value" class="shrink-0 inline-block cursor-pointer bg-white text-black rounded-full text-center w-8" />
+                    <span :title="option.longName" class="inline-block bg-white text-black rounded-full text-center w-[2em]">
+                      {{ option.shortName }}
+                    </span>
+
                     {{ option.longName }}
                 </template>
             </Listbox>
