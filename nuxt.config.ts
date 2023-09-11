@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     'primevue/resources/primevue.css',
     'primeicons/primeicons.css'
   ],
+  app: {
+    baseURL: '/lineup/'
+  },
   build: {
     transpile: ['primevue']
   },
