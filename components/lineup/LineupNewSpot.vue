@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { nanoid } from "nanoid";
 
-import { Position, type Spot } from "~~/types";
+import { Position } from "~~/types";
+import type { Player, Spot } from "~~/types";
 
 const emit = defineEmits<{
   (e: "add", payload: Spot): void;
@@ -21,9 +22,8 @@ function createSpot(e: Event) {
       player: {
         id: nanoid(),
         name: playerName.value,
-        //TODO revert random number
-        number: Math.floor(Math.random() * 99).toString(),
-      },
+        number: '00',
+      } as Player,
       position: Position.DH
     } as Spot);
   }
