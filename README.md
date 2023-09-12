@@ -4,6 +4,10 @@ Plan your softball team's batting order and field positions.
 
 [Try the live app now!](https://krazkidd.github.io/lineup/)
 
+Project hosted at: https://github.com/krazkidd/lineup
+
+License: TBD
+
 ## Features
 
 * Set player jersey numbers and field positions
