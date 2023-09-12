@@ -28,6 +28,8 @@ useSortable(sortableContainer, appSettingsStore.spots, {
 
             <SettingsLockButton />
 
+            <SettingsHelpButton />
+
             <SettingsButton />
         </header>
 
