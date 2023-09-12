@@ -4,6 +4,10 @@ import { nanoid } from "nanoid";
 import { Position } from "~~/types";
 import type { Player, Spot } from "~~/types";
 
+const props = defineProps<{
+    numPlayers: number
+}>();
+
 const emit = defineEmits<{
   (e: "add", payload: Spot): void;
 }>();
@@ -34,20 +38,20 @@ function createSpot(e: Event) {
 </script>
 
 <template>
-  <div>
-    <textarea
+  <div class="flex">
+    <input
+      type="text"
       v-model.trim="playerName"
       @keydown.tab="createSpot"
       @keyup.enter="createSpot"
-      class="bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight resize-none cursor-pointer w-full px-1 py-2"
-      :class="{
-        'h-7': !focused,
-        'h-20': focused,
-      }"
-      style="outline: none !important"
+      class="grow inline-block bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight cursor-pointer px-1 py-2"
       @focus="focused = true"
       @blur="focused = false"
       :placeholder="!focused ? '+ Add A Player' : 'Enter player name'"
     />
+
+    <div class="shrink-0 text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight px-1 py-2">
+      {{ props.numPlayers }} players
+    </div>
   </div>
 </template>

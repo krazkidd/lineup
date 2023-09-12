@@ -12,6 +12,8 @@ useSortable(sortableContainer, appSettingsStore.spots, {
   animation: 150,
   onMove: () => !appSettingsStore.isLocked
 });
+
+const numPlayers = computed(() => appSettingsStore.spots.length);
 </script>
 
 <template>
@@ -46,7 +48,11 @@ useSortable(sortableContainer, appSettingsStore.spots, {
         </div>
 
         <footer>
-            <LineupNewSpot @add="appSettingsStore.addSpot($event)" :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`" />
+            <LineupNewSpot
+                @add="appSettingsStore.addSpot($event)"
+                :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`"
+                :num-players="numPlayers"
+            />
         </footer>
     </div>
 </template>
