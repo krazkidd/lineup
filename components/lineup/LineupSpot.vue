@@ -33,6 +33,7 @@ onKeyStroke("Backspace", (e) => {
 
         <LineupJerseyButton
             :spot="props.spot"
+            :size="'3em'"
             :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${appSettingsStore.isLocked ? 'none' : 'auto'}`"
             :disabled="appSettingsStore.isLocked"
         />

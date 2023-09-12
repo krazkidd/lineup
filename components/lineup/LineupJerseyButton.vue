@@ -7,6 +7,7 @@ const appSettingsStore = useAppSettingsStore();
 
 const props = defineProps<{
     spot: Spot,
+    size: string
 }>();
 
 const isDialogVisible = ref(false);
@@ -14,7 +15,7 @@ const isDialogVisible = ref(false);
 
 <template>
     <div @click="isDialogVisible = true">
-        <svg viewBox="215 45 526.2 372.045" width="3em" height="3em" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="215 45 526.2 372.045" :width="props.size" :height="props.size" xmlns="http://www.w3.org/2000/svg">
             <use x="-308.27" href="@/assets/images/cloth-t-shirt.svg#shirt-back" :fill="`#${ appSettingsStore.jerseyColor }`" />
 
             <text v-if="props.spot.player.number.length === 1" x="445" y="200" font-size="10em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
