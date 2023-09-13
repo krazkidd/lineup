@@ -16,7 +16,21 @@ export default defineNuxtConfig({
     'primeicons/primeicons.css'
   ],
   app: {
-    baseURL: '/lineup/'
+    // required for GitHub deployment
+    baseURL: '/lineup/',
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
+      title: 'lineup',
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/lineup/favicon.ico'
+        }
+      ]
+    }
   },
   build: {
     transpile: ['primevue']
