@@ -17,8 +17,8 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
 </script>
 
 <template>
-    <div class="p-5 rounded w-full md:w-3/4 xl:w-1/2">
-        <header class="flex font-bold mb-4">
+    <div>
+        <div class="flex font-bold mb-4">
             <input
                 type="text"
                 v-model.trim="appSettingsStore.teamName"
@@ -33,7 +33,7 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
             <SettingsHelpButton />
 
             <SettingsButton />
-        </header>
+        </div>
 
         <div ref="sortableContainer">
             <ClientOnly>
@@ -47,13 +47,11 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
             </ClientOnly>
         </div>
 
-        <footer>
-            <LineupNewSpot
-                @add="appSettingsStore.addSpot($event)"
-                :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`"
-                :num-players="numPlayers"
-            />
-        </footer>
+        <LineupNewSpot
+            @add="appSettingsStore.addSpot($event)"
+            :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`"
+            :num-players="numPlayers"
+        />
     </div>
 </template>
 

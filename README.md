@@ -6,7 +6,7 @@ Plan your softball team's batting order and field positions.
 
 Project hosted at: https://github.com/krazkidd/lineup
 
-License: TBD
+License: AGPLv3 (see LICENSE.md file)
 
 ## Features
 
