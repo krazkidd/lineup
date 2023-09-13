@@ -17,9 +17,7 @@ License: AGPLv3 (see LICENSE.md file)
 * Customizable team colors
 * Dark mode
 
-The app can be used without an active internet connection by making use of local browser storage.
-
-Only static Nuxt deployments are supported at this time. That is, rendering is all on the client-side rather than server side. (But that's okay, because you can host the static site files for free with some cloud providers!)
+The app can be used without an active internet connection by making use of local browser storage. (This may change in the future.)
 
 ## Development
 
@@ -45,7 +43,7 @@ The server listens on http://localhost:3000/.
 
 ## Deployment
 
-There is a limitation in the way the Pinia and local storage Nuxt modules (i.e. the `defineStore()` and `useLocalStorage()` composables) work when Nuxt's server-side rendering (SSR) is enabled.
+Only static Nuxt deployments (SSG) are supported at this time. This is due to a limitation in the way the Pinia and local storage Nuxt modules (i.e. the `defineStore()` and `useLocalStorage()` composables) work when Nuxt's server-side rendering (SSR) is enabled.
 
 The basic problem is that hydration of the Pinia store on the client does not capture the locally-stored app state. Because of this, SSR is disabled with `ssr: false`. You may find additional details [here](https://github.com/krazkidd/lineup/pull/3).
 
@@ -73,7 +71,7 @@ A workflow is available under `.github/workflows/` which will run the SSG comman
 
 ### DigitalOcean App Platform (free)
 
-An app spec is available under `.do/` which will run the SSG command and publish `.output/public/` to DigitalOcean's App Platform. Some modification will be required to point to your repository (rather than this one). You may have to configure the App Platform yourself. A free plan is available for static sites.
+An app spec is available under `.do/` which will run the SSG command and publish `.output/public/` to DigitalOcean's App Platform. Some modification will be required to point to your repository (rather than this one). Additional configuration of the App Platform may be necessary. (Make sure you have the free plan selected.)
 
 ## Attributions
 
