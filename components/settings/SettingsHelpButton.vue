@@ -57,7 +57,7 @@ const isDialogVisible = ref(false);
             icon to change field position.
           </li>
           <li>
-            Click <strong>and hold</strong> the <span class="drag-handle">⣿</span> icon to reorder players.
+            Click <strong>and drag</strong> the <span class="drag-handle">⣿</span> icon to reorder players.
           </li>
           <li>
             Click the <i class="pi pi-lock-open" /> icon to prevent accidental changes.
