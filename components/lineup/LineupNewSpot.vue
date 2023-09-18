@@ -44,13 +44,13 @@ function createSpot(e: Event) {
       v-model.trim="playerName"
       @keydown.tab="createSpot"
       @keyup.enter="createSpot"
-      class="grow inline-block bg-transparent focus:shadow rounded text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight cursor-pointer px-1 py-2"
+      class="grow inline-block bg-transparent focus:shadow rounded leading-tight cursor-pointer px-1 py-2"
       @focus="focused = true"
       @blur="focused = false"
       :placeholder="!focused ? '+ Add A Player' : 'Enter player name'"
     />
 
-    <div class="shrink-0 text-gray-700 placeholder-gray-700 dark:text-gray-300 dark:placeholder-gray-300 leading-tight px-1 py-2">
+    <div class="shrink-0 leading-tight px-1 py-2">
       {{ props.numPlayers }} players
     </div>
   </div>

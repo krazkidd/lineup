@@ -40,7 +40,7 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
                 }"
             >
                 <template #option="{ option }">
-                    <span :title="option.longName" class="inline-block bg-white text-black rounded-full text-center w-[2em]">
+                    <span :title="option.longName" class="inline-block bg-white text-gray-800 rounded-full text-center w-[2em]">
                       {{ option.shortName }}
                     </span>
 

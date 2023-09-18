@@ -24,7 +24,7 @@ onKeyStroke("Backspace", (e) => {
 <template>
     <div
         :title="`${props.spot.player.number ? '#' + props.spot.player.number + ' ' : null}${props.spot.player.name}`"
-        class="flex leading-[3rem] space-x-2 rounded shadow-sm p-2 mb-2"
+        class="flex leading-[3rem] space-x-2 rounded text-gray-800 shadow-sm p-2 mb-2"
         @focus="focused = true"
         @blur="focused = false"
         tabindex="0"
@@ -42,13 +42,13 @@ onKeyStroke("Backspace", (e) => {
             type="text"
             v-model.trim="props.spot.player.name"
             @keyup.enter="($event.target as HTMLInputElement).blur()"
-            class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
+            class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 cursor-pointer px-1"
             :disabled="appSettingsStore.isLocked"
         />
 
         <LineupPositionButton
             :spot="props.spot"
-            class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white text-black rounded-full text-center w-[3em]"
+            class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full text-center w-[3em]"
         />
     </div>
 </template>
