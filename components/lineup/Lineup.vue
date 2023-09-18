@@ -23,7 +23,7 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
                 type="text"
                 v-model.trim="appSettingsStore.teamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
-                class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded leading-[3em] cursor-pointer px-1"
+                class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
                 placeholder="Team Name"
                 :disabled="appSettingsStore.isLocked"
             />
