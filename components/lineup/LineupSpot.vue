@@ -43,6 +43,7 @@ onKeyStroke("Backspace", (e) => {
             v-model.trim="props.spot.player.name"
             @keyup.enter="($event.target as HTMLInputElement).blur()"
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 cursor-pointer px-1"
+            placeholder="Enter player name"
             :disabled="appSettingsStore.isLocked"
         />
 
