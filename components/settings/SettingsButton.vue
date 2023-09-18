@@ -3,13 +3,19 @@ import { useAppSettingsStore } from '~~/stores/AppSettings';
 
 const appSettingsStore = useAppSettingsStore();
 
+const buttonPassThroughOptions = {
+  label: {
+    class: 'hidden'
+  }
+};
+
 const isDialogVisible = ref(false);
 </script>
 
 
 <template>
   <div>
-    <Button @click="isDialogVisible = true" icon="pi pi-cog" severity="secondary" text rounded aria-label="Settings" title="Settings" />
+    <Button @click="isDialogVisible = true" icon="pi pi-cog" severity="secondary" text rounded aria-label="Settings" title="Settings" :pt="buttonPassThroughOptions" />
 
     <Dialog
         v-model:visible="isDialogVisible"

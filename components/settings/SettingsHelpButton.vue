@@ -14,12 +14,18 @@ const fakeSpot = {
   position: Position.DH
 } as Spot;
 
+const buttonPassThroughOptions = {
+  label: {
+    class: 'hidden'
+  }
+};
+
 const isDialogVisible = ref(false);
 </script>
 
 <template>
   <div>
-    <Button @click="isDialogVisible = true" icon="pi pi-question-circle" severity="secondary" text rounded aria-label="Help" title="Help" />
+    <Button @click="isDialogVisible = true" icon="pi pi-question-circle" severity="secondary" text rounded aria-label="Help" title="Help" :pt="buttonPassThroughOptions" />
 
     <Dialog
         v-model:visible="isDialogVisible"
