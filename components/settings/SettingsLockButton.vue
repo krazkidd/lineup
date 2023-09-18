@@ -11,16 +11,14 @@ const buttonPassThroughOptions = {
 </script>
 
 <template>
-  <div>
-    <Button
-      @click="appSettingsStore.isLocked = !appSettingsStore.isLocked"
-      :icon="`pi pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
-      :severity="`${ appSettingsStore.isLocked ? 'secondary' : 'warning' }`"
-      text
-      rounded
-      :aria-label="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
-      :title="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
-      :pt="buttonPassThroughOptions"
-    />
-  </div>
+  <Button
+    @click="appSettingsStore.isLocked = !appSettingsStore.isLocked"
+    :icon="`pi pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
+    :severity="`${ appSettingsStore.isLocked ? 'secondary' : 'warning' }`"
+    text
+    rounded
+    :aria-label="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+    :title="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+    :pt="buttonPassThroughOptions"
+  />
 </template>
