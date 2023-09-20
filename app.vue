@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const homeRoute = ref({
-    label: 'Home',
-    icon: 'pi pi-fw pi-home',
-    route: '/'
-  });
+  label: 'Home',
+  icon: 'pi pi-fw pi-home',
+  route: '/'
+});
 
 const menuItems = ref([
   homeRoute.value,
@@ -14,19 +14,17 @@ const menuItems = ref([
   },
 ]);
 
+const isSidebarVisible = ref(false);
 const sidebarPassThroughOptions = {
   content: {
     class: 'flex flex-col justify-between w-full md:w-20rem lg:w-30rem'
   }
 };
-
 const menuPassThroughOptions = {
   root: {
     class: 'w-full'
   }
 };
-
-const isSidebarVisible = ref(false);
 </script>
 
 <template>
