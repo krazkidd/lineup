@@ -6,7 +6,7 @@
     <!-- <nav class="flex items-end p-2 space-x-2">
     </nav> -->
 
-    <Lineup class="grow justify-center w-full md:w-3/4 xl:w-1/2 p-5" />
+    <NuxtPage class="grow justify-center w-full md:w-3/4 xl:w-1/2 p-5" />
 
     <div class="text-center text-sm pt-10">
       This program is licensed to you for use under the <a href="https://www.gnu.org/licenses/agpl.html" class="underline">GNU AGPL v3</a>. <a href="https://github.com/krazkidd/lineup"><i class="pi pi-github" /></a>
