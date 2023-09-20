@@ -13,7 +13,7 @@ const buttonPassThroughOptions = {
 <template>
   <Button
     @click="appSettingsStore.isLocked = !appSettingsStore.isLocked"
-    :icon="`pi pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
+    :icon="`pi pi-fw pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
     :severity="`${ appSettingsStore.isLocked ? 'secondary' : 'warning' }`"
     text
     rounded

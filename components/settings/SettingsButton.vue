@@ -16,7 +16,7 @@ const isDialogVisible = ref(false);
 <template>
   <Button
     @click="isDialogVisible = true"
-    icon="pi pi-cog"
+    icon="pi pi-fw pi-cog"
     severity="secondary"
     text
     rounded
@@ -48,15 +48,15 @@ const isDialogVisible = ref(false);
             title="Color mode"
           >
           <template v-if="appSettingsStore.colorMode === 'system'">
-            <i class="pi pi-desktop pr-2"></i>
+            <i class="pi pi-fw pi-desktop pr-2"></i>
             System
           </template>
           <template v-if="appSettingsStore.colorMode === 'dark'">
-            <i class="pi pi-moon pr-2"></i>
+            <i class="pi pi-fw pi-moon pr-2"></i>
             Dark
           </template>
           <template v-if="appSettingsStore.colorMode === 'light'">
-            <i class="pi pi-sun pr-2"></i>
+            <i class="pi pi-fw pi-sun pr-2"></i>
             Light
           </template>
         </Button>
