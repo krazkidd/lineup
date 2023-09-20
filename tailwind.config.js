@@ -10,4 +10,7 @@ export default <Partial<Config>>{
     //"./src/**/*.{vue,js,ts,jsx,tsx}",
     "./node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}"
   ],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
 };

@@ -13,6 +13,8 @@ import Dialog from 'primevue/dialog';
 import Inplace from 'primevue/inplace';
 import InputText from 'primevue/inputtext';
 import Listbox from 'primevue/listbox';
+import Menu from 'primevue/menu';
+import Sidebar from 'primevue/sidebar';
 import Toast from 'primevue/toast';
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -33,5 +35,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('Inplace', Inplace);
     nuxtApp.vueApp.component('InputText', InputText);
     nuxtApp.vueApp.component('Listbox', Listbox);
+    nuxtApp.vueApp.component('Menu', Menu);
+    nuxtApp.vueApp.component('Sidebar', Sidebar);
     nuxtApp.vueApp.component('Toast', Toast);
 });
