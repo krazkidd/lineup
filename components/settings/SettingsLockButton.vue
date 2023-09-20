@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAppSettingsStore } from '~~/stores/AppSettings'
+import { useTeamStore } from '~~/stores/Team'
 
-const appSettingsStore = useAppSettingsStore();
+const teamStore = useTeamStore();
 
 const buttonPassThroughOptions = {
   label: {
@@ -12,13 +12,13 @@ const buttonPassThroughOptions = {
 
 <template>
   <Button
-    @click="appSettingsStore.isLocked = !appSettingsStore.isLocked"
-    :icon="`pi pi-fw pi-${ appSettingsStore.isLocked ? 'lock' : 'lock-open' }`"
-    :severity="`${ appSettingsStore.isLocked ? 'secondary' : 'warning' }`"
+    @click="teamStore.isLocked = !teamStore.isLocked"
+    :icon="`pi pi-fw pi-${ teamStore.isLocked ? 'lock' : 'lock-open' }`"
+    :severity="`${ teamStore.isLocked ? 'secondary' : 'warning' }`"
     text
     rounded
-    :aria-label="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
-    :title="`${ appSettingsStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+    :aria-label="`${ teamStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
+    :title="`${ teamStore.isLocked ? 'Unlock lineup' : 'Lock lineup' }`"
     :pt="buttonPassThroughOptions"
   />
 </template>

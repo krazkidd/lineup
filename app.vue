@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useAppSettingsStore } from '~~/stores/AppSettings';
+
+const appSettingsStore = useAppSettingsStore();
+
 const homeRoute = ref({
   label: 'Home',
   icon: 'pi pi-fw pi-home',
@@ -16,6 +20,9 @@ const menuItems = ref([
 
 const isSidebarVisible = ref(false);
 const sidebarPassThroughOptions = {
+  headerContent: {
+    class: 'flex items-start w-full'
+  },
   content: {
     class: 'flex flex-col justify-between w-full md:w-20rem lg:w-30rem'
   }
@@ -29,6 +36,30 @@ const menuPassThroughOptions = {
 
 <template>
   <Sidebar v-model:visible="isSidebarVisible" position="right" :pt="sidebarPassThroughOptions">
+    <template #header>
+      <Button
+        @click="appSettingsStore.colorMode = appSettingsStore.colorMode === 'system' ? 'dark' : appSettingsStore.colorMode === 'dark' ? 'light' : 'system'"
+        class="text-gray-800 border-gray-800 dark:text-gray-300 dark:border-gray-300"
+        size="small"
+        outlined
+        aria-label="Color mode"
+        title="Color mode"
+      >
+        <template v-if="appSettingsStore.colorMode === 'system'">
+          <i class="pi pi-fw pi-desktop pr-2"></i>
+          System
+        </template>
+        <template v-if="appSettingsStore.colorMode === 'dark'">
+          <i class="pi pi-fw pi-moon pr-2"></i>
+          Dark
+        </template>
+        <template v-if="appSettingsStore.colorMode === 'light'">
+          <i class="pi pi-fw pi-sun pr-2"></i>
+          Light
+        </template>
+      </Button>
+    </template>
+
     <template #default>
       <Menu :model="menuItems" :pt="menuPassThroughOptions">
         <template #item="{ label, item, props }">

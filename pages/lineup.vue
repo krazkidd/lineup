@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { useSortable } from '@vueuse/integrations/useSortable'
 
-import { useAppSettingsStore } from '~~/stores/AppSettings'
+import { useTeamStore } from '~~/stores/Team'
 
-const appSettingsStore = useAppSettingsStore();
+const teamStore = useTeamStore();
 
 const sortableContainer = ref<HTMLElement | null>(null);
-useSortable(sortableContainer, appSettingsStore.spots, {
+useSortable(sortableContainer, teamStore.spots, {
   group: 'spots',
   handle: '.drag-handle',
   animation: 150,
-  onMove: () => !appSettingsStore.isLocked
+  onMove: () => !teamStore.isLocked
 });
 
-const numPlayers = computed(() => appSettingsStore.spots.length);
+const numPlayers = computed(() => teamStore.spots.length);
 </script>
 
 <template>
@@ -21,11 +21,11 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
         <div class="flex font-bold mb-4">
             <input
                 type="text"
-                v-model.trim="appSettingsStore.teamName"
+                v-model.trim="teamStore.teamName"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
                 placeholder="Team Name"
-                :disabled="appSettingsStore.isLocked"
+                :disabled="teamStore.isLocked"
             />
 
             <SettingsLockButton />
@@ -38,18 +38,18 @@ const numPlayers = computed(() => appSettingsStore.spots.length);
         <div ref="sortableContainer">
             <ClientOnly>
                 <LineupSpot
-                    v-for="spot in appSettingsStore.spots"
+                    v-for="spot in teamStore.spots"
                     :key="spot.player.id"
                     :spot="spot"
-                    @delete="appSettingsStore.removeSpot($event)"
+                    @delete="teamStore.removeSpot($event)"
                     class="bg-blue-200"
                 />
             </ClientOnly>
         </div>
 
         <LineupNewSpot
-            @add="appSettingsStore.addSpot($event)"
-            :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' }`"
+            @add="teamStore.addSpot($event)"
+            :class="`${ teamStore.isLocked ? 'collapse' : 'visible' }`"
             :num-players="numPlayers"
         />
     </div>
