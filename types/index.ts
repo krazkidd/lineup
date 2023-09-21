@@ -38,6 +38,11 @@ export interface Lineup {
     spots: Spot[];
 };
 
+export interface Scoreboard {
+    teamScore: number,
+    otherTeamScore: number
+};
+
 //TODO this can probably be refactored into something more readable
 const groupedPositions = groupBy(Object.values(Position).filter(p => typeof p === 'string'), p => getPositionGroupName(p));
 export const PositionOptions = keys(groupedPositions).map(groupName => ({

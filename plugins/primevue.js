@@ -7,6 +7,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 
 import Button from 'primevue/button';
+import Card from 'primevue/card';
 import Checkbox from 'primevue/checkbox';
 import ColorPicker from 'primevue/colorpicker';
 import Dialog from 'primevue/dialog';
@@ -29,6 +30,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.use(ToastService);
 
     nuxtApp.vueApp.component('Button', Button);
+    nuxtApp.vueApp.component('Card', Card);
     nuxtApp.vueApp.component('Checkbox', Checkbox);
     nuxtApp.vueApp.component('ColorPicker', ColorPicker);
     nuxtApp.vueApp.component('Dialog', Dialog);

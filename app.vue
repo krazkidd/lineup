@@ -16,6 +16,11 @@ const menuItems = ref([
     icon: 'pi pi-fw pi-user-edit',
     route: '/lineup'
   },
+  {
+    label: 'Scoreboard',
+    icon: 'pi pi-fw pi-play',
+    route: '/scoreboard'
+  },
 ]);
 
 const isSidebarVisible = ref(false);

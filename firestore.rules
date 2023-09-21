@@ -3,10 +3,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    match /count/{day} {
+    match /scoreboard/{day} {
     	allow read;
       // only allow writing { when: now timestamp; n: int }
-      allow write: if request.resource.data.size() == 2 && request.resource.data.when is timestamp && request.resource.data.n is int;
+      allow write: if request.resource.data.size() == 2 && request.resource.data.teamScore is int && request.resource.data.otherTeamScore is int;
     }
 
     // forbid everything else

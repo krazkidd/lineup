@@ -17,8 +17,6 @@ License: AGPLv3 (see LICENSE.md file)
 * Customizable team colors
 * Dark mode
 
-The app can be used without an active internet connection by making use of local browser storage. (This may change in the future.)
-
 ## Development
 
 ### VS Code Recommended Extensions:
