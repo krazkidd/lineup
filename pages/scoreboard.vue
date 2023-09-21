@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import {
     doc,
-    increment,
-    serverTimestamp,
-    Timestamp,
     getDoc,
     setDoc,
     updateDoc,
     DocumentData,
+    increment,
 } from 'firebase/firestore';
 import { useDocument, useFirestore } from 'vuefire';
 import { Scoreboard } from '~/types';
@@ -70,7 +68,7 @@ function incrementOtherTeamScore(amount: number) {
 
 <template>
     <div class="flex flex-col sm:flex-row justify-around items-center text-center">
-        <Card class="w-64">
+        <Card class="m-1 w-64">
             <template #header>
                 <span class="text-6xl">{{ scoreboard?.teamScore }}</span>
             </template>
@@ -103,7 +101,7 @@ function incrementOtherTeamScore(amount: number) {
             </template>
         </Card>
 
-        <Card class="w-64">
+        <Card class="m-1 w-64">
             <template #header>
                 <span class="text-6xl">{{ scoreboard?.otherTeamScore }}</span>
             </template>
