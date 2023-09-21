@@ -1,69 +1,23 @@
 <script setup lang="ts">
-import {
-    doc,
-    getDoc,
-    setDoc,
-    updateDoc,
-    DocumentData,
-    increment,
-} from 'firebase/firestore';
-import { useDocument, useFirestore } from 'vuefire';
-import { Scoreboard } from '~/types';
-
+import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
 import { useTeamStore } from '~~/stores/Team';
 
-const db = useFirestore();
 const teamStore = useTeamStore();
 
 const props = defineProps({
     today: {
-        type: String,
-        default: () => new Date().toISOString().slice(0, 10),
+        type: Date,
+        default: () => new Date(),
     },
 });
 
-const docRef = doc(db, 'scoreboard', props.today).withConverter<
-    Scoreboard,
-    DocumentData
->({
-    fromFirestore: (snapshot) => {
-        // Here you could do validation with a library like zod
-        return snapshot.data(
-            // this avoids having `null` while the server timestamp is updating
-            { serverTimestamps: 'estimate' }
-        ) as any
-    },
-    toFirestore: (data) => data,
-});
-
-if (!(await getDoc(docRef)).exists()) {
-    setDoc(docRef, {
-        teamScore: 0,
-        otherTeamScore: 0,
-    });
-}
-
-const scoreboardDoc = computed(() => docRef);
-
-const { data: scoreboard, pending } = useDocument(scoreboardDoc);
+const { scoreboard, pending } = await getScoreboard(useFirestore(), props.today);
 
 const buttonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
 };
-
-function incrementTeamScore(amount: number) {
-    return updateDoc(scoreboardDoc.value, {
-        teamScore: increment(amount)
-    });
-}
-
-function incrementOtherTeamScore(amount: number) {
-    return updateDoc(scoreboardDoc.value, {
-        otherTeamScore: increment(amount),
-    });
-}
 </script>
 
 <template>
