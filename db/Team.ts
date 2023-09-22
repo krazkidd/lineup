@@ -36,7 +36,7 @@ export async function getTeam(db: Firestore, id: ID) {
             name: '',
             jerseyColor: 'f47373',
             jerseyTextColor: '000000',
-          } as Team);
+        } as Team);
     }
 
     return _docRef;
