@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { useTeamStore } from '~~/stores/Team';
+import { getTeam, setJerseyColor, setJerseyTextColor } from '~~/db/Team';
 
+const db = useFirestore();
 const teamStore = useTeamStore();
+
+const { data: team } = useDocument(await getTeam(db, teamStore.id));
 
 const buttonPassThroughOptions = {
   label: {
@@ -39,14 +43,14 @@ const isDialogVisible = ref(false);
         Jersey Color
       </div>
       <div>
-        <ColorPicker v-model="teamStore.jerseyColor" format="hex" />
+        <ColorPicker :model-value="team?.jerseyColor" @update:model-value="setJerseyColor" format="hex" />
       </div>
 
       <div class="text-right text-xs py-2">
         Jersey Text Color
       </div>
       <div>
-        <ColorPicker v-model="teamStore.jerseyTextColor" format="hex" />
+        <ColorPicker :model-value="team?.jerseyTextColor" @update:model-value="setJerseyTextColor" format="hex" />
       </div>
     </div>
   </Dialog>

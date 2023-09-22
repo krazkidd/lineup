@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
 import { useTeamStore } from '~~/stores/Team';
+import { getTeam } from '~~/db/Team'
+import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
 
+const db = useFirestore();
 const teamStore = useTeamStore();
 
-const props = defineProps({
-    today: {
-        type: Date,
-        default: () => new Date(),
-    },
-});
-
-const { scoreboard, pending } = await getScoreboard(useFirestore(), props.today);
+const { data: team } = useDocument(await getTeam(db, teamStore.id));
+const { data: scoreboard, pending } = useDocument(await getScoreboard(db, teamStore.id));
 
 const buttonPassThroughOptions = {
   label: {
@@ -26,7 +22,7 @@ const buttonPassThroughOptions = {
             <template #header>
                 <span class="text-6xl">{{ scoreboard?.teamScore }}</span>
             </template>
-            <template #title>{{ teamStore.teamName }}</template>
+            <template #title>{{ team?.name }}</template>
             <template #footer>
                 <div class="flex justify-around">
                     <Button

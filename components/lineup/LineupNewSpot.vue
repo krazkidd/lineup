@@ -22,7 +22,6 @@ function createSpot(e: Event) {
     e.preventDefault();
 
     emit("add", {
-      id: nanoid(),
       player: {
         id: nanoid(),
         name: playerName.value,

@@ -5,7 +5,6 @@ import { Position } from "~~/types";
 import type { Player, Spot } from "~~/types";
 
 const fakeSpot = {
-  id: nanoid(),
   player: {
     id: nanoid(),
     name: '',

@@ -8,19 +8,17 @@ import {
 
     DocumentData,
     DocumentReference,
-
-    increment,
 } from 'firebase/firestore';
 
-import type { ID, Scoreboard } from '~~/types';
+import type { ID, Team } from '~~/types';
 
 let _db: Firestore;
-let _docRef: DocumentReference<Scoreboard, DocumentData>;
+let _docRef: DocumentReference<Team, DocumentData>;
 
-export async function getScoreboard(db: Firestore, id: ID) {
+export async function getTeam(db: Firestore, id: ID) {
     _db = db;
 
-    _docRef = doc(_db, 'scoreboards', id).withConverter<Scoreboard, DocumentData>({
+    _docRef = doc(_db, 'teams', id).withConverter<Team, DocumentData>({
         fromFirestore: (snapshot) => {
             // Here you could do validation with a library like zod
             return snapshot.data(
@@ -33,22 +31,31 @@ export async function getScoreboard(db: Firestore, id: ID) {
 
     if (!(await getDoc(_docRef)).exists()) {
         setDoc(_docRef, {
-            teamScore: 0,
-            otherTeamScore: 0,
-        } as Scoreboard);
+            id,
+
+            name: '',
+            jerseyColor: 'f47373',
+            jerseyTextColor: '000000',
+          } as Team);
     }
 
     return _docRef;
 }
 
-export function incrementTeamScore(amount: number) {
+export function setTeamName(teamName: string) {
     return updateDoc(_docRef, {
-        teamScore: increment(amount)
+        teamName
     });
 }
 
-export function incrementOtherTeamScore(amount: number) {
+export function setJerseyColor(jerseyColor: string) {
     return updateDoc(_docRef, {
-        otherTeamScore: increment(amount),
+        jerseyColor,
+    });
+}
+
+export function setJerseyTextColor(jerseyTextColor: string) {
+    return updateDoc(_docRef, {
+        jerseyTextColor,
     });
 }

@@ -1,6 +1,13 @@
 <script lang="ts" setup>
+import { useTeamStore } from '~~/stores/Team';
+import { getLineup, updateSpot } from '~~/db/Lineup';
 import type { Spot } from '~~/types';
 import { PositionOptions, getPositionShortName, getPositionLongName } from '~~/types';
+
+const db = useFirestore();
+const teamStore = useTeamStore();
+
+const { data: lineup } = useDocument(await getLineup(db, teamStore.id));
 
 const props = defineProps<{
   spot: Spot
@@ -28,7 +35,8 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
             }"
         >
           <Listbox
-                v-model="props.spot.position"
+                :model-value="props.spot.position"
+                @update:model-value="updateSpot(lineup!.spots, { ...props.spot, position: $event })"
                 :options="PositionOptions"
                 option-group-label="groupName"
                 option-group-children="children"
