@@ -3,7 +3,8 @@ import { useSortable } from '@vueuse/integrations/useSortable';
 
 import { useTeamStore } from '~~/stores/Team';
 import { getTeam, setTeamName } from '~~/db/Team';
-import { getLineup, addSpot, removeSpot } from '~~/db/Lineup';
+import { getLineup, setLineup, addSpot, removeSpot } from '~~/db/Lineup';
+import type { Lineup } from '~~/types';
 
 const db = useFirestore();
 const teamStore = useTeamStore();
@@ -11,9 +12,10 @@ const teamStore = useTeamStore();
 const { data: team } = useDocument(await getTeam(db, teamStore.id));
 const { data: lineup } = useDocument(await getLineup(db, teamStore.id));
 
-//TODO are these really necessary? they were workarounds for design-time issues
-const spots = computed(() => lineup.value?.spots ?? []);
-const numPlayers = computed(() => lineup.value?.spots.length ?? 0);
+const spots = computed<Lineup>({
+    get: () => lineup.value?.spots ?? [],
+    set: (v) => setLineup(v)
+});
 
 const sortableContainer = ref<HTMLElement | null>(null);
 useSortable(sortableContainer, spots, {
@@ -29,8 +31,8 @@ useSortable(sortableContainer, spots, {
         <div class="flex font-bold mb-4">
             <input
                 type="text"
-                :model-value="team?.name"
-                @update:model-value="setTeamName(($event.target!.value as string).trim())"
+                :value="team?.name"
+                @input="setTeamName(($event.target!.value as string).trim())"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
                 placeholder="Team Name"
@@ -59,7 +61,7 @@ useSortable(sortableContainer, spots, {
         <LineupNewSpot
             @add="!teamStore.isLocked && addSpot(lineup!.spots, $event)"
             :class="`${ teamStore.isLocked ? 'collapse' : 'visible' }`"
-            :num-players="numPlayers"
+            :num-players="spots.length"
         />
     </div>
 </template>

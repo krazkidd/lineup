@@ -42,9 +42,9 @@ export async function getTeam(db: Firestore, id: ID) {
     return _docRef;
 }
 
-export function setTeamName(teamName: string) {
+export function setTeamName(name: string) {
     return updateDoc(_docRef, {
-        teamName
+        name
     });
 }
 

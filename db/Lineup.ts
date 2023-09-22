@@ -38,6 +38,12 @@ export async function getLineup(db: Firestore, id: ID) {
     return _docRef;
 }
 
+export async function setLineup(lineup: Lineup) {
+    return updateDoc(_docRef, {
+        spots: [...lineup]
+    });
+}
+
 export function updateSpot(lineup: Lineup, spot: Spot) {
     let newLineup = [...lineup];
 
