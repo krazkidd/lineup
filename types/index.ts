@@ -18,6 +18,7 @@ export enum Position {
 
 export interface Player {
     id: ID;
+
     name: string;
     number: string;
 };

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { nanoid } from "nanoid";
-
 import { Position } from "~~/types";
 import type { Player, Spot } from "~~/types";
 
 const fakeSpot = {
   player: {
-    id: nanoid(),
+    id: '',
     name: '',
     number: '',
   } as Player,

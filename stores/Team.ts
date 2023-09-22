@@ -1,8 +1,7 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { nanoid } from "nanoid";
 
-import type { ID, Spot } from '~~/types';
-import { identity } from "lodash-es";
+import type { ID } from '~~/types';
 
 // NOTE: This Pinia store requires `ssr: false` in `nuxt.config.*` because the server
 //       will try to serialize our computed state properties to JSON, and that will fail

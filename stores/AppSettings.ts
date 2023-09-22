@@ -1,8 +1,9 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 
 // NOTE: This Pinia store requires `ssr: false` in `nuxt.config.*` because the server
-//       will try to serialize our computed state properties to JSON, and that will fail
-//       because functions can't be serialized.
+//       will try to serialize our computed getters/setters to JSON, and that will fail
+//       because functions can't be serialized. This is a limitation of the way Pinia
+//       works in SSR.
 //
 //       See: [The Pinia guide](https://pinia.vuejs.org/core-concepts/)
 //            https://github.com/vuejs/pinia/issues/829 (look for "Advanced SSR")
