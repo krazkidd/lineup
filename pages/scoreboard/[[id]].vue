@@ -3,11 +3,15 @@ import { useTeamStore } from '~~/stores/Team';
 import { getTeam } from '~~/db/Team'
 import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
 
+const route = useRoute()
 const db = useFirestore();
+
 const teamStore = useTeamStore();
 
-const { data: team } = useDocument(await getTeam(db, teamStore.id));
-const { data: scoreboard, pending } = useDocument(await getScoreboard(db, teamStore.id));
+const teamId = computed(() => route.params.id as string || teamStore.id);
+
+const { data: team } = useDocument(await getTeam(db, teamId.value));
+const { data: scoreboard, pending } = useDocument(await getScoreboard(db, teamId.value));
 
 const buttonPassThroughOptions = {
   label: {
