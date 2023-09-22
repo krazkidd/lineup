@@ -22,7 +22,6 @@ function createSpot(e: Event) {
     e.preventDefault();
 
     emit("add", {
-      id: nanoid(),
       player: {
         id: nanoid(),
         name: playerName.value,
@@ -47,7 +46,7 @@ function createSpot(e: Event) {
       class="grow inline-block bg-transparent focus:shadow rounded cursor-pointer px-1 py-2"
       @focus="focused = true"
       @blur="focused = false"
-      :placeholder="!focused ? '+ Add A Player' : 'Enter player name'"
+      :placeholder="focused ? 'Enter player name' : '+ Add A Player'"
     />
 
     <div class="shrink-0 px-1 py-2">

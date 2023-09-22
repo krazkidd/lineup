@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { useAppSettingsStore } from '~~/stores/AppSettings'
-
+import { useTeamStore } from '~~/stores/Team';
+import { getTeam } from '~~/db/Team';
+import { getLineup, updateSpot } from '~~/db/Lineup';
 import type { Spot } from '~~/types';
 
-const appSettingsStore = useAppSettingsStore();
+const db = useFirestore();
+const teamStore = useTeamStore();
+
+const { data: team } = useDocument(await getTeam(db, teamStore.id));
+const { data: lineup } = useDocument(await getLineup(db, teamStore.id));
 
 const props = defineProps<{
     spot: Spot,
@@ -16,11 +21,11 @@ const isDialogVisible = ref(false);
 <template>
     <div @click="isDialogVisible = true">
         <svg viewBox="215 45 526.2 372.045" :width="props.size" :height="props.size" xmlns="http://www.w3.org/2000/svg">
-            <use x="-308.27" href="@/assets/images/cloth-t-shirt.svg#shirt-back" :fill="`#${ appSettingsStore.jerseyColor }`" />
+            <use x="-308.27" href="@/assets/images/cloth-t-shirt.svg#shirt-back" :fill="`#${ team?.jerseyColor }`" />
 
-            <text v-if="props.spot.player.number.length === 1" x="445" y="200" font-size="10em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
-            <text v-else-if="props.spot.player.number.length === 2" x="390" y="200" font-size="10em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
-            <text v-else-if="props.spot.player.number.length === 3" x="370" y="200" font-size="8.5em" font-weight="bold" :fill="`#${ appSettingsStore.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+            <text v-if="props.spot.player.number.length === 1" x="445" y="200" font-size="10em" font-weight="bold" :fill="`#${ team?.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+            <text v-else-if="props.spot.player.number.length === 2" x="390" y="200" font-size="10em" font-weight="bold" :fill="`#${ team?.jerseyTextColor }`">{{ props.spot.player.number }}</text>
+            <text v-else-if="props.spot.player.number.length === 3" x="370" y="200" font-size="8.5em" font-weight="bold" :fill="`#${ team?.jerseyTextColor }`">{{ props.spot.player.number }}</text>
         </svg>
 
         <Dialog
@@ -35,7 +40,8 @@ const isDialogVisible = ref(false);
             <div class="flex flex-column gap-2">
                 <InputText
                     type="text"
-                    v-model="props.spot.player.number"
+                    :model-value="props.spot.player.number"
+                    @update:model-value="updateSpot(lineup!.spots, { player: { ...props.spot.player, number: $event }, position: props.spot.position })"
                     @keyup.enter="isDialogVisible = false"
                     :pt="{
                         root: { class: '!w-full' },

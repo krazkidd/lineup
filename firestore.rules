@@ -1,0 +1,39 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /teams/{id} {
+    	allow read;
+      // only allow writing Team type
+      allow write:
+        if request.resource.data.size() == 4
+        && request.resource.data.id is string
+        && request.resource.data.name is string
+        && request.resource.data.jerseyColor is string
+        && request.resource.data.jerseyTextColor is string;
+    }
+
+    match /lineups/{id} {
+    	allow read;
+      // only allow writing Lineup type
+      allow write;
+        //TODO Lineup is an array of { player: Player, position: Position }
+        //if request.resource.data.size() == 2
+    }
+
+    match /scoreboards/{id} {
+    	allow read;
+      // only allow writing Scoreboard type
+      allow write:
+        if request.resource.data.size() == 2
+        && request.resource.data.teamScore is int
+        && request.resource.data.otherTeamScore is int;
+    }
+
+    // forbid everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

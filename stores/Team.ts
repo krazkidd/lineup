@@ -1,25 +1,33 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
+import { nanoid } from "nanoid";
+
+import type { ID } from '~~/types';
 
 // NOTE: This Pinia store requires `ssr: false` in `nuxt.config.*` because the server
-//       will try to serialize our computed getters/setters to JSON, and that will fail
-//       because functions can't be serialized. This is a limitation of the way Pinia
-//       works in SSR.
+//       will try to serialize our computed state properties to JSON, and that will fail
+//       because functions can't be serialized.
 //
 //       See: [The Pinia guide](https://pinia.vuejs.org/core-concepts/)
 //            https://github.com/vuejs/pinia/issues/829 (look for "Advanced SSR")
 //            https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
 //            https://github.com/nuxt/nuxt/issues/20889
 
-export const useAppSettingsStore = defineStore('AppSettingsStore', {
+export const useTeamStore = defineStore('TeamStore', {
   state: () => {
-    const _colorMode = useColorMode();
+    const _id = useLocalStorage<ID>('TeamStore:id', nanoid());
+    const _isLocked = useLocalStorage<boolean>('TeamStore:isLocked', false);
 
     // NOTE: We provide setters so we can persist to storage.
     //       Source: https://github.com/vuejs/pinia/issues/447#issuecomment-1455285437
 
-    const colorMode = computed<string>({
-      get: () => _colorMode.preference,
-      set: (v) => _colorMode.preference = v
+    const id = computed<ID>({
+      get: () => _id.value,
+      set: (v) => _id.value = v
+    });
+
+    const isLocked = computed<boolean>({
+      get: () => _isLocked.value,
+      set: (v) => _isLocked.value = v
     });
 
     // function $reset() {
@@ -27,7 +35,9 @@ export const useAppSettingsStore = defineStore('AppSettingsStore', {
     // }
 
     return {
-      colorMode,
+      id,
+
+      isLocked,
 
       //$reset,
     };
@@ -35,5 +45,5 @@ export const useAppSettingsStore = defineStore('AppSettingsStore', {
 });
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useAppSettingsStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useTeamStore, import.meta.hot));
 }

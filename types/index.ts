@@ -18,6 +18,7 @@ export enum Position {
 
 export interface Player {
     id: ID;
+
     name: string;
     number: string;
 };
@@ -27,15 +28,17 @@ export interface Spot {
     position: Position;
 };
 
-export interface Lineup {
-    id: ID;
+export type Lineup = Spot[];
 
-    teamName: string;
+export interface Team {
+    name: string;
     jerseyColor: string,
     jerseyTextColor: string,
+};
 
-    isLocked: boolean,
-    spots: Spot[];
+export interface Scoreboard {
+    teamScore: number,
+    otherTeamScore: number
 };
 
 //TODO this can probably be refactored into something more readable

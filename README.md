@@ -17,8 +17,6 @@ License: AGPLv3 (see LICENSE.md file)
 * Customizable team colors
 * Dark mode
 
-The app can be used without an active internet connection by making use of local browser storage. (This may change in the future.)
-
 ## Development
 
 ### VS Code Recommended Extensions:
@@ -75,4 +73,4 @@ An app spec is available under `.do/` which will run the SSG command and publish
 
 ## Attributions
 
-The softball favicon (`public/favicon.ico`) is used under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license from the [twemoji](https://github.com/twitter/twemoji) project. The source image is [here](https://github.com/twitter/twemoji/blob/master/assets/svg/1f94e.svg).
+The softball favicon (`public/favicon/favicon.ico`) is used under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license from the [twemoji](https://github.com/twitter/twemoji) project.

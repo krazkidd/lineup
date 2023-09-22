@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useAppSettingsStore } from '~~/stores/AppSettings'
+import { useTeamStore } from '~~/stores/Team'
 
 import type { ID, Spot } from '~~/types';
 
-const appSettingsStore = useAppSettingsStore();
+const teamStore = useTeamStore();
 
 const props = defineProps<{
     spot: Spot,
@@ -15,7 +15,7 @@ const emit = defineEmits<{
 
 const focused = ref(false);
 onKeyStroke("Backspace", (e) => {
-    if (focused.value && !appSettingsStore.isLocked) {
+    if (focused.value && !teamStore.isLocked) {
         emit('delete', props.spot.player.id);
     }
 });
@@ -29,13 +29,13 @@ onKeyStroke("Backspace", (e) => {
         @blur="focused = false"
         tabindex="0"
     >
-        <LineupDragHandle :class="`${ appSettingsStore.isLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
+        <LineupDragHandle :class="`${ teamStore.isLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
 
         <LineupJerseyButton
             :spot="props.spot"
             :size="'3em'"
-            :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${appSettingsStore.isLocked ? 'none' : 'auto'}`"
-            :disabled="appSettingsStore.isLocked"
+            :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${teamStore.isLocked ? 'none' : 'auto'}`"
+            :disabled="teamStore.isLocked"
         />
 
         <input
@@ -44,7 +44,7 @@ onKeyStroke("Backspace", (e) => {
             @keyup.enter="($event.target as HTMLInputElement).blur()"
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 cursor-pointer px-1"
             placeholder="Enter player name"
-            :disabled="appSettingsStore.isLocked"
+            :disabled="teamStore.isLocked"
         />
 
         <LineupPositionButton
