@@ -7,6 +7,7 @@ import { getLineup, setLineup, addSpot, removeSpot } from '~~/db/Lineup';
 import type { Lineup } from '~~/types';
 
 const db = useFirestore();
+
 const teamStore = useTeamStore();
 
 const { data: team } = useDocument(await getTeam(db, teamStore.id));
