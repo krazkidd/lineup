@@ -3,6 +3,7 @@ import { useTeamStore } from '~~/stores/Team';
 import { getTeam, setJerseyColor, setJerseyTextColor } from '~~/db/Team';
 
 const db = useFirestore();
+
 const teamStore = useTeamStore();
 
 const { data: team } = useDocument(await getTeam(db, teamStore.id));
@@ -30,14 +31,14 @@ const isDialogVisible = ref(false);
   />
 
   <Dialog
-      v-model:visible="isDialogVisible"
-      modal
-      header="Team Settings"
-      :pt="{
-          root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-          content: { class: 'pt-1' }
-      }"
-    >
+    v-model:visible="isDialogVisible"
+    modal
+    header="Team Settings"
+    :pt="{
+        root: { class: 'w-full md:w-3/4 xl:w-1/2' },
+        content: { class: 'pt-1' }
+    }"
+  >
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
       <div class="text-right text-xs py-2">
         Jersey Color

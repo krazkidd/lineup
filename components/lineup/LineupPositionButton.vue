@@ -5,6 +5,7 @@ import type { Spot } from '~~/types';
 import { PositionOptions, getPositionShortName, getPositionLongName } from '~~/types';
 
 const db = useFirestore();
+
 const teamStore = useTeamStore();
 
 const { data: lineup } = useDocument(await getLineup(db, teamStore.id));
@@ -34,7 +35,7 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
                 content: { class: 'pt-1' }
             }"
         >
-          <Listbox
+            <Listbox
                 :model-value="props.spot.position"
                 @update:model-value="updateSpot(lineup!.spots, { ...props.spot, position: $event })"
                 :options="PositionOptions"
@@ -49,13 +50,13 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
             >
                 <template #option="{ option }">
                     <span :title="option.longName" class="inline-block bg-white text-gray-800 rounded-full text-center w-[2em]">
-                      {{ option.shortName }}
+                        {{ option.shortName }}
                     </span>
 
                     {{ option.longName }}
                 </template>
             </Listbox>
-      </Dialog>
+        </Dialog>
     </div>
 </template>
 
