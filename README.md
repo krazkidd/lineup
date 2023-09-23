@@ -14,6 +14,7 @@ License: AGPLv3 (see LICENSE.md file)
 * Drag-and-drop to reorder players
 * Lock the lineup
   * Only field positions can be changed after locking
+* Live (real time) scoreboard which can be accessed by friends through a URL
 * Customizable team colors
 * Dark mode
 

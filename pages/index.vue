@@ -22,6 +22,7 @@
                             <li>Only field positions can be changed after locking</li>
                         </ul>
                     </li>
+                    <li>Live (real time) scoreboard which can be accessed by friends through a URL</li>
                     <li>Customizable team colors</li>
                     <li>Dark mode</li>
                 </ul>
