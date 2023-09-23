@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useToast } from "primevue/usetoast";
+
 import { scoreboardMenuItem } from '~~/nav';
 import type { ID, Team } from '~~/types';
+
+const toast = useToast();
 
 const props = defineProps<{
     teamId: ID
@@ -14,6 +18,30 @@ const buttonPassThroughOptions = {
 };
 
 const isDialogVisible = ref(false);
+
+function getScoreboardPath(path: string) {
+    return location.origin.concat(path, '/', props.teamId);
+}
+
+function clickQrCode(path: string) {
+    const scoreboardPath = getScoreboardPath(path);
+
+    if (navigator.share) {
+        navigator.share({
+            title: `${props.team.name}'s Scoreboard`,
+            url: scoreboardPath
+        }).catch(console.error);
+    } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(scoreboardPath).then(
+            () => {
+                toast.add({ severity: 'info', detail: 'Scoreboard URL copied to clipboard!', life: 2000 });
+            },
+            () => {
+                toast.add({ severity: 'error', detail: 'Scoreboard URL not copied to clipboard!', life: 2000 });
+            },
+        );
+    }
+}
 </script>
 
 
@@ -39,14 +67,16 @@ const isDialogVisible = ref(false);
         }"
     >
         <RouterLink :to="scoreboardMenuItem.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
-            <a :href="href.concat('/', props.teamId)" v-bind="props.action" @click="navigate" class="block">
+            <button type="button" @click="clickQrCode(href)" class="block mx-auto mb-3">
                 <VueQrcode
-                    :value="href.concat('/', props.teamId)"
+                    :value="getScoreboardPath(href)"
                     type="image/png"
                     :color="{ dark: '#000000ff', light: '#ffffffff' }"
-                    class="block mx-auto"
                 />
-            </a>
-    </RouterLink>
+            </button>
+            <p class="text-center">
+                Click or scan the QR code, or use <a :href="`${getScoreboardPath(href)}`" class="underline">this link</a>.
+            </p>
+        </RouterLink>
     </Dialog>
 </template>

@@ -83,6 +83,8 @@ const menuPassThroughOptions = {
       <NuxtPage />
     </div>
   </div>
+
+  <Toast />
 </template>
 
 <style>
