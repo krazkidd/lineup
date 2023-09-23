@@ -67,7 +67,7 @@ const menuPassThroughOptions = {
   <div class="flex flex-col items-center min-h-screen">
     <div class="flex justify-between items-center w-full p-1">
       <RouterLink :to="homeMenuItem.to!" :title="homeMenuItem.label" class="inline-block p-2">
-        <img src="@/favicon/favicon-32x32.png" :alt="homeMenuItem.label as string" />
+        <img src="/favicon/favicon-32x32.png" :alt="homeMenuItem.label as string" />
       </RouterLink>
 
       <Button
