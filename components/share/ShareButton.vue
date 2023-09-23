@@ -41,7 +41,7 @@ const isDialogVisible = ref(false);
         <RouterLink :to="scoreboardMenuItem.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
             <a :href="href.concat('/', props.teamId)" v-bind="props.action" @click="navigate" class="block">
                 <VueQrcode
-                    :value="`${href.concat('/', props.teamId)}`"
+                    :value="href.concat('/', props.teamId)"
                     type="image/png"
                     :color="{ dark: '#000000ff', light: '#ffffffff' }"
                     class="block mx-auto"
