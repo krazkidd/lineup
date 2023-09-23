@@ -33,14 +33,14 @@ const isDialogVisible = ref(false);
   />
 
   <Dialog
-      v-model:visible="isDialogVisible"
-      modal
-      header="Help"
-      :pt="{
-          root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-          content: { class: 'pt-1' }
-      }"
-    >
+    v-model:visible="isDialogVisible"
+    modal
+    header="Help"
+    :pt="{
+        root: { class: 'w-full md:w-3/4 xl:w-1/2' },
+        content: { class: 'pt-1' }
+    }"
+  >
     <div class="py-2">
       <ul class="list-disc">
         <li>

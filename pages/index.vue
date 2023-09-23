@@ -7,7 +7,7 @@
             <h1>Welcome, coach!</h1>
 
             <p>
-                Plan your softball team's batting order and field positions.
+                Plan your softball team's batting order and field positions. Then share a live scoreboard through a URL!
             </p>
 
             <h2>Features</h2>
