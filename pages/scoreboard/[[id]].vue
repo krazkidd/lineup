@@ -27,7 +27,7 @@ const buttonPassThroughOptions = {
                 class="grow inline-block px-1"
             />
 
-            <ShareButton :teamId="teamId" :team="team!" />
+            <ScoreboardShareButton :teamId="teamId" :team="team!" />
         </div>
 
         <div class="flex flex-col sm:flex-row justify-around items-center text-center">
