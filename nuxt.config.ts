@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-vuefire"
   ],
+  // NOTE: We have to disable SSR until Pinia has better
+  //       support for our usage. (See stores/*.ts.)
   // HACK: We have to disable SSR until Pinia has better
   //       support for our usage. See stores/AppSettings.ts.
   ssr: false,

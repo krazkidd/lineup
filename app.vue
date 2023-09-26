@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { navMenuItems, homeMenuItem } from '~~/nav'
-import { useAppSettingsStore } from '~~/stores/AppSettings';
 
-const appSettingsStore = useAppSettingsStore();
+const colorMode = useColorMode();
 
 const isSidebarVisible = ref(false);
 const sidebarPassThroughOptions = {
@@ -24,22 +23,22 @@ const menuPassThroughOptions = {
   <Sidebar v-model:visible="isSidebarVisible" position="right" :pt="sidebarPassThroughOptions">
     <template #header>
       <Button
-        @click="appSettingsStore.colorMode = appSettingsStore.colorMode === 'system' ? 'dark' : appSettingsStore.colorMode === 'dark' ? 'light' : 'system'"
+        @click="colorMode.preference = colorMode.preference === 'system' ? 'dark' : colorMode.preference === 'dark' ? 'light' : 'system'"
         class="text-gray-800 border-gray-800 dark:text-gray-300 dark:border-gray-300"
         size="small"
         outlined
         aria-label="Color mode"
         title="Color mode"
       >
-        <template v-if="appSettingsStore.colorMode === 'system'">
+        <template v-if="colorMode.preference === 'system'">
           <i class="pi pi-fw pi-desktop pr-2"></i>
           System
         </template>
-        <template v-if="appSettingsStore.colorMode === 'dark'">
+        <template v-if="colorMode.preference === 'dark'">
           <i class="pi pi-fw pi-moon pr-2"></i>
           Dark
         </template>
-        <template v-if="appSettingsStore.colorMode === 'light'">
+        <template v-if="colorMode.preference === 'light'">
           <i class="pi pi-fw pi-sun pr-2"></i>
           Light
         </template>
