@@ -33,6 +33,8 @@
   "dependencies": {
     "@firebase/app-types": "^0.9.0",
     "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.4.1",
     "nanoid": "^4.0.2",
     "nuxt-vuefire": "^0.3.0",
     "qrcode": "^1.5.3",

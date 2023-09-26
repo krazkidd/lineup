@@ -8,8 +8,8 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-vuefire"
   ],
-  // HACK: We have to disable SSR until Pinia has better
-  //       support for our usage. See stores/AppSettings.ts.
+  // NOTE: This allows us to deploy to some free
+  //       hosting services.
   ssr: false,
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
