@@ -22,12 +22,8 @@ const buttonPassThroughOptions = {
 
 <template>
     <div>
-        <div class="flex font-bold mb-4">
-            <div
-                class="grow inline-block px-1"
-            />
-
-            <ScoreboardShareButton :teamId="teamId" :team="team!" />
+        <div class="flex justify-end mb-1">
+            <ScoreboardShareButton :teamId="teamId" :team="team!" class="justify-self-end" />
         </div>
 
         <div class="flex flex-col sm:flex-row justify-around items-center text-center">

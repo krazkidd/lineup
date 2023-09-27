@@ -24,7 +24,7 @@ onKeyStroke("Backspace", (e) => {
 <template>
     <div
         :title="`${props.spot.player.number ? '#' + props.spot.player.number + ' ' : null}${props.spot.player.name}`"
-        class="flex leading-[3rem] space-x-2 rounded text-gray-800 shadow-sm p-2 mb-2"
+        class="flex leading-[3rem] space-x-2 rounded shadow-sm p-2 mb-2"
         @focus="focused = true"
         @blur="focused = false"
         tabindex="0"

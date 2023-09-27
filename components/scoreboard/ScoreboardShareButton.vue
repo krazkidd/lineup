@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ButtonPassThroughOptions } from 'primevue/button';
 import { useToast } from "primevue/usetoast";
 
 import { scoreboardMenuItem } from '~~/nav';
@@ -15,7 +16,7 @@ const buttonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
-};
+} as ButtonPassThroughOptions;
 
 const isDialogVisible = ref(false);
 
@@ -48,6 +49,7 @@ function clickQrCode(path: string) {
 <template>
     <Button
         @click="isDialogVisible = true"
+        v-bind="$attrs"
         icon="pi pi-fw pi-share-alt"
         severity="secondary"
         text
