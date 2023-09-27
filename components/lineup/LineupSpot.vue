@@ -49,7 +49,7 @@ onKeyStroke("Backspace", (e) => {
 
         <LineupPositionButton
             :spot="props.spot"
-            class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 bg-white rounded-full text-center w-[3em]"
+            class="shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 text-gray-800 bg-white rounded-full text-center w-[3em]"
         />
     </div>
 </template>

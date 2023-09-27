@@ -85,22 +85,3 @@ const menuPassThroughOptions = {
 
   <Toast />
 </template>
-
-<style>
-body,
-#__nuxt {
-  min-height: 100vh;
-}
-
-body {
-  @apply text-gray-800 dark:text-gray-300 dark:bg-[#091a28];
-}
-
-input {
-  @apply placeholder-gray-600 dark:placeholder-gray-400;
-}
-
-.router-link-exact-active {
-  @apply text-orange-600 dark:text-yellow-300;
-}
-</style>

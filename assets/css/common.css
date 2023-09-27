@@ -1,0 +1,22 @@
+body,
+#__nuxt {
+  min-height: 100vh;
+}
+
+body {
+  @apply text-gray-800 dark:text-gray-300 dark:bg-[#091a28];
+}
+
+/* accentuate important UI components */
+.accent {
+    @apply text-slate-800 bg-blue-200 dark:text-slate-100 dark:bg-sky-700;
+}
+
+input {
+  @apply placeholder-gray-600 dark:placeholder-gray-400;
+}
+
+/* highlight active router links */
+.router-link-exact-active {
+  @apply text-orange-600 dark:text-yellow-300;
+}

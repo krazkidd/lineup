@@ -54,7 +54,7 @@ useSortable(sortableContainer, spots, {
                     :key="spot.player.id"
                     :spot="spot"
                     @delete="!teamStore.isLocked && removeSpot(lineup!.spots, $event)"
-                    class="text-gray-800 bg-blue-200"
+                    class="accent"
                 />
             </ClientOnly>
         </div>
