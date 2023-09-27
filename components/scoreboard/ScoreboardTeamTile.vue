@@ -16,7 +16,7 @@ const emit = defineEmits<{
 
 const cardPassThroughOptions = {
   root: {
-    class: `accent m-1 w-64`
+    class: 'accent m-1 w-64',
   }
 } as CardPassThroughOptions;
 
