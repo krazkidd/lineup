@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Team } from '~~/types';
+
 import { useTeamStore } from '~~/stores/Team';
 import { getTeam } from '~~/db/Team'
 import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
@@ -11,13 +13,13 @@ const teamStore = useTeamStore();
 const teamId = computed(() => route.params.id as string || teamStore.id);
 
 const { data: team } = useDocument(await getTeam(db, teamId.value));
-const { data: scoreboard, pending } = useDocument(await getScoreboard(db, teamId.value));
+const { data: scoreboard } = useDocument(await getScoreboard(db, teamId.value));
 
-const buttonPassThroughOptions = {
-  label: {
-    class: 'hidden'
-  }
-};
+const fakeTeam = {
+    name: "Opposing Team",
+    jerseyColor: "f5f5f5",
+    jerseyTextColor: "cdcdcd",
+} as Team;
 </script>
 
 <template>
@@ -27,71 +29,21 @@ const buttonPassThroughOptions = {
         </div>
 
         <div class="flex flex-col sm:flex-row justify-around items-center text-center">
-            <Card class="m-1 w-64">
-                <template #header>
-                    <span class="text-6xl">{{ scoreboard?.teamScore }}</span>
-                </template>
-                <template #title>{{ team?.name }}</template>
-                <template #footer>
-                    <div class="flex justify-around">
-                        <Button
-                            @click="incrementTeamScore(1)"
-                            icon="pi pi-caret-up"
-                            severity="success"
-                            rounded
-                            aria-label="Add Run"
-                            title="Add Run"
-                            :loading="pending"
-                            :pt="buttonPassThroughOptions"
-                        />
+            <ScoreboardTeamTile
+                :team="team"
+                :score="scoreboard?.teamScore ?? 0"
+                @add-run="incrementTeamScore(1)"
+                @remove-run="incrementTeamScore(-1)"
+                class="m-1 w-64"
+            />
 
-                        <Button
-                            @click="incrementTeamScore(-1)"
-                            icon="pi pi-caret-down"
-                            severity="danger"
-                            rounded
-                            outlined
-                            aria-label="Remove Run"
-                            title="Remove Run"
-                            :loading="pending"
-                            :pt="buttonPassThroughOptions"
-                        />
-                    </div>
-                </template>
-            </Card>
-
-            <Card class="m-1 w-64">
-                <template #header>
-                    <span class="text-6xl">{{ scoreboard?.otherTeamScore }}</span>
-                </template>
-                <template #title>Opposing Team</template>
-                <template #footer>
-                    <div class="flex justify-around">
-                        <Button
-                            @click="incrementOtherTeamScore(1)"
-                            icon="pi pi-caret-up"
-                            severity="success"
-                            rounded
-                            aria-label="Add Run"
-                            title="Add Run"
-                            :loading="pending"
-                            :pt="buttonPassThroughOptions"
-                        />
-
-                        <Button
-                            @click="incrementOtherTeamScore(-1)"
-                            icon="pi pi-caret-down"
-                            severity="danger"
-                            rounded
-                            outlined
-                            aria-label="Remove Run"
-                            title="Remove Run"
-                            :loading="pending"
-                            :pt="buttonPassThroughOptions"
-                        />
-                    </div>
-                </template>
-            </Card>
+            <ScoreboardTeamTile
+                :team="fakeTeam"
+                :score="scoreboard?.otherTeamScore ?? 0"
+                @add-run="incrementOtherTeamScore(1)"
+                @remove-run="incrementOtherTeamScore(-1)"
+                class="m-1 w-64"
+            />
         </div>
     </div>
 </template>
