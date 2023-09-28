@@ -17,8 +17,8 @@ const { data: scoreboard } = useDocument(await getScoreboard(db, teamId.value));
 
 const fakeTeam = {
     name: "Opposing Team",
-    jerseyColor: "f5f5f5",
-    jerseyTextColor: "cdcdcd",
+    //jerseyColor: "",
+    //jerseyTextColor: "",
 } as Team;
 </script>
 

@@ -14,11 +14,18 @@ const emit = defineEmits<{
     (e: "removeRun"): void;
 }>();
 
-const cardPassThroughOptions = {
+const cardPassThroughOptions = computed(() => ({
   root: {
     class: 'accent m-1 w-64',
+  },
+  title: {
+    class: 'rounded',
+    style: {
+        color: props.team ? `#${props.team!.jerseyTextColor}` : '',
+        backgroundColor: props.team ? `#${props.team!.jerseyColor}` : '',
+    }
   }
-} as CardPassThroughOptions;
+} as CardPassThroughOptions));
 
 const buttonPassThroughOptions = {
   label: {
