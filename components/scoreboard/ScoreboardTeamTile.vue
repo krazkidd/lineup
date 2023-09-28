@@ -40,7 +40,7 @@ const buttonPassThroughOptions = {
             <span class="text-6xl">{{ props.score }}</span>
         </template>
         <template #title>{{ props.team?.name }}</template>
-        <template #footer>
+        <template #content>
             <div class="flex justify-around">
                 <Button
                     @click="emit('addRun')"
