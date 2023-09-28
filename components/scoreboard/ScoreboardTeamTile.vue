@@ -4,10 +4,13 @@ import type { CardPassThroughOptions } from 'primevue/card';
 
 import type { Team } from "~~/types";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     team: Team | undefined,
-    score: number
-}>();
+    score: number,
+    showButtons?: boolean
+}>(), {
+    showButtons: false
+});
 
 const emit = defineEmits<{
     (e: "addRun"): void;
@@ -24,7 +27,12 @@ const cardPassThroughOptions = computed(() => ({
         color: props.team ? `#${props.team!.jerseyTextColor}` : '',
         backgroundColor: props.team ? `#${props.team!.jerseyColor}` : '',
     }
-  }
+  },
+  content: {
+    class: {
+        hidden: !props.showButtons
+    }
+  },
 } as CardPassThroughOptions));
 
 const buttonPassThroughOptions = {

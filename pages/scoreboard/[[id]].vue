@@ -32,6 +32,7 @@ const fakeTeam = {
             <ScoreboardTeamTile
                 :team="team"
                 :score="scoreboard?.teamScore ?? 0"
+                :show-buttons="!route.params.id"
                 @add-run="incrementTeamScore(1)"
                 @remove-run="incrementTeamScore(-1)"
                 class="m-1 w-64"
@@ -40,6 +41,7 @@ const fakeTeam = {
             <ScoreboardTeamTile
                 :team="fakeTeam"
                 :score="scoreboard?.otherTeamScore ?? 0"
+                :show-buttons="!route.params.id"
                 @add-run="incrementOtherTeamScore(1)"
                 @remove-run="incrementOtherTeamScore(-1)"
                 class="m-1 w-64"
