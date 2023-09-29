@@ -49,7 +49,7 @@ const menuPassThroughOptions = {
       <Menu :model="navMenuItems" :pt="menuPassThroughOptions">
         <template #item="{ label, item, props }">
           <RouterLink :to="item.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
-            <a :href="href" v-bind="props.action" @click="navigate($event).then(() => isSidebarVisible = false)" :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']">
+            <a :href="href" v-bind="props.action" @click="navigate($event).then(() => isSidebarVisible = false)" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">
               <span v-bind="props.icon" />
               <span v-bind="props.label">{{ label }}</span>
             </a>

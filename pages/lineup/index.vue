@@ -62,7 +62,7 @@ useSortable(sortableContainer, spots, {
 
         <LineupNewSpot
             @add="!teamStore.isLocked && addSpot(lineup!.spots, $event)"
-            :class="`${ teamStore.isLocked ? 'collapse' : 'visible' }`"
+            :class="{ hidden: teamStore.isLocked }"
             :num-players="spots.length"
         />
     </div>

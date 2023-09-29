@@ -29,7 +29,10 @@ onKeyStroke("Backspace", (e) => {
         @blur="focused = false"
         tabindex="0"
     >
-        <LineupDragHandle :class="`${ teamStore.isLocked ? 'collapse' : 'visible' } inline-block shrink-0 text-[1.3em] px-2`" />
+        <LineupDragHandle
+            :class="{ hidden: teamStore.isLocked }"
+            class="inline-block shrink-0 text-[1.3em] px-2"
+        />
 
         <LineupJerseyButton
             :spot="props.spot"
