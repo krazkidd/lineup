@@ -31,6 +31,16 @@ service cloud.firestore {
         && request.resource.data.otherTeamScore is int;
     }
 
+    match /emotes/{id} {
+    	allow read;
+      // only allow writing Scoreboard type
+      allow write:
+        if request.resource.data.size() == 3
+        && request.resource.data.teamId is string
+        && request.resource.data.emote is string
+        && request.resource.data.ticks is int;
+    }
+
     // forbid everything else
     match /{document=**} {
       allow read, write: if false;
