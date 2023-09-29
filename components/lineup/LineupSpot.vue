@@ -34,7 +34,8 @@ onKeyStroke("Backspace", (e) => {
         <LineupJerseyButton
             :spot="props.spot"
             :size="'3em'"
-            :class="`shrink-0 inline-block cursor-pointer hover:outline hover:outline-blue-950 rounded-full w-[3em] pointer-events-${teamStore.isLocked ? 'none' : 'auto'}`"
+            :class="{ 'cursor-pointer': !teamStore.isLocked, 'pointer-events-none': teamStore.isLocked }"
+            class="shrink-0 inline-block hover:outline hover:outline-blue-950 rounded-full w-[3em]"
             :disabled="teamStore.isLocked"
         />
 
@@ -42,7 +43,8 @@ onKeyStroke("Backspace", (e) => {
             type="text"
             v-model.trim="props.spot.player.name"
             @keyup.enter="($event.target as HTMLInputElement).blur()"
-            class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 cursor-pointer px-1"
+            :class="{ 'cursor-pointer': !teamStore.isLocked }"
+            class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 px-1"
             placeholder="Enter player name"
             :disabled="teamStore.isLocked"
         />

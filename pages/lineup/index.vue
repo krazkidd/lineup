@@ -35,7 +35,8 @@ useSortable(sortableContainer, spots, {
                 :value="team?.name"
                 @input="setTeamName(($event.target!.value as string).trim())"
                 @keyup.enter="($event.target as HTMLInputElement).blur()"
-                class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded cursor-pointer px-1"
+                :class="{ 'cursor-pointer': !teamStore.isLocked }"
+                class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded px-1"
                 placeholder="Team Name"
                 :disabled="teamStore.isLocked"
             />
