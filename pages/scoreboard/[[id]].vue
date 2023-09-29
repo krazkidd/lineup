@@ -38,7 +38,7 @@ const fakeTeam = {
             <ScoreboardShareButton :teamId="teamId" :team="team!" class="justify-self-end" />
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-between items-center text-center mb-1 px-4">
+        <div class="flex flex-col sm:flex-row justify-between items-center text-center mb-4 px-4">
             <ScoreboardTeamTile
                 :team="team"
                 :score="scoreboard?.teamScore ?? 0"
