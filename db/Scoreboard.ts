@@ -1,13 +1,12 @@
 import {
     Firestore,
+    DocumentReference,
+    DocumentData,
 
     doc,
     getDoc,
     setDoc,
     updateDoc,
-
-    DocumentData,
-    DocumentReference,
 
     increment,
 } from 'firebase/firestore';

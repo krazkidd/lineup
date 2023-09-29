@@ -66,6 +66,3 @@ const fakeTeam = {
         />
     </div>
 </template>
-
-<style scoped>
-</style>
