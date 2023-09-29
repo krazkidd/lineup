@@ -62,7 +62,12 @@ const fakeTeam = {
 
         <ScoreboardEmojiBoard
             @emote="addEmote({ teamId, emote: $event, ticks: Date.now() } as Emote)"
-            class=" px-4"
+            :class="[
+                {
+                    hidden: !route.params.id
+                },
+                'px-4'
+            ]"
         />
     </div>
 </template>
