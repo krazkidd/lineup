@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navMenuItems, homeMenuItem } from '~~/nav'
+import { navMenuItems, homeMenuItem } from '~~/data/nav'
 
 const colorMode = useColorMode();
 

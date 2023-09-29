@@ -1,13 +1,12 @@
 import {
     Firestore,
+    DocumentReference,
+    DocumentData,
 
     doc,
     getDoc,
     setDoc,
     updateDoc,
-
-    DocumentData,
-    DocumentReference,
 } from 'firebase/firestore';
 
 import type { ID, Lineup, Spot } from '~~/types';
