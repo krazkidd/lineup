@@ -44,6 +44,10 @@ export default defineNuxtConfig({
     // make compatible with @nuxtjs/tailwindcss module
     classSuffix: '',
   },
+  // nitro: {
+  //   // prefer to set this in build environment
+  //   preset: '',
+  // },
   vuefire: {
     emulators: {
       // uncomment this line to run the application in production mode without emulators during dev
