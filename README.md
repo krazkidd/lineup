@@ -73,6 +73,8 @@ For a preview of the generated site on http://localhost:3000/, you can run:
 npm run preview
 ```
 
+Note that the preview feature may not work. A workaround is documented [here](https://github.com/nuxt/nuxt/issues/14454#issuecomment-1397357957) but it doesn't seem to help.
+
 ## Hosting
 
 ### GitHub Pages (free)
