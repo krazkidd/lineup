@@ -32,10 +32,22 @@ License: AGPLv3 (see LICENSE.md file)
 
 ### Setup
 
-To install dependencies and run the Vite development server:
+To install dependencies:
 
 ```bash
 npm install
+```
+
+To install the Firebase CLI, [follow these instructions](https://www.npmjs.com/package/firebase-tools#installation) or simply run:
+
+```bash
+npm install -g firebase-tools
+```
+
+To start the Firestore emulator and run the Vite development server:
+
+```bash
+firebase emulators:start
 npm run dev
 ```
 
@@ -43,9 +55,7 @@ The server listens on http://localhost:3000/.
 
 ## Deployment
 
-Only static Nuxt deployments (SSG) are supported at this time. This is due to a limitation in the way the Pinia and local storage Nuxt modules (i.e. the `defineStore()` and `useLocalStorage()` composables) work when Nuxt's server-side rendering (SSR) is enabled.
-
-The basic problem is that hydration of the Pinia store on the client does not capture the locally-stored app state. Because of this, SSR is disabled with `ssr: false`. You may find additional details [here](https://github.com/krazkidd/lineup/pull/3).
+Only static Nuxt deployments (SSG) are supported at this time (`ssr: false`). This allows us to deploy to some free static hosting services. See [Hosting](#hosting).
 
 ### Static Site Generation (SSG)
 
