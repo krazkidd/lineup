@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Timestamp } from 'firebase/firestore';
+
 import type { Team, Emote } from '~~/types';
 
 import { useTeamStore } from '~~/stores/Team';
@@ -61,7 +63,7 @@ const fakeTeam = {
         </div>
 
         <ScoreboardEmojiBoard
-            @emote="addEmote({ teamId, emote: $event, ticks: Date.now() } as Emote)"
+            @emote="addEmote({ teamId, emote: $event, timestamp: Timestamp.now() } as Emote)"
             :class="{ hidden: !route.params.id }"
             class="px-4"
         />

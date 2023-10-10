@@ -3,6 +3,8 @@ import {
     CollectionReference,
     DocumentData,
 
+    Timestamp,
+
     query,
     where,
     orderBy,
@@ -40,7 +42,7 @@ export function addEmote(emote: Emote) {
 }
 
 export function getRecentEmotes(teamId: ID) {
-    return query(_collRef, where("teamId", "==", teamId), where("ticks", ">", Date.now()), orderBy("ticks"));
+    return query(_collRef, where("teamId", "==", teamId), where("timestamp", ">", Timestamp.now()), orderBy("timestamp"));
 }
 
 export function subscribeToNewEmotes(teamId: ID, callbackFn: Function) {
