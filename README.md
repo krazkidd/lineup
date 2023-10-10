@@ -75,6 +75,20 @@ npm run preview
 
 Note that the preview feature may not work. A workaround is documented [here](https://github.com/nuxt/nuxt/issues/14454#issuecomment-1397357957) but it doesn't seem to help.
 
+### Publish Firestore Indexes and Security Rules
+
+If the Firestore indexes or security rules have changed, they will need to be pushed during deployment of the app.
+
+Automating this is not so easy (see [#21](https://github.com/krazkidd/lineup/issues/21)), but it can be done through the Firebase CLI.
+
+```bash
+firebase login
+npm run firebase:deploy
+```
+
+> **Warning**<br>
+By deploying the app and Firestore configuration separately, there is no way to avoid a race condition. Index builds are ["long-running operations"](https://firebase.google.com/docs/firestore/query-data/indexing#index_build_time) and security rules can take [several minutes to propagate](https://firebase.google.com/docs/rules/manage-deploy).
+
 ## Hosting
 
 ### GitHub Pages (free)
