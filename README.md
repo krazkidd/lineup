@@ -47,7 +47,7 @@ npm install -g firebase-tools
 To start the Firestore emulator and run the Vite development server:
 
 ```bash
-firebase emulators:start
+npm run firebase:emulators
 npm run dev
 ```
 
