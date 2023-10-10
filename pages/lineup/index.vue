@@ -39,6 +39,7 @@ useSortable(sortableContainer, spots, {
                 class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded px-1"
                 placeholder="Team Name"
                 :disabled="teamStore.isLocked"
+                autocapitalize="words"
             />
 
             <SettingsLockButton />
