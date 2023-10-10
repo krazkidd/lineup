@@ -38,13 +38,13 @@ To install dependencies:
 npm install
 ```
 
-To install the Firebase CLI, [follow these instructions](https://www.npmjs.com/package/firebase-tools#installation) or simply run:
+Google provides emulators of their cloud services for dev builds. You do not need a Firebase project to run the emulators. To install the Firebase CLI, [follow these instructions](https://www.npmjs.com/package/firebase-tools#installation) or simply run:
 
 ```bash
 npm install -g firebase-tools
 ```
 
-To start the Firestore emulator and run the Vite development server:
+Then, to start the emulators and the app in dev mode:
 
 ```bash
 npm run firebase:emulators
