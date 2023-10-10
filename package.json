@@ -8,8 +8,11 @@
   "scripts": {
     "build": "nuxt build",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci",
+    "confirm": "node -e \"(async () => { process.exitCode = (await require('prompts').prompt({ type: 'confirm', message: 'Continue?', name: 'value' })).value ? 0 : 1; })()\"",
+    "firebase:emulators": "firebase emulators:start",
+    "prefirebase:deploy": "npm run confirm",
+    "firebase:deploy": "firebase deploy --only firestore",
     "dev": "nuxt dev",
-    "emulators": "firebase emulators:start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -28,7 +31,8 @@
     "nuxt": "^3.7.3",
     "pinia": "^2.1.6",
     "primeicons": "^6.0.1",
-    "primevue": "^3.33.0"
+    "primevue": "^3.33.0",
+    "prompts": "^2.4.2"
   },
   "dependencies": {
     "@firebase/app-types": "^0.9.0",

@@ -1,3 +1,4 @@
+import { Timestamp } from 'firebase/firestore';
 import { groupBy, keys } from 'lodash-es';
 
 export type ID = string;
@@ -44,7 +45,7 @@ export interface Scoreboard {
 export interface Emote {
     teamId: ID,
     emote: string,
-    ticks: number
+    timestamp: Timestamp
 };
 
 //TODO this can probably be refactored into something more readable
