@@ -8,8 +8,8 @@
   "scripts": {
     "build": "nuxt build",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci",
+    "firebase:emulators": "firebase emulators:start",
     "dev": "nuxt dev",
-    "emulators": "firebase emulators:start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
