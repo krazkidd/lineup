@@ -50,6 +50,7 @@ onKeyStroke("Backspace", (e) => {
             class="grow inline-block overflow-x-hidden text-ellipsis bg-transparent focus:shadow rounded placeholder-gray-500 dark:placeholder-gray-500 px-1"
             placeholder="Enter player name"
             :disabled="teamStore.isLocked"
+            autocapitalize="words"
         />
 
         <LineupPositionButton

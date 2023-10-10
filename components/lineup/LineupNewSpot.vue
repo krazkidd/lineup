@@ -47,6 +47,7 @@ function createSpot(e: Event) {
       @focus="focused = true"
       @blur="focused = false"
       :placeholder="focused ? 'Enter player name' : '+ Add A Player'"
+      autocapitalize="words"
     />
 
     <div class="shrink-0 px-1 py-2">
