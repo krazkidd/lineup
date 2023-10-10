@@ -33,7 +33,7 @@ service cloud.firestore {
 
     match /emotes/{id} {
     	allow read;
-      // only allow writing Scoreboard type
+      // only allow writing Emote type
       allow write:
         if request.resource.data.size() == 3
         && request.resource.data.teamId is string
