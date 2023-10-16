@@ -39,7 +39,8 @@ export interface Team {
 
 export interface Scoreboard {
     teamScore: number,
-    otherTeamScore: number
+    otherTeamScore: number,
+    inning: number,
 };
 
 export interface Emote {

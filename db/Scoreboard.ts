@@ -34,6 +34,7 @@ export async function getScoreboard(db: Firestore, id: ID) {
         setDoc(_docRef, {
             teamScore: 0,
             otherTeamScore: 0,
+            inning: 1
         } as Scoreboard);
     }
 
@@ -49,5 +50,11 @@ export function incrementTeamScore(amount: number) {
 export function incrementOtherTeamScore(amount: number) {
     return updateDoc(_docRef, {
         otherTeamScore: increment(amount),
+    });
+}
+
+export function incrementInning(amount: number) {
+    return updateDoc(_docRef, {
+        inning: increment(amount)
     });
 }

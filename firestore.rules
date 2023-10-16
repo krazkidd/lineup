@@ -26,9 +26,10 @@ service cloud.firestore {
     	allow read;
       // only allow writing Scoreboard type
       allow write:
-        if request.resource.data.size() == 2
+        if request.resource.data.size() == 3
         && request.resource.data.teamScore is int && request.resource.data.teamScore >= 0
-        && request.resource.data.otherTeamScore is int && request.resource.data.otherTeamScore >= 0;
+        && request.resource.data.otherTeamScore is int && request.resource.data.otherTeamScore >= 0
+        && request.resource.data.inning is int && request.resource.data.inning >= 1;
     }
 
     match /emotes/{id} {
