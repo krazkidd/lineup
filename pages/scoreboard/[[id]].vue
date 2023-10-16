@@ -40,6 +40,8 @@ const fakeTeam = {
             <ScoreboardShareButton :teamId="teamId" :team="team!" class="justify-self-end" />
         </div>
 
+        <ScoreboardEmojiButton :id="currentEmote" class="block m-auto" :class="{ invisible: !currentEmote }" />
+
         <div class="flex flex-col sm:flex-row justify-between items-center text-center mb-4 px-4">
             <ScoreboardTeamTile
                 :team="team"
@@ -49,7 +51,12 @@ const fakeTeam = {
                 class="w-64"
             />
 
-            <ScoreboardEmojiButton :id="currentEmote" :class="{ invisible: !currentEmote }" />
+            <ScoreboardInningTile
+                :inning="scoreboard?.inning ?? 1"
+                :show-buttons="!route.params.id"
+                @increment-inning="incrementInning($event)"
+                class="text-center grow-0"
+            />
 
             <ScoreboardTeamTile
                 :team="fakeTeam"
