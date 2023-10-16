@@ -27,16 +27,22 @@ const cardPassThroughOptions = computed(() => ({
     class: 'accent m-1 w-64',
   },
   title: {
-    class: 'rounded',
+    class: 'rounded truncate',
     style: {
         color: props.team ? `#${props.team!.jerseyTextColor}` : '',
         backgroundColor: props.team ? `#${props.team!.jerseyColor}` : '',
     }
   },
+  body: {
+    class: 'py-1',
+  },
   content: {
-    class: {
-        hidden: !props.showButtons
-    }
+    class: [
+        'py-1',
+        {
+            hidden: !props.showButtons
+        }
+    ]
   },
 } as CardPassThroughOptions));
 
@@ -54,7 +60,7 @@ const buttonPassThroughOptions = {
         </template>
         <template #title>{{ props.team?.name }}</template>
         <template #content>
-            <div class="flex justify-around">
+            <div class="flex space-x-2 justify-center">
                 <Button
                     @click="onClick(1)"
                     icon="pi pi-caret-up"

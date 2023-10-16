@@ -5,7 +5,7 @@ import type { Team, Emote } from '~~/types';
 
 import { useTeamStore } from '~~/stores/Team';
 import { getTeam } from '~~/db/Team'
-import { getScoreboard, incrementTeamScore, incrementOtherTeamScore } from '~~/db/Scoreboard'
+import { getScoreboard, incrementTeamScore, incrementOtherTeamScore, incrementInning } from '~~/db/Scoreboard'
 import { getEmotes, addEmote, subscribeToNewEmotes } from '~~/db/Emotes'
 
 const route = useRoute()
@@ -37,18 +37,18 @@ const fakeTeam = {
 <template>
     <div>
         <div class="flex justify-end mb-1 px-4">
-            <ScoreboardShareButton :teamId="teamId" :team="team!" class="justify-self-end" />
+            <ScoreboardShareButton :teamId="teamId" :team="team!" />
         </div>
 
         <ScoreboardEmojiButton :id="currentEmote" class="block m-auto" :class="{ invisible: !currentEmote }" />
 
-        <div class="flex flex-col sm:flex-row justify-between items-center text-center mb-4 px-4">
+        <div class="flex flex-col sm:flex-row justify-around items-center mb-4">
             <ScoreboardTeamTile
                 :team="team"
                 :score="scoreboard?.teamScore ?? 0"
                 :show-buttons="!route.params.id"
                 @increment-score="incrementTeamScore($event)"
-                class="w-64"
+                class="text-center shrink-0"
             />
 
             <ScoreboardInningTile
@@ -63,7 +63,7 @@ const fakeTeam = {
                 :score="scoreboard?.otherTeamScore ?? 0"
                 :show-buttons="!route.params.id"
                 @increment-score="incrementOtherTeamScore($event)"
-                class="w-64"
+                class="text-center shrink-0"
             />
         </div>
 
