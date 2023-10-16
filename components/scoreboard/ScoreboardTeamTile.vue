@@ -13,9 +13,14 @@ const props = withDefaults(defineProps<{
 });
 
 const emit = defineEmits<{
-    (e: "addRun"): void;
-    (e: "removeRun"): void;
+    (e: "incrementScore", payload: number): void;
 }>();
+
+function onClick(increment: number) {
+  if (props.score + increment >= 0) {
+    emit('incrementScore', increment);
+  }
+}
 
 const cardPassThroughOptions = computed(() => ({
   root: {
@@ -51,7 +56,7 @@ const buttonPassThroughOptions = {
         <template #content>
             <div class="flex justify-around">
                 <Button
-                    @click="emit('addRun')"
+                    @click="onClick(1)"
                     icon="pi pi-caret-up"
                     severity="success"
                     rounded
@@ -62,7 +67,7 @@ const buttonPassThroughOptions = {
                 />
 
                 <Button
-                    @click="emit('removeRun')"
+                    @click="onClick(-1)"
                     icon="pi pi-caret-down"
                     severity="danger"
                     rounded

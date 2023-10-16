@@ -45,8 +45,7 @@ const fakeTeam = {
                 :team="team"
                 :score="scoreboard?.teamScore ?? 0"
                 :show-buttons="!route.params.id"
-                @add-run="incrementTeamScore(1)"
-                @remove-run="incrementTeamScore(-1)"
+                @increment-score="incrementTeamScore($event)"
                 class="w-64"
             />
 
@@ -56,8 +55,7 @@ const fakeTeam = {
                 :team="fakeTeam"
                 :score="scoreboard?.otherTeamScore ?? 0"
                 :show-buttons="!route.params.id"
-                @add-run="incrementOtherTeamScore(1)"
-                @remove-run="incrementOtherTeamScore(-1)"
+                @increment-score="incrementOtherTeamScore($event)"
                 class="w-64"
             />
         </div>
