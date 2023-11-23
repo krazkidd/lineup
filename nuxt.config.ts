@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: (process.env.NUXT_APP_BASE_URL || '/') + 'favicon/favicon.ico'
+          href: '/favicon/favicon.ico'
         }
       ]
     }
