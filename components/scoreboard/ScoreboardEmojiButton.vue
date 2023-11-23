@@ -15,7 +15,7 @@ const emojiTitle = computed(() => emojiTitles[props.id]);
 <template>
     <button type="button" @click="emit('emote', props.id)" class="mb-2">
         <img
-            :src="`/lineup/images/fluentui-emoji/${props.id}_color.svg`"
+            :src="`/images/fluentui-emoji/${props.id}_color.svg`"
             :alt="emojiTitle"
             :title="emojiTitle"
         />
