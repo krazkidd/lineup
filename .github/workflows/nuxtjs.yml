@@ -67,6 +67,7 @@ jobs:
           #touch ./.output/.nojekyll
         env:
           NITRO_PRESET: github_pages
+          NUXT_APP_BASE_URL: '/lineup/'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:

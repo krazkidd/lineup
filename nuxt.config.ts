@@ -20,8 +20,9 @@ export default defineNuxtConfig({
     '~/assets/css/common.css',
   ],
   app: {
-    // required for GitHub deployment
-    baseURL: '/lineup/',
+    // overriden by NUXT_APP_BASE_URL envvar
+    // see https://nuxt.com/docs/api/composables/use-runtime-config#appbaseurl
+    //baseURL: '/',
     head: {
       htmlAttrs: {
         lang: 'en'
@@ -31,7 +32,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: '/lineup/favicon/favicon.ico'
+          href: (process.env.NUXT_APP_BASE_URL || '/') + 'favicon/favicon.ico'
         }
       ]
     }
