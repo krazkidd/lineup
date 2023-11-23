@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { emojiTitles } from '~~/data/emoji';
+import { getEmojiTitle } from '~~/data/emoji';
 
 const props = defineProps<{
     id: string
@@ -9,7 +9,7 @@ const emit = defineEmits<{
   (e: "emote", payload: string): void;
 }>();
 
-const emojiTitle = computed(() => emojiTitles[props.id]);
+const emojiTitle = computed(() => getEmojiTitle(props.id));
 </script>
 
 <template>

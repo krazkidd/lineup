@@ -1,5 +1,3 @@
-const titularizeRegex = new RegExp(/[_-]/g);
-
 export const emojis = [
     'angry_face',
     'angry_face_with_horns',
@@ -124,8 +122,14 @@ export const emojis = [
     'softball',
 ];
 
-export const emojiTitles: any = {};
+const titularizeRegex = new RegExp(/[_-]/g);
 
-emojis.forEach(emoji => {
-    emojiTitles[emoji] = emoji.replace(titularizeRegex, ' ');
-});
+const emojiTitles = emojis.reduce<Record<string, string>>((accumulator, currentValue) => {
+    accumulator[currentValue] = currentValue.replace(titularizeRegex, ' ');
+
+    return accumulator;
+}, { });
+
+export function getEmojiTitle(emojiName: string): string {
+    return emojiTitles[emojiName];
+}
