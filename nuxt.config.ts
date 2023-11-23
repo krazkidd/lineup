@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // some people report having issues with devtools;
-  // uncomment to enable
+  // some people report having issues with devtools
   //devtools: { enabled: true },
   modules: [
     "@nuxtjs/color-mode",
