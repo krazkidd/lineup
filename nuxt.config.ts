@@ -9,10 +9,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-vuefire"
   ],
-  // this allows us to deploy to free static hosting services
-  ssr: false,
-  // disable splash screen
-  spaLoadingTemplate: false,
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.css',
