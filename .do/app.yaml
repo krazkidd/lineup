@@ -13,7 +13,7 @@ ingress:
       name: lineup
     match:
       path:
-        prefix: /lineup
+        prefix: /
 name: lineup-app
 region: nyc
 static_sites:
