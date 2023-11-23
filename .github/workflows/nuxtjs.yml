@@ -63,10 +63,11 @@ jobs:
       - name: Static HTML export with Nuxt
         run: |
           ${{ steps.detect-package-manager.outputs.manager }} run generate
-          # this should be taken care of by Nitro with NITRO_PRESET
+          # this should be taken care of by Nitro with NITRO_PRESET=github_pages
           #touch ./.output/.nojekyll
         env:
           NITRO_PRESET: github_pages
+          NUXT_APP_BASE_URL: '/lineup/'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:

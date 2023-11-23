@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // some people report having issues with devtools;
-  // uncomment to enable
+  // some people report having issues with devtools
   //devtools: { enabled: true },
   modules: [
     "@nuxtjs/color-mode",
@@ -10,10 +9,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-vuefire"
   ],
-  // this allows us to deploy to free static hosting services
-  ssr: false,
-  // disable splash screen
-  spaLoadingTemplate: false,
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.css',
@@ -21,8 +16,9 @@ export default defineNuxtConfig({
     '~/assets/css/common.css',
   ],
   app: {
-    // required for GitHub deployment
-    baseURL: '/lineup/',
+    // overriden by NUXT_APP_BASE_URL envvar
+    // see https://nuxt.com/docs/api/composables/use-runtime-config#appbaseurl
+    //baseURL: '/',
     head: {
       htmlAttrs: {
         lang: 'en'
@@ -32,7 +28,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: '/lineup/favicon/favicon.ico'
+          href: '/favicon/favicon.ico'
         }
       ]
     }
