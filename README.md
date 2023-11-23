@@ -55,8 +55,6 @@ The server listens on http://localhost:3000/.
 
 ## Deployment
 
-Only static Nuxt deployments (SSG) are supported at this time (`ssr: false`). This allows us to deploy to some free static hosting services. See [Hosting](#hosting).
-
 ### Static Site Generation (SSG)
 
 To pre-render the app as static files, run:
@@ -91,7 +89,7 @@ By deploying the app and Firestore configuration separately, there is no way to 
 
 ### GitHub Pages (free)
 
-A workflow is available under `.github/workflows/` which will run the SSG command and publish `.output/public/` to your repository's Pages site.
+A workflow is available under `.github/workflows/` which will run the SSG command and publish `.output/public/` to your repository's Pages site. A `gh-pages` branch is therefore not required.
 
 ### DigitalOcean App Platform (free)
 
