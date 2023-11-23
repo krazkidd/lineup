@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { navMenuItems, homeMenuItem } from '~~/data/nav'
 
+const config = useRuntimeConfig();
 const colorMode = useColorMode();
 
 const isSidebarVisible = ref(false);
@@ -66,7 +67,7 @@ const menuPassThroughOptions = {
   <div class="flex flex-col items-center min-h-screen">
     <div class="flex justify-between items-center w-full p-1">
       <RouterLink :to="homeMenuItem.to!" :title="homeMenuItem.label" class="inline-block p-2">
-        <img src="/favicon/favicon-32x32.png" :alt="homeMenuItem.label as string" />
+        <img :src="`${config.app.baseURL}favicon/favicon-32x32.png`" :alt="homeMenuItem.label as string" />
       </RouterLink>
 
       <Button
