@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import type { ButtonPassThroughOptions } from 'primevue/button';
+
 import { Position } from "~~/types";
 import type { Player, Spot } from "~~/types";
 
-const fakeSpot = {
+const fakeSpot: Spot = {
   player: {
     id: '',
     name: '',
     number: '',
-  } as Player,
+  },
   position: Position.DH
-} as Spot;
+};
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }

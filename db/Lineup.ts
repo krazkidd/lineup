@@ -28,9 +28,9 @@ export async function getLineup(db: Firestore, id: ID) {
         toFirestore: (data) => data,
     });
 
-    if (!(await getDoc(_docRef)).exists()) {
+    if (!(await getDoc<{ spots: Lineup }, DocumentData>(_docRef)).exists()) {
         setDoc(_docRef, {
-            spots: [] as Lineup
+            spots: []
         });
     }
 

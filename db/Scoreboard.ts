@@ -31,11 +31,11 @@ export async function getScoreboard(db: Firestore, id: ID) {
     });
 
     if (!(await getDoc(_docRef)).exists()) {
-        setDoc(_docRef, {
+        setDoc<Scoreboard, DocumentData>(_docRef, {
             teamScore: 0,
             otherTeamScore: 0,
             inning: 1
-        } as Scoreboard);
+        });
     }
 
     return _docRef;

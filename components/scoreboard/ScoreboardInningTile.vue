@@ -19,7 +19,7 @@ function onClick(increment: number) {
   }
 }
 
-const cardPassThroughOptions = computed(() => ({
+const cardPassThroughOptions = computed<CardPassThroughOptions>(() => ({
   root: {
     class: 'm-1',
   },
@@ -37,13 +37,13 @@ const cardPassThroughOptions = computed(() => ({
         }
     ]
   },
-} as CardPassThroughOptions));
+}));
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   },
-} as ButtonPassThroughOptions;
+};
 </script>
 
 <template>

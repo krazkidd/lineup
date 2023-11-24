@@ -45,7 +45,7 @@ export function getRecentEmotes(teamId: ID) {
     return query(_collRef, where("teamId", "==", teamId), where("timestamp", ">", Timestamp.now()), orderBy("timestamp"));
 }
 
-export function subscribeToNewEmotes(teamId: ID, callbackFn: Function) {
+export function subscribeToNewEmotes(teamId: ID, callbackFn: (data: Emote) => void) {
     return onSnapshot(getRecentEmotes(teamId), (snapshot) => {
         snapshot.docChanges().forEach((change) => {
             if (change.type === "added") {

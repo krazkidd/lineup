@@ -22,15 +22,15 @@ function onClick(increment: number) {
   }
 }
 
-const cardPassThroughOptions = computed(() => ({
+const cardPassThroughOptions = computed<CardPassThroughOptions>(() => ({
   root: {
     class: 'accent m-1 w-64',
   },
   title: {
     class: 'rounded truncate',
     style: {
-        color: props.team ? `#${props.team!.jerseyTextColor}` : '',
-        backgroundColor: props.team ? `#${props.team!.jerseyColor}` : '',
+        color: props.team ? `#${props.team.jerseyTextColor}` : '',
+        backgroundColor: props.team ? `#${props.team.jerseyColor}` : '',
     }
   },
   body: {
@@ -44,13 +44,13 @@ const cardPassThroughOptions = computed(() => ({
         }
     ]
   },
-} as CardPassThroughOptions));
+}));
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
-} as ButtonPassThroughOptions;
+};
 </script>
 
 <template>

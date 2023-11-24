@@ -29,13 +29,12 @@ export async function getTeam(db: Firestore, id: ID) {
     });
 
     if (!(await getDoc(_docRef)).exists()) {
-        setDoc(_docRef, {
+        setDoc<Team, DocumentData>(_docRef, {
             id,
-
             name: '',
             jerseyColor: 'f47373',
             jerseyTextColor: '000000',
-        } as Team);
+        });
     }
 
     return _docRef;

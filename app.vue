@@ -1,19 +1,24 @@
 <script setup lang="ts">
+import type { SidebarPassThroughOptions } from 'primevue/sidebar';
+import type { MenuPassThroughOptions } from 'primevue/menu';
+
 import { navMenuItems, homeMenuItem } from '~~/data/nav'
 
 const config = useRuntimeConfig();
 const colorMode = useColorMode();
 
 const isSidebarVisible = ref(false);
-const sidebarPassThroughOptions = {
-  headerContent: {
+
+const sidebarPassThroughOptions: SidebarPassThroughOptions = {
+  header: {
     class: 'flex items-start w-full'
   },
   content: {
     class: 'flex flex-col justify-between w-full md:w-20rem lg:w-30rem'
   }
 };
-const menuPassThroughOptions = {
+
+const menuPassThroughOptions: MenuPassThroughOptions = {
   root: {
     class: 'w-full'
   }

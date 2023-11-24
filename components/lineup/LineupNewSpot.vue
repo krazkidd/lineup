@@ -26,9 +26,9 @@ function createSpot(e: Event) {
         id: nanoid(),
         name: playerName.value,
         number: '00',
-      } as Player,
+      },
       position: Position.DH
-    } as Spot);
+    });
   }
 
   playerName.value = '';

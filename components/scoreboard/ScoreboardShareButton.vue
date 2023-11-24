@@ -11,11 +11,11 @@ const props = defineProps<{
     team: Team
 }>();
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
-} as ButtonPassThroughOptions;
+};
 
 const isDialogVisible = ref(false);
 
