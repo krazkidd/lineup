@@ -22,9 +22,17 @@ export const scoreboardMenuItem: MenuItem = {
     //TODO deprecated
     to: { path: '/scoreboard' } as MatcherLocationAsPath
 };
+export const aboutMenuItem: MenuItem = {
+    key: 'about',
+    label: 'About',
+    icon: 'pi pi-info-circle pi-fw',
+    //TODO deprecated
+    to: { path: '/about' } as MatcherLocationAsPath
+};
 
 export const navMenuItems: MenuItem[] = [
     homeMenuItem,
     lineupMenuItem,
     scoreboardMenuItem,
+    aboutMenuItem
 ];
