@@ -21,17 +21,17 @@ function onClick(increment: number) {
 
 const cardPassThroughOptions = computed<CardPassThroughOptions>(() => ({
   root: {
-    class: 'm-1',
+    class: 'rounded m-1',
   },
   title: {
-    class: 'font-normal',
+    class: 'text-2xl',
   },
   body: {
-    class: 'py-1',
+    class: 'p-1',
   },
   content: {
     class: [
-        '!py-1',
+        'p-3',
         {
             hidden: !props.showButtons
         }

@@ -38,7 +38,6 @@ const isDialogVisible = ref(false);
     header="Team Settings"
     :pt="{
         root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-        content: { class: 'pt-1' }
     }"
   >
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">

@@ -24,21 +24,21 @@ function onClick(increment: number) {
 
 const cardPassThroughOptions = computed<CardPassThroughOptions>(() => ({
   root: {
-    class: 'accent m-1 w-64',
+    class: 'accent rounded m-1 w-64',
   },
   title: {
-    class: 'rounded truncate',
+    class: 'rounded truncate text-2xl font-bold m-2',
     style: {
         color: props.team ? `#${props.team.jerseyTextColor}` : '',
         backgroundColor: props.team ? `#${props.team.jerseyColor}` : '',
     }
   },
   body: {
-    class: 'py-1',
+    class: 'p-1',
   },
   content: {
     class: [
-        'py-1',
+        'p-3',
         {
             hidden: !props.showButtons
         }

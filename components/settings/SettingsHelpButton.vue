@@ -40,7 +40,6 @@ const isDialogVisible = ref(false);
     header="Help"
     :pt="{
         root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-        content: { class: 'pt-1' }
     }"
   >
     <div class="py-2">
