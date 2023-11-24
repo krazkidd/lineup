@@ -43,6 +43,14 @@ export default defineNuxtConfig({
   // nitro: {
   //   // prefer to set this in build environment
   //   preset: '',
+  //   // copy local files to build output
+  //   publicAssets: [
+  //     {
+  //       baseURL: "node_modules/...",
+  //       dir: "public/images",
+  //       maxAge: 60 * 60 * 24 * 7, // 7 days
+  //     },
+  //   ]
   // },
   vuefire: {
     emulators: {

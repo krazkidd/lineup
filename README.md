@@ -99,4 +99,4 @@ An app spec is available under `.do/` which will run the SSG command and publish
 
 The softball favicon (`public/favicon/favicon.ico`) is used under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license from the [twemoji](https://github.com/twitter/twemoji) project.
 
-The emoji images (`assets/images/fluentui-emoji`) are used under the MIT license (`assets/images/fluentui-emoji/LICENSE`) from the [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) project.
+The react emojis (`assets/images/fluentui-emoji`) are used under the [MIT license](https://opensource.org/license/mit/) from the [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) project.

@@ -23,7 +23,7 @@ const isDialogVisible = ref(false);
 <template>
   <Button
     @click="isDialogVisible = true"
-    icon="pi pi-fw pi-question-circle"
+    icon="pi pi-question-circle pi-fw"
     severity="secondary"
     text
     rounded

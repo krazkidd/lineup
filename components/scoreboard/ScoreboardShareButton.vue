@@ -50,7 +50,7 @@ function clickQrCode(path: string) {
     <Button
         @click="isDialogVisible = true"
         v-bind="$attrs"
-        icon="pi pi-fw pi-share-alt"
+        icon="pi pi-share-alt pi-fw"
         severity="secondary"
         text
         rounded
