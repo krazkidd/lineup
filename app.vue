@@ -32,15 +32,15 @@ const menuPassThroughOptions = {
         title="Color mode"
       >
         <template v-if="colorMode.preference === 'system'">
-          <i class="pi pi-fw pi-desktop pr-2"></i>
+          <i class="pi pi-desktop pi-fw pr-2"></i>
           System
         </template>
         <template v-if="colorMode.preference === 'dark'">
-          <i class="pi pi-fw pi-moon pr-2"></i>
+          <i class="pi pi-moon pi-fw pr-2"></i>
           Dark
         </template>
         <template v-if="colorMode.preference === 'light'">
-          <i class="pi pi-fw pi-sun pr-2"></i>
+          <i class="pi pi-sun pi-fw pr-2"></i>
           Light
         </template>
       </Button>

@@ -4,21 +4,21 @@ import type { MenuItem } from "primevue/menuitem";
 export const homeMenuItem: MenuItem = {
     key: 'home',
     label: 'Home',
-    icon: 'pi pi-fw pi-home',
+    icon: 'pi pi-home pi-fw',
     //TODO deprecated
     to: { path: '/' } as MatcherLocationAsPath
 };
 export const lineupMenuItem: MenuItem = {
     key: 'lineup',
     label: 'Lineup',
-    icon: 'pi pi-fw pi-user-edit',
+    icon: 'pi pi-user-edit pi-fw',
     //TODO deprecated
     to: { path: '/lineup' } as MatcherLocationAsPath
 };
 export const scoreboardMenuItem: MenuItem = {
     key: 'scoreboard',
     label: 'Scoreboard',
-    icon: 'pi pi-fw pi-play',
+    icon: 'pi pi-play pi-fw',
     //TODO deprecated
     to: { path: '/scoreboard' } as MatcherLocationAsPath
 };
