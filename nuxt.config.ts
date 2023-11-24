@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // some people report having issues with devtools
-  //devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     "@nuxtjs/color-mode",
     "@nuxtjs/tailwindcss",
