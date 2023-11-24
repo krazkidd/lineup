@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ButtonPassThroughOptions } from 'primevue/button';
-import { useToast } from "primevue/usetoast";
 
 import { scoreboardMenuItem } from '~~/data/nav';
 import type { ID, Team } from '~~/types';

@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "@vueuse/nuxt",
+    "nuxt-primevue",
     "nuxt-vuefire"
   ],
   css: [
@@ -52,6 +53,34 @@ export default defineNuxtConfig({
   //     },
   //   ]
   // },
+  primevue: {
+    // usePrimeVue: true,
+    options: {
+      ripple: true,
+      // use Tailwind styles
+      unstyled: true,
+    },
+    importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
+    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+    // components: {
+    //   prefix: '',
+    //   name: undefined,
+    //   include: undefined
+    //   exclude: undefined
+    // },
+    // directives: {
+    //   prefix: '',
+    //   name: undefined,
+    //   include: undefined,
+    //   exclude: undefined
+    // },
+    // composables: {
+    //   prefix: '',
+    //   name: undefined,
+    //   include: undefined,
+    //   exclude: undefined
+    // }
+  },
   vuefire: {
     emulators: {
       // uncomment this line to run the application in production mode without emulators during dev
