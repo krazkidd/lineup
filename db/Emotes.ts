@@ -1,7 +1,6 @@
 import {
     Firestore,
     CollectionReference,
-    DocumentData,
 
     Timestamp,
 
@@ -14,6 +13,7 @@ import {
 
     addDoc,
 } from 'firebase/firestore';
+import type { DocumentData } from 'firebase/firestore';
 
 import type { ID, Emote } from '~~/types';
 

@@ -1,4 +1,4 @@
-import type { MatcherLocationAsPath } from "#vue-router";
+import type { MatcherLocationAsPath } from "vue-router";
 import type { MenuItem } from "primevue/menuitem";
 
 export const homeMenuItem: MenuItem = {

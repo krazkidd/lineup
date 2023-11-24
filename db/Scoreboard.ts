@@ -1,7 +1,6 @@
 import {
     Firestore,
     DocumentReference,
-    DocumentData,
 
     doc,
     getDoc,
@@ -10,6 +9,7 @@ import {
 
     increment,
 } from 'firebase/firestore';
+import type { DocumentData } from 'firebase/firestore';
 
 import type { ID, Scoreboard } from '~~/types';
 
