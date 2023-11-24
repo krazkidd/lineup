@@ -40,7 +40,7 @@ const fakeTeam = {
             <ScoreboardShareButton :teamId="teamId" :team="team!" />
         </div>
 
-        <ScoreboardEmojiButton :id="currentEmote" class="block m-auto" :class="{ invisible: !currentEmote }" />
+        <ScoreboardEmojiButton v-if="currentEmote" :id="currentEmote" class="block m-auto" :class="{ invisible: !currentEmote }" />
 
         <div class="flex flex-col sm:flex-row justify-around items-center mb-4">
             <ScoreboardTeamTile
