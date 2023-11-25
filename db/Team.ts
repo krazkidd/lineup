@@ -1,13 +1,13 @@
 import {
     Firestore,
     DocumentReference,
-    DocumentData,
 
     doc,
     getDoc,
     setDoc,
     updateDoc,
 } from 'firebase/firestore';
+import type { DocumentData } from 'firebase/firestore';
 
 import type { ID, Team } from '~~/types';
 
@@ -29,13 +29,12 @@ export async function getTeam(db: Firestore, id: ID) {
     });
 
     if (!(await getDoc(_docRef)).exists()) {
-        setDoc(_docRef, {
+        setDoc<Team, DocumentData>(_docRef, {
             id,
-
             name: '',
             jerseyColor: 'f47373',
             jerseyTextColor: '000000',
-        } as Team);
+        });
     }
 
     return _docRef;

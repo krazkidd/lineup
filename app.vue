@@ -1,21 +1,26 @@
 <script setup lang="ts">
+import type { SidebarPassThroughOptions } from 'primevue/sidebar';
+import type { MenuPassThroughOptions } from 'primevue/menu';
+
 import { navMenuItems, homeMenuItem } from '~~/data/nav'
 
 const config = useRuntimeConfig();
 const colorMode = useColorMode();
 
 const isSidebarVisible = ref(false);
-const sidebarPassThroughOptions = {
-  headerContent: {
-    class: 'flex items-start w-full'
+
+const sidebarPassThroughOptions: SidebarPassThroughOptions = {
+  header: {
+    class: 'flex justify-between w-full p-3'
   },
   content: {
-    class: 'flex flex-col justify-between w-full md:w-20rem lg:w-30rem'
+    class: 'flex flex-col w-full md:w-20rem lg:w-30rem h-full'
   }
 };
-const menuPassThroughOptions = {
+
+const menuPassThroughOptions: MenuPassThroughOptions = {
   root: {
-    class: 'w-full'
+    class: 'grow w-full'
   }
 };
 </script>
@@ -58,7 +63,7 @@ const menuPassThroughOptions = {
         </template>
       </Menu>
 
-      <div class="justify-self-end text-sm">
+      <div class="text-sm m-5">
         This program is licensed to you for use under the <a href="https://www.gnu.org/licenses/agpl.html" class="underline">GNU AGPL v3</a>. <a href="https://github.com/krazkidd/lineup"><i class="pi pi-github" /></a>
       </div>
     </template>

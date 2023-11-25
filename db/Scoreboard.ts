@@ -1,7 +1,6 @@
 import {
     Firestore,
     DocumentReference,
-    DocumentData,
 
     doc,
     getDoc,
@@ -10,6 +9,7 @@ import {
 
     increment,
 } from 'firebase/firestore';
+import type { DocumentData } from 'firebase/firestore';
 
 import type { ID, Scoreboard } from '~~/types';
 
@@ -31,11 +31,11 @@ export async function getScoreboard(db: Firestore, id: ID) {
     });
 
     if (!(await getDoc(_docRef)).exists()) {
-        setDoc(_docRef, {
+        setDoc<Scoreboard, DocumentData>(_docRef, {
             teamScore: 0,
             otherTeamScore: 0,
             inning: 1
-        } as Scoreboard);
+        });
     }
 
     return _docRef;

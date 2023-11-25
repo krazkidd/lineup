@@ -27,11 +27,12 @@ const unsubscribe = subscribeToNewEmotes(teamId.value, (data) => {
 
 const currentEmote = ref('');
 
-const fakeTeam = {
+const fakeTeam: Team = {
+    id: "",
     name: "Opposing Team",
-    //jerseyColor: "",
-    //jerseyTextColor: "",
-} as Team;
+    jerseyColor: "",
+    jerseyTextColor: "",
+};
 </script>
 
 <template>
@@ -68,7 +69,7 @@ const fakeTeam = {
         </div>
 
         <ScoreboardEmojiBoard
-            @emote="addEmote({ teamId, emote: $event, timestamp: Timestamp.now() } as Emote)"
+            @emote="addEmote({ teamId, emote: $event, timestamp: Timestamp.now() })"
             :class="{ hidden: !route.params.id }"
             class="px-4"
         />

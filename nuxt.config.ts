@@ -1,17 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // some people report having issues with devtools
-  //devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     "@nuxtjs/color-mode",
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "@vueuse/nuxt",
+    "nuxt-primevue",
     "nuxt-vuefire"
   ],
   css: [
-    'primevue/resources/themes/saga-blue/theme.css',
-    'primevue/resources/primevue.css',
     'primeicons/primeicons.css',
     '~/assets/css/common.css',
   ],
@@ -52,6 +51,49 @@ export default defineNuxtConfig({
   //     },
   //   ]
   // },
+  primevue: {
+    // usePrimeVue: true,
+    options: {
+      ripple: true,
+      // use Tailwind styles
+      unstyled: true,
+    },
+    importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
+    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+    // components: {
+    //   //prefix: '',
+    //   //name: undefined,
+    //   include: [
+    //     'ConfirmationService',
+    //     'ToastService',
+
+    //     'Button',
+    //     'Card',
+    //     'Checkbox',
+    //     'ColorPicker',
+    //     'Dialog',
+    //     'Inplace',
+    //     'InputText',
+    //     'Listbox',
+    //     'Menu',
+    //     'Sidebar',
+    //     'Toast',
+    //   ],
+    //   //exclude: undefined
+    // },
+    // directives: {
+    //   prefix: '',
+    //   name: undefined,
+    //   include: undefined,
+    //   exclude: undefined
+    // },
+    // composables: {
+    //   prefix: '',
+    //   name: undefined,
+    //   include: undefined,
+    //   exclude: undefined
+    // }
+  },
   vuefire: {
     emulators: {
       // uncomment this line to run the application in production mode without emulators during dev

@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import type { ButtonPassThroughOptions } from 'primevue/button';
+
 import { Position } from "~~/types";
 import type { Player, Spot } from "~~/types";
 
-const fakeSpot = {
+const fakeSpot: Spot = {
   player: {
     id: '',
     name: '',
     number: '',
-  } as Player,
+  },
   position: Position.DH
-} as Spot;
+};
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
@@ -38,7 +40,6 @@ const isDialogVisible = ref(false);
     header="Help"
     :pt="{
         root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-        content: { class: 'pt-1' }
     }"
   >
     <div class="py-2">

@@ -1,13 +1,13 @@
 import {
     Firestore,
     DocumentReference,
-    DocumentData,
 
     doc,
     getDoc,
     setDoc,
     updateDoc,
 } from 'firebase/firestore';
+import type { DocumentData } from 'firebase/firestore';
 
 import type { ID, Lineup, Spot } from '~~/types';
 
@@ -28,9 +28,9 @@ export async function getLineup(db: Firestore, id: ID) {
         toFirestore: (data) => data,
     });
 
-    if (!(await getDoc(_docRef)).exists()) {
+    if (!(await getDoc<{ spots: Lineup }, DocumentData>(_docRef)).exists()) {
         setDoc(_docRef, {
-            spots: [] as Lineup
+            spots: []
         });
     }
 

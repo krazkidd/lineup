@@ -35,7 +35,6 @@ const isDialogVisible = ref(false);
             :header="`${props.spot.player.name}'s Number`"
             :pt="{
                 root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-                content: { class: 'pt-1' }
             }"
         >
             <div class="flex flex-column gap-2">
@@ -44,10 +43,6 @@ const isDialogVisible = ref(false);
                     :model-value="props.spot.player.number"
                     @update:model-value="updateSpot(lineup!.spots, { player: { ...props.spot.player, number: $event }, position: props.spot.position })"
                     @keyup.enter="isDialogVisible = false"
-                    :pt="{
-                        root: { class: '!w-full' },
-                        item: { class: 'leading-8' }
-                    }"
                     aria-describedby="player-number-help"
                 />
                 <small id="player-number-help">Enter up to 3 characters.</small>

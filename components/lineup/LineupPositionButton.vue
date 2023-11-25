@@ -32,7 +32,6 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
             :header="`${props.spot.player.name}'s Position`"
             :pt="{
                 root: { class: 'h-full md:h-4/5 w-full md:w-3/4 xl:w-1/2' },
-                content: { class: 'pt-1' }
             }"
         >
             <Listbox
@@ -45,7 +44,6 @@ const positionLongName = computed(() => getPositionLongName(props.spot.position)
                 @change="isDialogVisible = false"
                 :pt="{
                     root: { class: '!w-full' },
-                    item: { class: 'leading-8' }
                 }"
             >
                 <template #option="{ option }">

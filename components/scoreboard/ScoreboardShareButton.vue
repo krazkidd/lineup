@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ButtonPassThroughOptions } from 'primevue/button';
-import { useToast } from "primevue/usetoast";
 
 import { scoreboardMenuItem } from '~~/data/nav';
 import type { ID, Team } from '~~/types';
@@ -12,11 +11,11 @@ const props = defineProps<{
     team: Team
 }>();
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
-} as ButtonPassThroughOptions;
+};
 
 const isDialogVisible = ref(false);
 
@@ -65,7 +64,6 @@ function clickQrCode(path: string) {
         :header="`${team.name}'s Scoreboard`"
         :pt="{
             root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-            content: { class: 'pt-1' }
         }"
     >
         <RouterLink :to="scoreboardMenuItem.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>

@@ -32,6 +32,7 @@ export interface Spot {
 export type Lineup = Spot[];
 
 export interface Team {
+    id: string;
     name: string;
     jerseyColor: string,
     jerseyTextColor: string,

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ButtonPassThroughOptions } from 'primevue/button';
+
 import { useTeamStore } from '~~/stores/Team';
 import { getTeam, setJerseyColor, setJerseyTextColor } from '~~/db/Team';
 
@@ -8,7 +10,7 @@ const teamStore = useTeamStore();
 
 const { data: team } = useDocument(await getTeam(db, teamStore.id));
 
-const buttonPassThroughOptions = {
+const buttonPassThroughOptions: ButtonPassThroughOptions = {
   label: {
     class: 'hidden'
   }
@@ -36,7 +38,6 @@ const isDialogVisible = ref(false);
     header="Team Settings"
     :pt="{
         root: { class: 'w-full md:w-3/4 xl:w-1/2' },
-        content: { class: 'pt-1' }
     }"
   >
     <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
