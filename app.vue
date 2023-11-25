@@ -54,12 +54,16 @@ const menuPassThroughOptions: MenuPassThroughOptions = {
     <template #default>
       <Menu :model="navMenuItems" :pt="menuPassThroughOptions">
         <template #item="{ label, item, props }">
-          <RouterLink :to="item.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
+          <RouterLink v-if="item.route" :to="item.route" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
             <a :href="href" v-bind="props.action" @click="navigate($event).then(() => isSidebarVisible = false)" :class="{ 'router-link-active': isActive, 'router-link-exact-active': isExactActive }">
               <span v-bind="props.icon" />
               <span v-bind="props.label">{{ label }}</span>
             </a>
           </RouterLink>
+          <a v-else :href="item.url" :target="item.target" v-bind="props.action">
+            <span v-bind="props.icon" />
+            <span v-bind="props.label">{{ label }}</span>
+          </a>
         </template>
       </Menu>
 
@@ -71,7 +75,7 @@ const menuPassThroughOptions: MenuPassThroughOptions = {
 
   <div class="flex flex-col items-center min-h-screen">
     <div class="flex justify-between items-center w-full p-1">
-      <RouterLink :to="homeMenuItem.to!" :title="homeMenuItem.label" class="inline-block p-2">
+      <RouterLink :to="homeMenuItem.route" :title="homeMenuItem.label" class="inline-block p-2">
         <img :src="`${config.app.baseURL}favicon/favicon-32x32.png`" :alt="homeMenuItem.label as string" />
       </RouterLink>
 
