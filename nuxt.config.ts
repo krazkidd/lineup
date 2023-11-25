@@ -32,9 +32,6 @@ export default defineNuxtConfig({
       ]
     }
   },
-  build: {
-    transpile: ['primevue']
-  },
   colorMode: {
     // make compatible with @nuxtjs/tailwindcss module
     classSuffix: '',
@@ -52,7 +49,6 @@ export default defineNuxtConfig({
   //   ]
   // },
   primevue: {
-    // usePrimeVue: true,
     options: {
       ripple: true,
       // use Tailwind styles
@@ -60,39 +56,6 @@ export default defineNuxtConfig({
     },
     importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
     cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
-    // components: {
-    //   //prefix: '',
-    //   //name: undefined,
-    //   include: [
-    //     'ConfirmationService',
-    //     'ToastService',
-
-    //     'Button',
-    //     'Card',
-    //     'Checkbox',
-    //     'ColorPicker',
-    //     'Dialog',
-    //     'Inplace',
-    //     'InputText',
-    //     'Listbox',
-    //     'Menu',
-    //     'Sidebar',
-    //     'Toast',
-    //   ],
-    //   //exclude: undefined
-    // },
-    // directives: {
-    //   prefix: '',
-    //   name: undefined,
-    //   include: undefined,
-    //   exclude: undefined
-    // },
-    // composables: {
-    //   prefix: '',
-    //   name: undefined,
-    //   include: undefined,
-    //   exclude: undefined
-    // }
   },
   vuefire: {
     emulators: {
