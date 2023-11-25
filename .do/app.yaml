@@ -1,10 +1,7 @@
 alerts:
 - rule: DEPLOYMENT_FAILED
 - rule: DOMAIN_FAILED
-- rule: DEPLOYMENT_STARTED
-- rule: DEPLOYMENT_CANCELED
 - rule: DEPLOYMENT_LIVE
-- rule: DOMAIN_LIVE
 features:
 - buildpack-stack=ubuntu-22
 ingress:
