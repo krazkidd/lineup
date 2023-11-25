@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { getEmojiTitle } from '~~/data/emoji';
 
+const config = useRuntimeConfig();
+
 const props = defineProps<{
     id: string
 }>();
@@ -15,7 +17,7 @@ const emojiTitle = computed(() => getEmojiTitle(props.id));
 <template>
     <button type="button" @click="emit('emote', props.id)" class="mb-2">
         <img
-            :src="`/images/fluentui-emoji/${props.id}_color.svg`"
+            :src="`${config.app.baseURL}images/fluentui-emoji/${props.id}_color.svg`"
             :alt="emojiTitle"
             :title="emojiTitle"
         />
