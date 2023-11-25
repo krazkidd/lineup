@@ -19,7 +19,7 @@
     "start": "nuxt node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.0.3",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "@pinia/nuxt": "^0.5.1",
