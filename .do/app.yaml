@@ -3,7 +3,7 @@ alerts:
 - rule: DOMAIN_FAILED
 - rule: DEPLOYMENT_LIVE
 domains:
-- domain: lineup.xericode.net
+- domain: lineup.app.xericode.net
   type: PRIMARY
   zone: xericode.net
 features:
