@@ -11,7 +11,7 @@ features:
 ingress:
   rules:
   - component:
-      name: lineup
+      name: web
     match:
       path:
         prefix: /
