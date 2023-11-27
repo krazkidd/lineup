@@ -21,15 +21,6 @@ License: AGPLv3 (see LICENSE.md file)
 
 ## Development
 
-### VS Code Recommended Extensions:
-
-- [vue.volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-- [vue.vscode-typescript-vue-plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
-  - With [Takeover Mode](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode) enabled
-- [bradlc.vscode-tailwindcss](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-  - Consider installing [moalamri.inline-fold
-](https://marketplace.visualstudio.com/items?itemName=moalamri.inline-fold) or similar to collapse verbose Tailwind CSS classes
-
 ### Setup
 
 To install dependencies:
