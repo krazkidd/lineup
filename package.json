@@ -2,8 +2,7 @@
   "name": "lineup",
   "private": true,
   "engines": {
-    "node": "18.x",
-    "npm": "^9.0.0"
+    "node": "18.x"
   },
   "scripts": {
     "build": "nuxt build",
