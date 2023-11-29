@@ -5,7 +5,7 @@ alerts:
 domains:
 - domain: lineup.app.xericode.net
   type: PRIMARY
-  zone: xericode.net
+  zone: app.xericode.net
 features:
 - buildpack-stack=ubuntu-22
 ingress:
@@ -32,6 +32,6 @@ static_sites:
     branch: main
     deploy_on_push: true
     repo: krazkidd/lineup
-  name: lineup
+  name: web
   output_dir: .output/public
   source_dir: /
