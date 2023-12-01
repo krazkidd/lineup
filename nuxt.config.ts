@@ -56,6 +56,10 @@ export default defineNuxtConfig({
     importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
     cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
   },
+  typescript: {
+    strict: true,
+    typeCheck: true,
+  },
   vuefire: {
     emulators: {
       // uncomment this line to run the application in production mode without emulators during dev
