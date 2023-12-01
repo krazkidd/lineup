@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
+    "build:digitalocean": "npm install --include=dev && npm run generate && npm ci",
     "confirm": "node -e \"(async () => { process.exitCode = (await require('prompts').prompt({ type: 'confirm', message: 'Continue?', name: 'value' })).value ? 0 : 1; })()\"",
     "firebase:emulators": "firebase emulators:start",
     "prefirebase:deploy": "npm run confirm",

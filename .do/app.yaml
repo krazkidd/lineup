@@ -18,7 +18,7 @@ ingress:
 name: lineup-app
 region: nyc
 static_sites:
-- build_command: npm run generate
+- build_command: npm run build:digitalocean
   environment_slug: node-js
   envs:
   - key: NITRO_PRESET
