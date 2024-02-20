@@ -66,7 +66,7 @@ function clickQrCode(path: string) {
             root: { class: 'w-full md:w-3/4 xl:w-1/2' },
         }"
     >
-        <RouterLink :to="scoreboardMenuItem.to!" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
+        <RouterLink :to="scoreboardMenuItem.route" v-slot="{ href, route, navigate, isActive, isExactActive }" custom>
             <button type="button" @click="clickQrCode(href)" class="block mx-auto mb-3">
                 <VueQrcode
                     :value="getScoreboardPath(href)"
