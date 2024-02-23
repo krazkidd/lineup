@@ -65,6 +65,7 @@ export async function main(event, context) {
     });
 
     // response = {
+    //   // base64-encoded PNG
     //   b64_json: ..., // or
     //   url: ...,
     //   revised_prompt: ...
