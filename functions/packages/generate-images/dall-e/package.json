@@ -3,7 +3,8 @@
     "main": "index.mjs",
     "scripts": {},
     "dependencies": {
-        "openai": "^4.28.0"
+        "openai": "^4.28.0",
+        "sharp": "^0.32.6"
     },
     "overrides": {}
 }

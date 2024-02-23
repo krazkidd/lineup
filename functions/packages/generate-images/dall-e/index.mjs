@@ -1,4 +1,11 @@
+import { Buffer } from 'node:buffer';
+import { Module } from 'node:module';
+
 import OpenAI from "openai";
+
+// ESM not supported by sharp
+const require = Module.createRequire(import.meta.url);
+const sharp = require('sharp');
 
 export async function main(event, context) {
   try {
@@ -53,7 +60,7 @@ export async function main(event, context) {
       //TODO find out why these are not being accepted by the API
       //timeout: 30 * 1000, // 30 seconds (default is 10 minutes)
       //maxRetries: 2,
-      response_format: "url",
+      response_format: "b64_json", // or "url",
       user: event.userId
     });
 
@@ -63,13 +70,20 @@ export async function main(event, context) {
     //   revised_prompt: ...
     // }
 
-    console.log(response.data[0].url);
+    //console.log(response.data[0].url);
+
+    const inputBuf = Buffer.from(response.data[0].b64_json, 'base64');
+    const sharpObj = sharp(inputBuf)
+      // make sure we fit under DigitalOcean's 1MB response size limit
+      .resize(400, 400)
+      .png();
 
     return {
-      body: response.data[0].url,
+      body: (await sharpObj.toBuffer()).toString('base64'),
+      //body: response.data[0].url,
       //statusCode: 200,
       headers: {
-        'Content-Type': 'text/plain',
+        'Content-Type': 'image/png',
       },
     };
   } catch (error) {
