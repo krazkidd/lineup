@@ -1,5 +1,8 @@
 # TODO.md
 
+- use a bundler for DO function
+  https://docs.digitalocean.com/products/functions/reference/runtimes/node-js/
+
 - for documenting GH deployment workflow, https://github.com/krazkidd/lineup/issues/13
   see these:
   - https://duckduckgo.com/?t=ftsa&q=NITRO_PRESET+digital-ocean+github_pages&atb=v337-1&ia=web
