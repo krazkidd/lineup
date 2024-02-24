@@ -8,6 +8,22 @@ domains:
   zone: app.xericode.net
 features:
 - buildpack-stack=ubuntu-22
+functions:
+- envs:
+  - key: OPENAI_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+    value:
+  - key: OPENAI_ORG
+    scope: RUN_TIME
+    type: SECRET
+    value:
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: krazkidd/lineup
+  name: functions
+  source_dir: functions
 ingress:
   rules:
   - component:
@@ -15,6 +31,16 @@ ingress:
     match:
       path:
         prefix: /
+  - component:
+      name: functions
+    cors:
+      allow_methods:
+      - GET
+      allow_origins:
+      - exact: https://lineup.app.xericode.net
+    match:
+      path:
+        prefix: /functions
 name: lineup-app
 region: nyc
 static_sites:
