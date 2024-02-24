@@ -20,7 +20,7 @@ packages:
         # main: "main"
         runtime: nodejs:18
         web: true
-        webSecure: false
+        # webSecure: false
         limits:
           # 2 minutes (2min allows for retries; see OpenAI API timeout)
           timeout: 120000
