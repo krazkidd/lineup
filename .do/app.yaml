@@ -33,11 +33,6 @@ ingress:
         prefix: /
   - component:
       name: functions
-    cors:
-      allow_methods:
-      - GET
-      allow_origins:
-      - exact: https://lineup.app.xericode.net
     match:
       path:
         prefix: /functions
